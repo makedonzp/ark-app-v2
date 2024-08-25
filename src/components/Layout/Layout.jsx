@@ -7,6 +7,7 @@ import Footer from "../Footer/Footer";
 import New from "../New/New";
 import Lands from "../Lands/Lands";
 import Services from "../Services/Services";
+import Confeditial from "../Confeditial/Confeditial";
 
 export default function Layout() {
   return (
@@ -17,6 +18,7 @@ export default function Layout() {
         <Route path="/new" exact element={<New />} />
         <Route path="/lands" element={<Lands />} />
         <Route path="/services" element={<Services />} />
+        <Route path="/confeditial" element={<Confeditial />} />
       </Routes>
       <Footer />
     </div>

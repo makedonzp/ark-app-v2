@@ -3,32 +3,7 @@ import { Container } from "react-bootstrap";
 import styles from "./Advantages.module.css";
 import WhyComponent from "../WhyComponent/WhyComponent";
 import lands_img from "../../../assets/lands__why_bgr.png";
-const buildsPreority = [
-  {
-    id: 1,
-    title: "Обслуживание «под ключ»",
-  },
-  {
-    id: 2,
-    title: "Доступная цена и выгодные условия ипотеки",
-  },
-  {
-    id: 3,
-    title: "Современные технологии и дизайн",
-  },
-  {
-    id: 4,
-    title: "Гарантия законности сделки",
-  },
-  {
-    id: 5,
-    title: "Ремонт от застройщика",
-  },
-  {
-    id: 6,
-    title: "Выгодная инвестиция",
-  },
-];
+
 const landsPreority = [
   {
     id: 1,

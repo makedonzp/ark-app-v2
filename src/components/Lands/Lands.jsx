@@ -3,6 +3,7 @@ import styles from "./Lands.module.css";
 import { Col, Container, Row } from "react-bootstrap";
 import Slider from "./Slider/Slider";
 import Advantages from "./Advantages/Advantages";
+import Choise from "./Choise/Choise";
 
 export default function Lands() {
   return (
@@ -25,6 +26,9 @@ export default function Lands() {
         </Row>
       </Container>
       <Advantages />
+      <Container fluid className={styles.lands__container_map}>
+        <Choise />
+      </Container>
     </Container>
   );
 }

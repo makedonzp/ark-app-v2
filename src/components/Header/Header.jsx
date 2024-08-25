@@ -7,7 +7,6 @@ import Nav from "./Nav/Nav";
 import Contants from "../Header/Contants/Contants";
 import BurgerMenu from "../Header/BurgerMenu/BurgerMenu";
 import SideMenu from "../Header/SideMenu/SideMenu";
-import Location from "../Header/Location/Location";
 import { Col } from "react-bootstrap";
 
 export default function Header() {
@@ -24,13 +23,13 @@ export default function Header() {
           <Col>
             <Logo />
           </Col>
-          <Col>
+          {/* <Col>
             <Location />
-          </Col>
+          </Col> */}
           <Col>
             <Nav isOpen={isMenuOpen} />
           </Col>
-          <Col>
+          <Col md={3}>
             <Contants />
           </Col>
           <BurgerMenu isOpen={isMenuOpen} onClick={toggleMenu} />

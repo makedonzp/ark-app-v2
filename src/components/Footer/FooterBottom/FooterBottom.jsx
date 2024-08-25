@@ -39,7 +39,7 @@ export default function FooterBottom() {
         </ul>
       </Col>
       <Col className={styles.footer__col_right}>
-        <Link to="/privacy-policy" className={styles.footer__link}>
+        <Link to="/confeditial" className={styles.footer__link}>
           <p className={styles.footer__copyright}>
             Политика конфиденциальности
           </p>

@@ -85,17 +85,19 @@ export default function Main() {
       <MainTop scrollToForm={scrollToForm} />
       <MainButton scrollToForm={scrollToForm} />
       <MainCards />
-      <WhyComponent
-        bgr={crimea_img}
-        first={buildsPreority[0].title}
-        second={buildsPreority[1].title}
-        third={buildsPreority[2].title}
-        fourth={buildsPreority[3].title}
-        fifth={buildsPreority[4].title}
-        sixth={buildsPreority[5].title}
-      >
-        Почему Крым?
-      </WhyComponent>
+      <Container>
+        <WhyComponent
+          bgr={crimea_img}
+          first={buildsPreority[0].title}
+          second={buildsPreority[1].title}
+          third={buildsPreority[2].title}
+          fourth={buildsPreority[3].title}
+          fifth={buildsPreority[4].title}
+          sixth={buildsPreority[5].title}
+        >
+          Почему Крым?
+        </WhyComponent>
+      </Container>
       <Container className={styles.cards__container}>
         <Row className={styles.cards__row}>
           <Col md={12} sm={12} className={styles.cards__title_section}>

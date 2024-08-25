@@ -2,18 +2,23 @@ import React, { useState, useEffect, useRef } from "react";
 import styles from "./Slider.module.css";
 import control_left from "../../../assets/control_left.png";
 import control_right from "../../../assets/control_right.png";
+import simf from "../../../assets/simf.png";
+import feo from "../../../assets/feo.png";
+import yalta from "../../../assets/yalta.png";
 
 const sliderTitles = [
-  "ЖК Комфорт",
-  "ЖК Север",
-  "ЖК Центр",
-  "ЖК Юг",
-  "ЖК Запад",
-  "ЖК Восток",
-  "ЖК Простор",
-  "ЖК Восторг",
-  "ЖК Кристал",
+  "Симферополь",
+  "Феодосия",
+  "Керчь",
+  "Ялта",
+  "Алушта",
+  "Евпатория",
+  "Коктебель",
+  "Симеиз",
+  "Севастополь",
 ];
+
+const images = [simf, feo, yalta, simf, feo, yalta, simf, feo, yalta];
 
 const Slider = () => {
   const [currentIndex, setCurrentIndex] = useState(0);
@@ -22,13 +27,21 @@ const Slider = () => {
   const gap = 14; // Gap между слайдами в пикселях
 
   const nextSlide = () => {
-    setCurrentIndex((prevIndex) => (prevIndex + 1) % sliderTitles.length);
+    setCurrentIndex((prevIndex) => {
+      if (prevIndex >= sliderTitles.length - 3) {
+        return 0;
+      }
+      return prevIndex + 1;
+    });
   };
 
   const prevSlide = () => {
-    setCurrentIndex(
-      (prevIndex) => (prevIndex - 1 + sliderTitles.length) % sliderTitles.length
-    );
+    setCurrentIndex((prevIndex) => {
+      if (prevIndex <= 1) {
+        return sliderTitles.length - 3;
+      }
+      return prevIndex - 1;
+    });
   };
 
   useEffect(() => {
@@ -83,13 +96,11 @@ const Slider = () => {
       <div className={styles.sliderWrapper}>
         <div className={styles.sliderContainer} ref={sliderRef}>
           {sliderTitles.map((title, index) => (
-            <div key={index} className={styles.sliderSlide}>
-              <h2 className={styles.sliderTitle}>{title}</h2>
-              <button className={styles.sliderButton_more}>Подробнее</button>
-            </div>
-          ))}
-          {sliderTitles.map((title, index) => (
-            <div key={`clone-${index}`} className={styles.sliderSlide}>
+            <div
+              key={index}
+              className={styles.sliderSlide}
+              style={{ backgroundImage: `url(${images[index]})` }}
+            >
               <h2 className={styles.sliderTitle}>{title}</h2>
               <button className={styles.sliderButton_more}>Подробнее</button>
             </div>
