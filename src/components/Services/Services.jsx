@@ -1,8 +1,40 @@
 import React from "react";
 import styles from "./Services.module.css";
 import { Col, Container, Row } from "react-bootstrap";
+import { Link } from "react-router-dom";
+import Button from "./Button/Button";
+import Form from "../Main/Form/Form";
+import Head from "../Services/Head/Head";
+import Realtor from "../Services/Realtor/Realtor";
+import Selling from "../Services/Selling/Selling";
 
 export default function Services() {
+  const formRef = React.useRef(null);
+  const sellRef = React.useRef(null);
+  const realtorRef = React.useRef(null);
+
+  const scrollToForm = (e) => {
+    e.preventDefault();
+    if (formRef.current) {
+      formRef.current.scrollIntoView({ behavior: "smooth", block: "center" });
+    }
+  };
+
+  const scrollToSale = () => {
+    if (sellRef.current) {
+      sellRef.current.scrollIntoView({ behavior: "smooth", block: "center" });
+    }
+  };
+
+  const scrollToRealtor = () => {
+    if (realtorRef.current) {
+      realtorRef.current.scrollIntoView({
+        behavior: "smooth",
+        block: "center",
+      });
+    }
+  };
+
   return (
     <Container fluid className={styles.services_fluid}>
       <Container fluid className={styles.services}>
@@ -15,25 +47,53 @@ export default function Services() {
             </Col>
           </Row>
         </Container>
-        <Container>
-          <Row className={styles.services__row_slider}>
-            <ul>
-              <li>
-                <p>Специалисты из Крыма</p>
-              </li>
-              <li>
-                <p>Опыт работы 10 лет</p>
-              </li>
-              <li>
-                <p>Опыт работы 10 лет</p>
-              </li>
-              <li>
-                <p>Опыт работы 10 лет</p>
-              </li>
-            </ul>
+        <Container className={styles.services__center}>
+          <Row className={styles.services__row_center}>
+            <Col md={12} className={styles.services__col_center}>
+              <ul className={styles.services__list_center}>
+                <li className={styles.services__item_center}>
+                  <button className={styles.button} onClick={scrollToSale}>
+                    <p className={styles.services__text_center}>
+                      Продать недвижимость
+                    </p>
+                  </button>
+                </li>
+                <li className={styles.services__item_center}>
+                  <button className={styles.button} onClick={scrollToRealtor}>
+                    <p className={styles.services__text_center}>
+                      Риелторские услуги
+                    </p>
+                  </button>
+                </li>
+                <li className={styles.services__item_center}>
+                  <Link to="#">
+                    <p className={styles.services__text_center}>Оценка</p>
+                  </Link>
+                </li>
+                <li className={styles.services__item_center}>
+                  <Link to="#">
+                    <p className={styles.services__text_center}>
+                      Ипотечный центр
+                    </p>
+                  </Link>
+                </li>
+                <li className={styles.services__item_center}>
+                  <Link to="#">
+                    <p className={styles.services__text_center}>
+                      Юридические услуги
+                    </p>
+                  </Link>
+                </li>
+              </ul>
+            </Col>
           </Row>
+          <Button scrollToForm={scrollToForm} />
         </Container>
       </Container>
+      <Head />
+      <Realtor id="realtor" ref={realtorRef} />
+      <Selling id="selling" ref={sellRef} />
+      <Form id="form" formRef={formRef} />
     </Container>
   );
 }
