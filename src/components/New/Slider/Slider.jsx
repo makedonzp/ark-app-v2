@@ -2,33 +2,20 @@ import React, { useState, useEffect, useRef } from "react";
 import styles from "./Slider.module.css";
 import control_left from "../../../assets/control_left.png";
 import control_right from "../../../assets/control_right.png";
-import simf from "../../../assets/simf.png";
-import feo from "../../../assets/feo.png";
-import yalta from "../../../assets/yalta.png";
+import { Link } from "react-router-dom";
 
-const sliderTitles = [
-  "Симферополь",
-  "Феодосия",
-  "Керчь",
-  "Ялта",
-  "Алушта",
-  "Евпатория",
-  "Коктебель",
-  "Симеиз",
-  "Севастополь",
-];
-
-const images = [simf, feo, yalta, simf, feo, yalta, simf, feo, yalta];
-
-const Slider = () => {
+const Slider = ({ data }) => {
   const [currentIndex, setCurrentIndex] = useState(0);
+  const [visibleSlides, setVisibleSlides] = useState(3);
   const sliderRef = useRef(null);
   const [slideWidth, setSlideWidth] = useState(100 / 3); // Ширина одного слайда в процентах
   const gap = 14; // Gap между слайдами в пикселях
+  const [touchStart, setTouchStart] = useState(0);
+  const [touchEnd, setTouchEnd] = useState(0);
 
   const nextSlide = () => {
     setCurrentIndex((prevIndex) => {
-      if (prevIndex >= sliderTitles.length - 3) {
+      if (prevIndex >= data.length - visibleSlides) {
         return 0;
       }
       return prevIndex + 1;
@@ -37,8 +24,8 @@ const Slider = () => {
 
   const prevSlide = () => {
     setCurrentIndex((prevIndex) => {
-      if (prevIndex <= 1) {
-        return sliderTitles.length - 3;
+      if (prevIndex <= 0) {
+        return data.length - visibleSlides;
       }
       return prevIndex - 1;
     });
@@ -47,8 +34,10 @@ const Slider = () => {
   useEffect(() => {
     const handleResize = () => {
       if (window.innerWidth >= 768) {
+        setVisibleSlides(3);
         setSlideWidth(100 / 3);
       } else {
+        setVisibleSlides(1);
         setSlideWidth(100);
       }
     };
@@ -67,42 +56,67 @@ const Slider = () => {
       sliderRef.current.style.transform = transformValue;
 
       // Сброс позиции после завершения анимации
+      const currentSliderRef = sliderRef.current; // Копируем значение в переменную
       const transitionEndHandler = () => {
-        if (currentIndex === sliderTitles.length) {
-          sliderRef.current.style.transition = "none";
-          sliderRef.current.style.transform = `translateX(0)`;
+        if (currentIndex === data.length) {
+          currentSliderRef.style.transition = "none";
+          currentSliderRef.style.transform = `translateX(0)`;
           setCurrentIndex(0);
         } else if (currentIndex === -1) {
-          sliderRef.current.style.transition = "none";
-          sliderRef.current.style.transform = `translateX(calc(-${
-            (sliderTitles.length - 1) * slideWidth
-          }% - ${(sliderTitles.length - 1) * gap}px))`;
-          setCurrentIndex(sliderTitles.length - 1);
+          currentSliderRef.style.transition = "none";
+          currentSliderRef.style.transform = `translateX(calc(-${
+            (data.length - 1) * slideWidth
+          }% - ${(data.length - 1) * gap}px))`;
+          setCurrentIndex(data.length - 1);
         }
       };
 
-      sliderRef.current.addEventListener("transitionend", transitionEndHandler);
+      currentSliderRef.addEventListener("transitionend", transitionEndHandler);
       return () => {
-        sliderRef.current?.removeEventListener(
+        currentSliderRef?.removeEventListener(
           "transitionend",
           transitionEndHandler
         );
       };
     }
-  }, [currentIndex, slideWidth]);
+  }, [currentIndex, slideWidth, data]);
+
+  const handleTouchStart = (e) => {
+    setTouchStart(e.targetTouches[0].clientX);
+  };
+
+  const handleTouchMove = (e) => {
+    setTouchEnd(e.targetTouches[0].clientX);
+  };
+
+  const handleTouchEnd = () => {
+    if (touchStart - touchEnd > 50) {
+      nextSlide();
+    } else if (touchStart - touchEnd < -50) {
+      prevSlide();
+    }
+  };
 
   return (
     <div className={styles.slider}>
       <div className={styles.sliderWrapper}>
-        <div className={styles.sliderContainer} ref={sliderRef}>
-          {sliderTitles.map((title, index) => (
+        <div
+          className={styles.sliderContainer}
+          ref={sliderRef}
+          onTouchStart={handleTouchStart}
+          onTouchMove={handleTouchMove}
+          onTouchEnd={handleTouchEnd}
+        >
+          {data.map((item, index) => (
             <div
               key={index}
               className={styles.sliderSlide}
-              style={{ backgroundImage: `url(${images[index]})` }}
+              style={{ backgroundImage: `url(${item.image})` }}
             >
-              <h2 className={styles.sliderTitle}>{title}</h2>
-              <button className={styles.sliderButton_more}>Подробнее</button>
+              <h2 className={styles.sliderTitle}>{item.city || item.name}</h2>
+              <Link to={item.path} className={styles.sliderButton_more}>
+                Подробнее
+              </Link>
             </div>
           ))}
         </div>

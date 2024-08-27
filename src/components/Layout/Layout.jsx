@@ -8,6 +8,8 @@ import New from "../New/New";
 import Lands from "../Lands/Lands";
 import Services from "../Services/Services";
 import Confeditial from "../Confeditial/Confeditial";
+import City from "../City/City";
+import Complex from "../Complex/Complex"; // Предполагаем, что у вас есть такой компонент
 
 export default function Layout() {
   return (
@@ -19,6 +21,8 @@ export default function Layout() {
         <Route path="/lands" element={<Lands />} />
         <Route path="/services" element={<Services />} />
         <Route path="/confeditial" element={<Confeditial />} />
+        <Route path="/:citySlug" element={<City />} />
+        <Route path="/:citySlug/:complexSlug" element={<Complex />} />
       </Routes>
       <Footer />
     </div>

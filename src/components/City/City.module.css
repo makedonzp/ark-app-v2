@@ -1,0 +1,24 @@
+.city_fluid {
+  padding: 0;
+}
+.city__container {
+  flex-grow: 1;
+  margin-top: clamp(3.125rem, 2.518rem + 3.04vw, 5.25rem);
+  padding: 0 !important;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+  min-height: clamp(27.813rem, 21.188rem + 33.13vw, 51rem);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+.section__one_img {
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+  height: clamp(18.75rem, 14.5rem + 21.25vw, 30.438rem);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}

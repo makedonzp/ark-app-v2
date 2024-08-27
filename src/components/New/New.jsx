@@ -5,6 +5,7 @@ import Slider from "./Slider/Slider";
 import Advantages from "./Advantages/Advantages";
 import Map from "./Map/Map";
 import Form from "../Main/Form/Form";
+import mockData from "../Data/Data"; // Импортируем моковые данные
 
 export default function New() {
   const formRef = React.useRef(null);
@@ -15,6 +16,12 @@ export default function New() {
       formRef.current.scrollIntoView({ behavior: "smooth", block: "center" });
     }
   };
+
+  const cityData = mockData.map((item) => ({
+    city: item.city,
+    image: item.image,
+    path: item.path, // Используем путь из mockData
+  }));
 
   return (
     <Container fluid className={styles.new_fluid}>
@@ -35,7 +42,7 @@ export default function New() {
           </Row>
         </Container>
         <Row className={styles.new__row_slider}>
-          <Slider />
+          <Slider data={cityData} />
         </Row>
       </Container>
       <Container fluid className={styles.new__container_map}>
