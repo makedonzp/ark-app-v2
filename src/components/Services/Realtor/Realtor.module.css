@@ -31,7 +31,7 @@
 .content__item {
   display: flex;
   justify-content: space-between;
-  align-items: center;
+  align-items: flex-end;
   height: clamp(2.5rem, 1.786rem + 7.57vw, 5rem);
   border-bottom: solid 1px #2a3659;
   gap: 10px;
@@ -49,7 +49,7 @@
   background-repeat: no-repeat;
   background-position: center;
   background-size: cover;
-  height: clamp(12.5rem, 7.446rem + 25.27vw, 30.188rem);
+  min-height: clamp(19.75rem, 20.159rem + 24.95vw, 33.625rem);
   border-radius: 17px;
 }
 .payment__row {
@@ -67,9 +67,9 @@
   font-size: clamp(0.875rem, 0.804rem + 0.36vw, 1.125rem);
   font-family: "Roboto-Light", "sans-serif";
   border-bottom: #2a3659 1px solid;
-  height: clamp(2.5rem, 2.964rem + 7.68vw, 6.375rem);
+  min-height: clamp(2.5rem, 2.964rem + 7.68vw, 3.375rem);
   display: flex;
-  align-items: center;
+  align-items: flex-end;
   justify-content: flex-start;
   margin-bottom: 0;
 }
@@ -95,6 +95,12 @@
 @media (max-width: 992px) {
   .price__col {
     gap: 20px;
+  }
+  .content__row {
+    display: block;
+  }
+  .content__col {
+    margin-top: clamp(1.5rem, 1.364rem + 0.68vw, 1.875rem);
   }
   .price__text {
     min-height: 90px;

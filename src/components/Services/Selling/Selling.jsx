@@ -2,7 +2,9 @@ import React, { forwardRef } from "react";
 import { Container, Row, Col } from "react-bootstrap";
 import styles from "./Selling.module.css";
 
-const Selling = forwardRef(({ id }, ref) => {
+const Selling = forwardRef((props, ref) => {
+  const { id, idCost, refCost } = props;
+
   return (
     <Container className={styles.sell}>
       <Container className={styles.sell__container}>
@@ -10,8 +12,8 @@ const Selling = forwardRef(({ id }, ref) => {
           <Col ref={ref} id={id} className={styles.sell__col}>
             <h1 className={styles.sell__title}>Продажа недвижимости</h1>
             <p className={styles.sell__text}>
-              Каждый наш агент – компетентный специалист, обладающий всеми
-              необходимыми профессиональными навыками и располагающий самыми
+              Каждый наш агент – компетентный специалист, обладающий всеми
+              необходимыми профессиональными навыками и располагающий самыми
               актуальными сведениями о рынке недвижимости.{" "}
             </p>
             <p className={styles.sell__text + " " + styles.sell__text_large}>
@@ -19,7 +21,11 @@ const Selling = forwardRef(({ id }, ref) => {
               вопросы, связанные с недвижимым имуществом.
             </p>
           </Col>
-          <Col className={styles.sell__col + " " + styles.sell__col_cost}>
+          <Col
+            ref={refCost}
+            id={idCost}
+            className={styles.sell__col + " " + styles.sell__col_cost}
+          >
             <h1 className={styles.sell__title}>Оценка</h1>
             <p className={styles.sell__text + " " + styles.sell__text_large}>
               Наши сотрудники проведут экспертизу, помогут определить корректную

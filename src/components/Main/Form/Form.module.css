@@ -121,7 +121,7 @@
     width: 80%;
   }
 }
-@media (max-width: 768px) {
+@media (max-width: 992px) {
   .row_form {
     flex-direction: column;
   }

@@ -1,11 +1,10 @@
 import React from "react";
 import styles from "./Services.module.css";
 import { Col, Container, Row } from "react-bootstrap";
-import { Link } from "react-router-dom";
 import Button from "./Button/Button";
 import Form from "../Main/Form/Form";
 import Head from "../Services/Head/Head";
-import Realtor from "../Services/Realtor/Realtor";
+import Realtor from "./Realtor/Realtor";
 import Selling from "../Services/Selling/Selling";
 import Legal from "../Services/Legal/Legal";
 import Credit from "../Services/Credit/Credit";
@@ -15,6 +14,8 @@ export default function Services() {
   const sellRef = React.useRef(null);
   const realtorRef = React.useRef(null);
   const legalRef = React.useRef(null);
+  const costRef = React.useRef(null);
+  const mortgageRef = React.useRef(null); // Добавляем ref для "Ипотечный центр"
 
   const scrollToForm = (e) => {
     e.preventDefault();
@@ -22,13 +23,11 @@ export default function Services() {
       formRef.current.scrollIntoView({ behavior: "smooth", block: "center" });
     }
   };
-
   const scrollToSale = () => {
     if (sellRef.current) {
       sellRef.current.scrollIntoView({ behavior: "smooth", block: "center" });
     }
   };
-
   const scrollToRealtor = () => {
     if (realtorRef.current) {
       realtorRef.current.scrollIntoView({
@@ -37,7 +36,6 @@ export default function Services() {
       });
     }
   };
-
   const scrollToLegal = () => {
     if (legalRef.current) {
       legalRef.current.scrollIntoView({
@@ -46,7 +44,22 @@ export default function Services() {
       });
     }
   };
-
+  const scrollToCost = () => {
+    if (costRef.current) {
+      costRef.current.scrollIntoView({
+        behavior: "smooth",
+        block: "center",
+      });
+    }
+  };
+  const scrollToMortgage = () => {
+    if (mortgageRef.current) {
+      mortgageRef.current.scrollIntoView({
+        behavior: "smooth",
+        block: "center",
+      });
+    }
+  };
   return (
     <Container fluid className={styles.services_fluid}>
       <Container fluid className={styles.services}>
@@ -78,16 +91,24 @@ export default function Services() {
                   </button>
                 </li>
                 <li className={styles.services__item_center}>
-                  <Link to="#">
+                  <button
+                    className={styles.button}
+                    onClick={scrollToCost}
+                    to="#"
+                  >
                     <p className={styles.services__text_center}>Оценка</p>
-                  </Link>
+                  </button>
                 </li>
                 <li className={styles.services__item_center}>
-                  <Link to="#">
+                  <button
+                    className={styles.button}
+                    onClick={scrollToMortgage}
+                    to="#"
+                  >
                     <p className={styles.services__text_center}>
                       Ипотечный центр
                     </p>
-                  </Link>
+                  </button>
                 </li>
                 <li className={styles.services__item_center}>
                   <button className={styles.button} onClick={scrollToLegal}>
@@ -104,9 +125,9 @@ export default function Services() {
       </Container>
       <Head />
       <Realtor id="realtor" ref={realtorRef} />
-      <Selling id="selling" ref={sellRef} />
+      <Selling id="selling" ref={sellRef} refCost={costRef} idCost="cost" />
       <Legal scrollToForm={scrollToForm} id="legal" ref={legalRef} />
-      <Credit />
+      <Credit ref={mortgageRef} id="mortgage" />
       <Form id="form" formRef={formRef} />
     </Container>
   );

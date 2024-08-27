@@ -49,7 +49,7 @@
   border-bottom: #2a3659 1px solid;
   height: clamp(2.5rem, 2.964rem + 3.68vw, 3.375rem);
   display: flex;
-  align-items: center;
+  align-items: flex-end;
   justify-content: flex-start;
 }
 @media (max-width: 1200px) {

@@ -12,7 +12,7 @@
   background-repeat: no-repeat;
   background-size: cover;
   background-position: center;
-  min-height: clamp(12.5rem, 5.636rem + 27.32vw, 35.625rem);
+  min-height: clamp(19.75rem, 20.159rem + 24.95vw, 33.625rem);
   border-radius: 17px;
 }
 .legal__col_text {
@@ -49,7 +49,7 @@
 .content__item {
   display: flex;
   justify-content: space-between;
-  align-items: center;
+  align-items: flex-end;
   min-height: clamp(2.5rem, 1.786rem + 7.57vw, 5rem);
   border-bottom: solid 1px #2a3659;
   gap: 10px;
