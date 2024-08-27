@@ -17,7 +17,7 @@ export default function Head() {
             </h1>
             <br />
             <h1 className={styles.head__title + " " + styles.third}>
-              Профессионализм – это{" "}
+              Профессионализм –{" "}
               <span className={styles.head__title_span}>арк</span>
             </h1>
           </Col>
