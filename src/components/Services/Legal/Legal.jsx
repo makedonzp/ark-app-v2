@@ -4,7 +4,7 @@ import { Col, Container, Row } from "react-bootstrap";
 
 const Legal = forwardRef(({ id, scrollToForm }, ref) => {
   return (
-    <Container id={id} ref={ref} className={styles.legal}>
+    <Container className={styles.legal}>
       <Row className={styles.legal__row}>
         <Col md={12} className={styles.legal__col}>
           <div className={styles.wrapper}>
@@ -20,7 +20,7 @@ const Legal = forwardRef(({ id, scrollToForm }, ref) => {
           </p>
         </Col>
       </Row>
-      <Container className={styles.content__container}>
+      <Container id={id} ref={ref} className={styles.content__container}>
         <Row className={styles.content__row}>
           <Col
             className={styles.content__col_img + " " + styles.content__col}

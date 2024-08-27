@@ -16,9 +16,13 @@
   align-items: center;
   border-radius: 12px;
 }
-.content__row,
+.content__row {
+  padding-top: clamp(2.5rem, 1.614rem + 8.43vw, 2.938rem);
+  align-items: flex-end;
+  gap: 24px;
+}
 .conditions__row {
-  padding-top: clamp(2.5rem, 1.614rem + 4.43vw, 4.938rem);
+  padding-top: clamp(2.5rem, 1.614rem + 8.43vw, 8.938rem);
   align-items: flex-end;
   gap: 24px;
 }

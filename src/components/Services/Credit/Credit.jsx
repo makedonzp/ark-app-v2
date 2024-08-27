@@ -14,9 +14,9 @@ const Credit = forwardRef((props, ref) => {
           </div>
         </Col>
       </Row>
-      <Container ref={ref} id={id} className={styles.content__container}>
+      <Container className={styles.content__container}>
         <Row className={styles.content__row}>
-          <Col className={styles.content__col}>
+          <Col ref={ref} id={id} className={styles.content__col}>
             <h5 className={styles.content__title}>
               Ипотека с нами – это просто!
             </h5>

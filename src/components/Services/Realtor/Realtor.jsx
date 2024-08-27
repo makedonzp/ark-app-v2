@@ -19,8 +19,8 @@ const Realtor = forwardRef(({ id }, ref) => {
         </Col>
       </Row>
       <Container className={styles.content__container}>
-        <Row ref={ref} id={id} className={styles.content__row}>
-          <Col className={styles.content__col}>
+        <Row className={styles.content__row}>
+          <Col ref={ref} id={id} className={styles.content__col}>
             <ul className={styles.content__list}>
               <li className={styles.content__item}>
                 <img className={styles.content__img} src={num_1} alt="" />
