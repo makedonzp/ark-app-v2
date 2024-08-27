@@ -4,7 +4,7 @@ import control_left from "../../../assets/new__controls_left.png";
 import control_right from "../../../assets/new__controls_right.png";
 
 const sliderTitles = [
-  "Симфирополь",
+  "Симферополь",
   "Феодосия",
   "Керчь",
   "Ялта",

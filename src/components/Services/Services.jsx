@@ -7,11 +7,14 @@ import Form from "../Main/Form/Form";
 import Head from "../Services/Head/Head";
 import Realtor from "../Services/Realtor/Realtor";
 import Selling from "../Services/Selling/Selling";
+import Legal from "../Services/Legal/Legal";
+import Credit from "../Services/Credit/Credit";
 
 export default function Services() {
   const formRef = React.useRef(null);
   const sellRef = React.useRef(null);
   const realtorRef = React.useRef(null);
+  const legalRef = React.useRef(null);
 
   const scrollToForm = (e) => {
     e.preventDefault();
@@ -29,6 +32,15 @@ export default function Services() {
   const scrollToRealtor = () => {
     if (realtorRef.current) {
       realtorRef.current.scrollIntoView({
+        behavior: "smooth",
+        block: "center",
+      });
+    }
+  };
+
+  const scrollToLegal = () => {
+    if (legalRef.current) {
+      legalRef.current.scrollIntoView({
         behavior: "smooth",
         block: "center",
       });
@@ -78,11 +90,11 @@ export default function Services() {
                   </Link>
                 </li>
                 <li className={styles.services__item_center}>
-                  <Link to="#">
+                  <button className={styles.button} onClick={scrollToLegal}>
                     <p className={styles.services__text_center}>
                       Юридические услуги
                     </p>
-                  </Link>
+                  </button>
                 </li>
               </ul>
             </Col>
@@ -93,6 +105,8 @@ export default function Services() {
       <Head />
       <Realtor id="realtor" ref={realtorRef} />
       <Selling id="selling" ref={sellRef} />
+      <Legal scrollToForm={scrollToForm} id="legal" ref={legalRef} />
+      <Credit />
       <Form id="form" formRef={formRef} />
     </Container>
   );

@@ -6,8 +6,8 @@ const Selling = forwardRef(({ id }, ref) => {
   return (
     <Container className={styles.sell}>
       <Container className={styles.sell__container}>
-        <Row ref={ref} id={id} className={styles.sell__row}>
-          <Col className={styles.sell__col}>
+        <Row className={styles.sell__row}>
+          <Col ref={ref} id={id} className={styles.sell__col}>
             <h1 className={styles.sell__title}>Продажа недвижимости</h1>
             <p className={styles.sell__text}>
               Каждый наш агент – компетентный специалист, обладающий всеми

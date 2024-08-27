@@ -7,7 +7,7 @@
   background-repeat: no-repeat;
   background-size: cover;
   background-position: center;
-  height: clamp(12.5rem, 7.625rem + 24.38vw, 29.563rem);
+  height: clamp(12.5rem, 7.625rem + 25.38vw, 34.563rem);
 }
 .head__title {
   font-size: clamp(1.5rem, 1.214rem + 1.43vw, 2.5rem);

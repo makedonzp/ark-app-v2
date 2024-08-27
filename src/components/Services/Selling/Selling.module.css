@@ -36,6 +36,9 @@
 .payment__row {
   padding-top: clamp(1.875rem, 1.161rem + 3.57vw, 4.375rem);
 }
+.price__row {
+  padding-bottom: clamp(1.875rem, 0.716rem + 5.8vw, 5.063rem);
+}
 .payment__text {
   font-size: clamp(1rem, 0.857rem + 0.71vw, 1.5rem);
   font-family: "Roboto-Light", "sans-serif";
@@ -44,8 +47,18 @@
   font-size: clamp(0.875rem, 0.804rem + 0.36vw, 1.125rem);
   font-family: "Roboto-Light", "sans-serif";
   border-bottom: #2a3659 1px solid;
-  height: clamp(2.5rem, 2.964rem + 7.68vw, 6.375rem);
+  height: clamp(2.5rem, 2.964rem + 3.68vw, 3.375rem);
   display: flex;
   align-items: center;
   justify-content: flex-start;
+}
+@media (max-width: 1200px) {
+  .price__text {
+    height: clamp(5.5rem, 2.964rem + 3.68vw, 3.375rem);
+  }
+}
+@media (max-width: 992px) {
+  .price__text {
+    height: clamp(9.5rem, 7.964rem + 7.68vw, 6.375rem);
+  }
 }
