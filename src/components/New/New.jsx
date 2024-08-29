@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect } from "react";
 import styles from "./New.module.css";
 import { Col, Container, Row } from "react-bootstrap";
 import Slider from "./Slider/Slider";

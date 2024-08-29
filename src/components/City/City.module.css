@@ -22,3 +22,6 @@
   flex-direction: column;
   justify-content: space-between;
 }
+.section__one_container {
+  padding-top: clamp(2.5rem, 1.429rem + 5.36vw, 6.25rem);
+}

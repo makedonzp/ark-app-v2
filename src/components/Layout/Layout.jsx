@@ -12,6 +12,7 @@ import City from "../City/City";
 import Complex from "../Complex/Complex"; // Предполагаем, что у вас есть такой компонент
 import axios from "axios";
 import Contacts from "../Contacts/Contacts";
+import About from "../About/About";
 
 const Data = () => {
   axios
@@ -43,6 +44,7 @@ export default function Layout() {
           element={<Complex data={data} />}
         />
         <Route path="/contacts" element={<Contacts />} />
+        <Route path="/about" element={<About />} />
       </Routes>
       <Footer />
     </div>
