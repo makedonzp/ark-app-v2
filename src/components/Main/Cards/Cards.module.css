@@ -36,7 +36,14 @@
   transition: all 0.3s ease;
 }
 .card__btn_text {
-  height: 28px;
+  height: 100%;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.card__btn_text:hover {
+  color: #f2f4f6;
 }
 .card__title_text {
   font-size: 20px;
@@ -47,16 +54,6 @@
 }
 .card__icon {
   align-self: center;
-}
-.loader {
-  border: 5px solid #f3f3f3; /* Light grey */
-  border-top: 5px solid #e21a18; /* red */
-  border-radius: 50%;
-  width: 50px;
-  height: 50px;
-  animation: spin 2s linear infinite;
-  margin: 0 auto;
-  margin-block: 15vh;
 }
 
 @keyframes spin {

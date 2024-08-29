@@ -8,7 +8,7 @@
 }
 .map__img {
   height: clamp(13.438rem, 8.313rem + 25.62vw, 31.375rem);
-  background-size: cover;
+  background-size: contain;
   background-repeat: no-repeat;
   background-position: center;
   width: 64.666667%;

@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useRef } from "react";
 import styles from "./Main.module.css";
 import MainTop from "./MainTop/MainTop";
 import MainButton from "./MainButton/MainButton";
@@ -8,6 +8,10 @@ import crimea_img from "../../assets/Crimea_icon.png";
 import Cards from "../Main/Cards/Cards";
 import { Col, Container, Row } from "react-bootstrap";
 import Form from "../Main/Form/Form";
+import shield from "../../assets/secure.png";
+import home from "../../assets/home.png";
+import peoples from "../../assets/peoples.png";
+import hands from "../../assets/hands.png";
 const buildsPreority = [
   {
     id: 1,
@@ -41,8 +45,7 @@ const staticCards = [
     description:
       "Через наше агентство прошло сотни успешных сделок различной сложности.",
     path: "/about",
-    image:
-      "https://arc-backend-steel.vercel.app/media/cards/secure_Ny7esvZ.png",
+    image: shield,
   },
   {
     id: 2,
@@ -50,7 +53,7 @@ const staticCards = [
     description:
       "является гарантом безопасности на всех этапах сделки купли/продажи.",
     path: "/about",
-    image: "https://arc-backend-steel.vercel.app/media/cards/home.png",
+    image: home,
   },
   {
     id: 3,
@@ -58,7 +61,7 @@ const staticCards = [
     description:
       "профессионалы своего дела, которые работают с каждым клиентом от начала и до результата.",
     path: "/about",
-    image: "https://arc-backend-steel.vercel.app/media/cards/peoples.png",
+    image: peoples,
   },
   {
     id: 4,
@@ -66,12 +69,12 @@ const staticCards = [
     description:
       "Мы оказываем риэлторские, юридические услуги, сопровождение ипотеки  и другие услуги",
     path: "/about",
-    image: "https://arc-backend-steel.vercel.app/media/cards/hands.png",
+    image: hands,
   },
 ];
 
 export default function Main() {
-  const formRef = React.useRef(null);
+  const formRef = useRef(null);
 
   const scrollToForm = (e) => {
     e.preventDefault();

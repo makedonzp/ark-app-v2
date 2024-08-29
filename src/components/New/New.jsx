@@ -1,14 +1,25 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import styles from "./New.module.css";
 import { Col, Container, Row } from "react-bootstrap";
 import Slider from "./Slider/Slider";
 import Advantages from "./Advantages/Advantages";
 import Map from "./Map/Map";
 import Form from "../Main/Form/Form";
-import mockData from "../Data/Data"; // Импортируем моковые данные
 
-export default function New() {
+export default function New({ data }) {
   const formRef = React.useRef(null);
+  const [sliderData, setSliderData] = React.useState([]);
+
+  useEffect(() => {
+    if (data) {
+      const cityData = data.map((item) => ({
+        city: item.city,
+        image: item.image,
+        path: item.path, // Используем путь из данных
+      }));
+      setSliderData(cityData);
+    }
+  }, [data]);
 
   const scrollToForm = (e) => {
     e.preventDefault();
@@ -16,12 +27,6 @@ export default function New() {
       formRef.current.scrollIntoView({ behavior: "smooth", block: "center" });
     }
   };
-
-  const cityData = mockData.map((item) => ({
-    city: item.city,
-    image: item.image,
-    path: item.path, // Используем путь из mockData
-  }));
 
   return (
     <Container fluid className={styles.new_fluid}>
@@ -42,7 +47,7 @@ export default function New() {
           </Row>
         </Container>
         <Row className={styles.new__row_slider}>
-          <Slider data={cityData} />
+          <Slider data={sliderData} />
         </Row>
       </Container>
       <Container fluid className={styles.new__container_map}>

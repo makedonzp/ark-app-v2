@@ -25,7 +25,7 @@ export default function MainCards() {
             }
           >
             <Link className={styles.main__cards_link} to="/lands">
-              Участки
+              Участки под застройку
             </Link>
           </Col>
         </Row>
