@@ -11,7 +11,7 @@ export default function Nav() {
         </Link>
       </li>
       <li className={styles.menu__list}>
-        <Link to="/lands" className={styles.menu__link}>
+        <Link to="/plots" className={styles.menu__link}>
           Участки
         </Link>
       </li>

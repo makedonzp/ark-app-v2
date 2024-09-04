@@ -19,7 +19,7 @@ const SideMenu = ({ isOpen, onClose }) => {
               <Link onClick={onClose} to="/new">
                 Новостройки
               </Link>
-              <Link onClick={onClose} to="/lands">
+              <Link onClick={onClose} to="/plots">
                 Участки
               </Link>
               <Link onClick={onClose} to="/services">
@@ -31,7 +31,7 @@ const SideMenu = ({ isOpen, onClose }) => {
               <Link onClick={onClose} to="/contacts">
                 Контакты
               </Link>
-              <Link onClick={onClose} to="/form">
+              <Link onClick={onClose} to="/hot-form">
                 Заполнить заявку
               </Link>
             </Col>

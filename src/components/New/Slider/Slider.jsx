@@ -1,15 +1,15 @@
 import React, { useState, useEffect, useRef } from "react";
 import styles from "./Slider.module.css";
-import control_left from "../../../assets/control_left.png";
-import control_right from "../../../assets/control_right.png";
+import control_left from "../../../assets/new__controls_left.png";
+import control_right from "../../../assets/new__controls_right.png";
 import { Link } from "react-router-dom";
 
 const Slider = ({ data }) => {
   const [currentIndex, setCurrentIndex] = useState(0);
   const [visibleSlides, setVisibleSlides] = useState(3);
   const sliderRef = useRef(null);
-  const [slideWidth, setSlideWidth] = useState(100 / 3); // Ширина одного слайда в процентах
-  const gap = 14; // Gap между слайдами в пикселях
+  const [slideWidth, setSlideWidth] = useState(100 / 3);
+  const gap = 14;
   const [touchStart, setTouchStart] = useState(0);
   const [touchEnd, setTouchEnd] = useState(0);
 
@@ -55,8 +55,7 @@ const Slider = ({ data }) => {
       sliderRef.current.style.transition = "transform 0.8s ease";
       sliderRef.current.style.transform = transformValue;
 
-      // Сброс позиции после завершения анимации
-      const currentSliderRef = sliderRef.current; // Копируем значение в переменную
+      const currentSliderRef = sliderRef.current;
       const transitionEndHandler = () => {
         if (currentIndex === data.length) {
           currentSliderRef.style.transition = "none";
@@ -96,6 +95,7 @@ const Slider = ({ data }) => {
       prevSlide();
     }
   };
+  console.log(data);
 
   return (
     <div className={styles.slider}>
@@ -111,7 +111,7 @@ const Slider = ({ data }) => {
             <div
               key={index}
               className={styles.sliderSlide}
-              style={{ backgroundImage: `url(${item.image})` }}
+              style={{ backgroundImage: `url(${item.complex_card_bg})` }}
             >
               <h2 className={styles.sliderTitle}>{item.city || item.name}</h2>
               <Link to={item.path} className={styles.sliderButton_more}>

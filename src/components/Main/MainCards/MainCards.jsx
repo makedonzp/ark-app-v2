@@ -24,7 +24,7 @@ export default function MainCards() {
               styles.main__cards_col + " " + styles.main__cards_col_land
             }
           >
-            <Link className={styles.main__cards_link} to="/lands">
+            <Link className={styles.main__cards_link} to="/plots">
               Участки под застройку
             </Link>
           </Col>

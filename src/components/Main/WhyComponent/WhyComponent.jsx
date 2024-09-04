@@ -26,8 +26,6 @@ export default function WhyComponent({
           </h3>
         </Col>
         <Col
-          md={6}
-          sm={12}
           itemProp="mainContentOfPage"
           itemScope
           itemType="http://schema.org/WebPageElement"
@@ -40,8 +38,6 @@ export default function WhyComponent({
           />
         </Col>
         <Col
-          md={6}
-          sm={12}
           className={
             styles.why__row +
             " " +

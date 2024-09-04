@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import styles from "./New.module.css";
 import { Col, Container, Row } from "react-bootstrap";
 import Slider from "./Slider/Slider";
@@ -7,15 +7,17 @@ import Map from "./Map/Map";
 import Form from "../Main/Form/Form";
 
 export default function New({ data }) {
-  const formRef = React.useRef(null);
-  const [sliderData, setSliderData] = React.useState([]);
+  const formRef = useRef(null);
+  const [sliderData, setSliderData] = useState([]);
 
   useEffect(() => {
     if (data) {
       const cityData = data.map((item) => ({
-        city: item.city,
-        image: item.image,
-        path: item.path, // Используем путь из данных
+        city: item.name,
+        complex_card_bg: item.complex_card_bg,
+        path: item.path,
+        title: item.title,
+        desc: item.desc,
       }));
       setSliderData(cityData);
     }
@@ -27,6 +29,7 @@ export default function New({ data }) {
       formRef.current.scrollIntoView({ behavior: "smooth", block: "center" });
     }
   };
+  // console.log(data);
 
   return (
     <Container fluid className={styles.new_fluid}>
@@ -41,7 +44,7 @@ export default function New({ data }) {
             </Col>
             <Col md={12} className={styles.new__col}>
               <p className={styles.new__subtitle}>
-                Мы работаем только с проверенными застройщиками
+                {sliderData.length > 0 ? sliderData[0].desc : ""}
               </p>
             </Col>
           </Row>

@@ -17,7 +17,7 @@ export default function FooterBottom() {
             </Link>
           </li>
           <li className={styles.footer__list}>
-            <Link to="/lands" className={styles.footer__links}>
+            <Link to="/plots" className={styles.footer__links}>
               Участки
             </Link>
           </li>
