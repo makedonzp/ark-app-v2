@@ -21,7 +21,7 @@ import HotForm from "../HotForm/HotForm";
 
 const fetchData = () => {
   return axios
-    .get("http://arkcrimea.ru/api/full-data/")
+    .get("https://arkcrimea.ru/api/full-data/")
     .then((response) => {
       return response.data;
     })
