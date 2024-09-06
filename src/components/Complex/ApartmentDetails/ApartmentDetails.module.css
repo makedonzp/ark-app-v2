@@ -58,10 +58,10 @@
   align-items: center;
   text-align: center;
 }
-.apartmentDetails__image_sector {
+/* .apartmentDetails__image_sector {
   height: clamp(5rem, 3.714rem + 11.43vw, 15.5rem);
   width: clamp(2.5rem, 1.875rem + 6.13vw, 8.688rem);
-}
+} */
 .apartmentDetails__address {
   display: flex;
   flex-direction: column;

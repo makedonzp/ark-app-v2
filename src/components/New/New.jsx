@@ -9,6 +9,7 @@ import Form from "../Main/Form/Form";
 export default function New({ data }) {
   const formRef = useRef(null);
   const [sliderData, setSliderData] = useState([]);
+  const [imagesLoaded, setImagesLoaded] = useState(false);
 
   useEffect(() => {
     if (data) {
@@ -19,7 +20,35 @@ export default function New({ data }) {
         title: item.title,
         desc: item.desc,
       }));
-      setSliderData(cityData);
+
+      // Устанавливаем данные только если они изменились
+      setSliderData((prevData) => {
+        if (JSON.stringify(prevData) !== JSON.stringify(cityData)) {
+          return cityData;
+        }
+        return prevData;
+      });
+
+      // Загрузка изображений
+      const loadImages = async () => {
+        try {
+          const imagePromises = cityData.map((item) => {
+            return new Promise((resolve, reject) => {
+              const img = new Image();
+              img.src = item.complex_card_bg;
+              img.onload = resolve;
+              img.onerror = reject;
+            });
+          });
+
+          await Promise.all(imagePromises);
+          setImagesLoaded(true);
+        } catch (error) {
+          console.error("Ошибка при загрузке изображений:", error);
+        }
+      };
+
+      loadImages();
     }
   }, [data]);
 
@@ -29,7 +58,10 @@ export default function New({ data }) {
       formRef.current.scrollIntoView({ behavior: "smooth", block: "center" });
     }
   };
-  // console.log(data);
+
+  if (!imagesLoaded) {
+    return <div>Загрузка изображений, пожалуйста, подождите...</div>;
+  }
 
   return (
     <Container fluid className={styles.new_fluid}>
@@ -44,7 +76,9 @@ export default function New({ data }) {
             </Col>
             <Col md={12} className={styles.new__col}>
               <p className={styles.new__subtitle}>
-                {sliderData.length > 0 ? sliderData[0].desc : ""}
+                {sliderData.length > 0
+                  ? sliderData[0].desc
+                  : "Информация недоступна."}
               </p>
             </Col>
           </Row>

@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useRef } from "react";
 import styles from "./ComplexSlider.module.css";
-import control_left from "../../../assets/control_left.png";
-import control_right from "../../../assets/control_right.png";
+import control_left from "../../../assets/new__controls_left.png";
+import control_right from "../../../assets/new__controls_right.png";
 
 const ComplexSlider = ({ data }) => {
   const [currentIndex, setCurrentIndex] = useState(0);

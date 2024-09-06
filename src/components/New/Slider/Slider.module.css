@@ -69,6 +69,7 @@
   margin-left: 10px;
   border: solid 1px #ffffff;
   border-radius: 6px;
+  background-color: #000000ba;
 }
 
 @media (min-width: 768px) {

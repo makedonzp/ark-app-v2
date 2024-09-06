@@ -94,7 +94,7 @@ const ApartmentDetails = ({ data }) => {
           </Col>
         </Row>
         <Row className={styles.apartmentDetails__address_row}>
-          <Col className={styles.apartmentDetails__address_col}>
+          {/* <Col className={styles.apartmentDetails__address_col}>
             <Col className={styles.apartmentDetails__address}>
               <p className={styles.apartmentDetails__address_p}>
                 квартира в доме {section.address}
@@ -115,6 +115,9 @@ const ApartmentDetails = ({ data }) => {
                 alt=""
               />
             </Col>
+          </Col> */}
+          <Col>
+            <p>{section.address}</p>
           </Col>
           <Col className={styles.apartmentDetails__details_col_description}>
             <ul className={styles.apartmentDetails__details}>
