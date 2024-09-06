@@ -7,7 +7,7 @@ import tg_icon from "../../../assets/telegram_icon.png";
 import whats_icon from "../../../assets/whatsapp_icon.png";
 import call_icon from "../../../assets/footer_call_icon.png";
 
-export default function Form({ formRef }) {
+export default function Form({ formRef, sectionPath }) {
   const [formData, setFormData] = useState({
     name: "",
     email: "",
@@ -15,6 +15,9 @@ export default function Form({ formRef }) {
     middleName: "",
     consent: false,
     honeypot: "", // Скрытое поле honeypot
+    sectionPath: sectionPath || "", // Добавляем путь раздела
+    submissionDate: "", // Добавляем поле для даты заполнения заявки
+    referrer: "", // Добавляем поле для отслеживания с какой страницы была отправлена форма
   });
 
   const [placeholders, setPlaceholders] = useState({
@@ -108,7 +111,7 @@ export default function Form({ formRef }) {
     return allowedDomains.includes(domain);
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
     let isValid = true;
 
@@ -182,12 +185,38 @@ export default function Form({ formRef }) {
     }
 
     if (isValid) {
-      alert("Форма отправлена!");
-      // Здесь можно добавить код для отправки данных на сервер
-      // Например, используя fetch или axios
+      // Устанавливаем текущую дату и время перед отправкой формы
+      const submissionDate = new Date().toISOString();
+      const referrer = window.location.href; // Получаем текущий URL
 
-      // Переход на страницу /sending
-      navigate("/sending");
+      const updatedFormData = {
+        ...formData,
+        submissionDate,
+        referrer,
+      };
+
+      try {
+        // Отправка данных на API
+        const response = await fetch("https://arkcrimea.ru/api/submit-form/", {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify(updatedFormData),
+        });
+
+        if (response.ok) {
+          // Переход на страницу /we-will-connect
+          navigate("/we-will-connect");
+        } else {
+          const errorData = await response.json();
+          console.error("Server error:", errorData);
+          alert("Ошибка при отправке формы: " + errorData.message);
+        }
+      } catch (error) {
+        console.error("Ошибка при отправке формы:", error);
+        alert("Ошибка при отправке формы");
+      }
     }
   };
 

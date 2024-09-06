@@ -2,7 +2,7 @@ import React, { useRef } from "react";
 import { useParams } from "react-router-dom";
 import { Container, Row, Col } from "react-bootstrap";
 import styles from "./LandDetails.module.css";
-import LandSlider from "../../Land/LandSlider/LandSlider";
+import LandSlider from "../LandSlider/LandSlider";
 import Form from "../../Main/Form/Form";
 
 const LandDetails = ({ data }) => {
@@ -26,7 +26,7 @@ const LandDetails = ({ data }) => {
     return <div>Город не найден</div>;
   }
 
-  console.log("City Data:", cityData);
+  // console.log("City Data:", cityData);
 
   // Проверяем, есть ли массив plots у cityData
   if (!cityData.plots || !Array.isArray(cityData.plots)) {
@@ -46,7 +46,7 @@ const LandDetails = ({ data }) => {
     return <div>Район не найден</div>;
   }
 
-  console.log("District Data:", districtData);
+  // console.log("District Data:", districtData);
 
   // Найдем участок по landSlug
   const landData = districtData.lands?.find((item) => item.path === landSlug);
@@ -55,10 +55,11 @@ const LandDetails = ({ data }) => {
     console.log("Участок не найден:", landSlug);
     return <div>Участок не найден</div>;
   }
+  console.log(landData);
 
   // Получаем данные для слайдера из landData
   const sliderData = landData.slider || [];
-  console.log(sliderData);
+  console.log(districtData);
   return (
     <Container fluid className={styles.landDetails}>
       <Container fluid className={styles.landDetails__slider_container}>
@@ -71,12 +72,16 @@ const LandDetails = ({ data }) => {
               Участок №{landData.number}
             </h1>
             <h1 className={styles.landDetails__title}>
-              Площадь: {landData.area} соток
+              Площадь:{" "}
+              {parseFloat(landData.area)
+                .toString()
+                .replace(/\.?0+$/, "")}{" "}
+              соток
             </h1>
           </Col>
           <Col md={12} className={styles.landDetails__subtitle_col}>
             <h2 className={styles.landDetails__subtitle}>
-              {districtData.name}
+              {districtData.district}
             </h2>
           </Col>
         </Row>

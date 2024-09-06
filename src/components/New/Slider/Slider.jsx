@@ -95,7 +95,7 @@ const Slider = ({ data }) => {
       prevSlide();
     }
   };
-  console.log(data);
+  // console.log(data);
 
   return (
     <div className={styles.slider}>

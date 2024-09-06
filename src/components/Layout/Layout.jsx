@@ -18,6 +18,7 @@ import Contacts from "../Contacts/Contacts";
 import About from "../About/About";
 import LandDetails from "../District/LandDetails/LandDetails";
 import HotForm from "../HotForm/HotForm";
+import ValueFormRequest from "../ValueFormRequest/ValueFormRequest";
 
 const fetchData = () => {
   return axios
@@ -44,7 +45,7 @@ export default function Layout() {
       }
     });
   }, []);
-  console.log(data);
+  // console.log(data);
 
   return (
     <div className={styles.layout}>
@@ -79,6 +80,7 @@ export default function Layout() {
         <Route path="/contacts" element={<Contacts />} />
         <Route path="/about" element={<About />} />
         <Route path="/hot-form" element={<HotForm />} />
+        <Route path="/we-will-connect" element={<ValueFormRequest />} />
       </Routes>
       <Footer />
     </div>

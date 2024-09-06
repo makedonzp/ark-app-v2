@@ -47,7 +47,7 @@ const ApartmentDetails = ({ data }) => {
 
   // Получаем данные для слайдера из apartmentData
   const sliderData = apartmentData.slider || [];
-  console.log(section.image_1_url);
+  // console.log(apartmentData.floor_count);
 
   return (
     <Container fluid className={styles.apartmentDetails}>
@@ -62,11 +62,11 @@ const ApartmentDetails = ({ data }) => {
               {section.title}.
             </h1>
             <h1 className={styles.apartmentDetails__title}>
-              Квартира №{section.apartment_number}
-            </h1>
-            <h1 className={styles.apartmentDetails__title}>
               Площадь: {""}
-              {section.area} м²
+              {parseFloat(section.area)
+                .toString()
+                .replace(/\.?0+$/, "")}{" "}
+              м²
             </h1>
           </Col>
           <Col md={12} className={styles.apartmentDetails__subtitle_col}>
@@ -120,14 +120,6 @@ const ApartmentDetails = ({ data }) => {
             <ul className={styles.apartmentDetails__details}>
               <li className={styles.apartmentDetails__details_li}>
                 <p className={styles.apartmentDetails__details_p_desc}>
-                  Квартира №
-                </p>
-                <p className={styles.apartmentDetails__details_p}>
-                  {section.apartment_number}
-                </p>
-              </li>
-              <li className={styles.apartmentDetails__details_li}>
-                <p className={styles.apartmentDetails__details_p_desc}>
                   Срок сдачи:{" "}
                 </p>
                 <p className={styles.apartmentDetails__details_p}>
@@ -147,7 +139,7 @@ const ApartmentDetails = ({ data }) => {
                   Этаж:{" "}
                 </p>
                 <p className={styles.apartmentDetails__details_p}>
-                  {section.floor} из {section.floor_count}
+                  {section.floor} из {apartmentData.floor_count}
                 </p>
               </li>
               <li className={styles.apartmentDetails__details_li}>

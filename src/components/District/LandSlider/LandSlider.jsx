@@ -11,7 +11,7 @@ const LandSlider = ({ data }) => {
 
   // Отладка данных
   useEffect(() => {
-    // console.log("Data for slider:", data);
+    console.log("Data for slider:", data);
   }, [data]);
 
   const nextSlide = () => {
@@ -74,12 +74,12 @@ const LandSlider = ({ data }) => {
           onTouchMove={handleTouchMove}
           onTouchEnd={handleTouchEnd}
         >
-          {data.map((images, index) => (
+          {data.map((image, index) => (
             <div
               key={index}
               className={styles.sliderSlide}
               style={{
-                backgroundImage: `url(${images})`,
+                backgroundImage: `url(${image})`,
                 backgroundSize: "cover", // Это важный стиль, чтобы изображение правильно отображалось
                 backgroundPosition: "center",
               }}
