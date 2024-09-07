@@ -12,7 +12,9 @@ export const DataProvider = ({ children }) => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await axios.get("https://arkcrimea.ru/api/full-data/");
+        const response = await axios.get(
+          "https://arc-backend-steel.vercel.app/api/full-data/"
+        );
         const newData = response.data;
         localStorage.setItem("data", JSON.stringify(newData));
         setData(newData);

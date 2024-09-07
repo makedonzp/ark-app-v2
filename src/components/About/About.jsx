@@ -2,8 +2,6 @@ import React from "react";
 import { Container, Row, Col } from "react-bootstrap";
 import styles from "./About.module.css";
 import about__img from "../../assets/about__ark_img.webp";
-import garanty_img from "../../assets/about__garanty_img.webp";
-import expert_img from "../../assets/expert_image.webp";
 
 export default function About() {
   return (

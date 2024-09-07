@@ -1,5 +1,5 @@
 import React, { useContext } from "react";
-import { Routes, Route } from "react-router-dom"; // Убедитесь, что Router не импортирован
+import { Routes, Route } from "react-router-dom";
 import styles from "./Layout.module.css";
 import Header from "../Header/Header";
 import Main from "../Main/Main";
@@ -27,8 +27,6 @@ export default function Layout() {
     <div className={styles.layout}>
       <Header />
       <Routes>
-        {" "}
-        {/* Используем только Routes */}
         <Route path="/" exact element={<Main />} />
         <Route path="/new" exact element={<New data={data.new} />} />
         <Route path="/plots" element={<Lands data={data.plots} />} />

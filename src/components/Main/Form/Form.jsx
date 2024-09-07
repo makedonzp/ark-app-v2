@@ -296,15 +296,17 @@ export default function Form({ formRef, sectionPath }) {
                       {errors.phone}
                     </span>
                   )}
+                </div>
+                <div className={styles.form__wrapper}>
                   <input
-                    className={styles.form_input_}
+                    className={styles.form_input}
                     type="text"
                     name="middleName"
                     placeholder={placeholders.middleName}
                     value={formData.middleName}
                     onChange={handleChange}
                   />
-                  <span className={styles.form__span_}>
+                  <span className={styles.form__span}>
                     * Это поле обязательное для заполнения
                   </span>
                   {errors.middleName && (
@@ -333,7 +335,6 @@ export default function Form({ formRef, sectionPath }) {
                     соглашаюсь с политикой конфиденциальности
                   </p>
                 </div>
-
                 <input
                   className={styles.form__honeypot}
                   type="text"
