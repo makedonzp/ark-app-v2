@@ -4,7 +4,12 @@ import { Col, Container, Row } from "react-bootstrap";
 
 export default function Head() {
   return (
-    <Container fluid className={styles.head}>
+    <Container
+      fluid
+      className={styles.head}
+      role="region"
+      aria-label="Заголовок страницы Услуги"
+    >
       <Container className={styles.head__container}>
         <Row className={styles.head__row}>
           <Col md={12} className={styles.head__col}>
@@ -25,14 +30,14 @@ export default function Head() {
         <Row>
           <Col md={12} className={styles.head__col_desc}>
             <p className={styles.head__text}>
-              Услуги специалистов "Агентства Риэлторского Консалтинга" -
-              это полный спектр разных сервисов.{" "}
+              Услуги специалистов "Агентства Риэлторского Консалтинга" - это
+              полный спектр разных сервисов.{" "}
             </p>
           </Col>
         </Row>
       </Container>
       <Row className={styles.head__girl}>
-        <Col></Col>
+        <Col aria-label="Изображение девушки"></Col>
       </Row>
     </Container>
   );

@@ -24,13 +24,19 @@ export default function ValueFormRequest() {
   }, [navigate]);
 
   return (
-    <Container fluid className={styles.container__fluid}>
+    <Container
+      fluid
+      className={styles.container__fluid}
+      role="main"
+      aria-label="Спасибо за заявку"
+    >
       <video
         src={video}
         autoPlay
         loop
         muted
         className={styles.video_bg}
+        aria-label="Фоновое видео"
       ></video>
       <Container className={styles.container}>
         <Row className={styles.row}>
@@ -44,12 +50,16 @@ export default function ValueFormRequest() {
             <p className={styles.phone__text}>
               Также вы можете связаться с нами по номеру телефона:
             </p>
-            <Link to="tel:+7 (978) 692–01–64" className={styles.phone__link}>
+            <Link
+              to="tel:+7 (978) 692–01–64"
+              className={styles.phone__link}
+              tabIndex={0}
+            >
               +7 (978) 692–01–64
             </Link>
           </Col>
           <Col className={styles.button}>
-            <Link to="/" className={styles.main__link}>
+            <Link to="/" className={styles.main__link} tabIndex={0}>
               Вернуться на главную
             </Link>
           </Col>

@@ -22,12 +22,15 @@ export default function DistrictCards({ lands, citySlug, districtSlug }) {
             itemProp="mainContentOfPage"
             itemScope
             itemType="http://schema.org/BlogPosting"
+            role="article"
+            aria-label={`Участки: ${title}`}
           >
             <h2 className={styles.card__title_text}>{title}</h2>
             <p className={styles.card__price}>{price}</p>
             <Link
               to={`/plots/${citySlug}/${districtSlug}/${land.path}`}
               className={styles.card__btn}
+              tabIndex={0}
             >
               <span className={styles.card__btn_text}>Подробнее</span>
             </Link>

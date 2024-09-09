@@ -34,11 +34,17 @@ const City = ({ data }) => {
   const loc = section.loc || "Default Location";
 
   return (
-    <Container fluid className={styles.city_fluid}>
+    <Container
+      fluid
+      className={styles.city_fluid}
+      role="main"
+      aria-label="Информация о городе"
+    >
       <Container
         fluid
         style={{ backgroundImage: `url(${cityData.complex_bg})` }}
         className={styles.city__container}
+        aria-label="Фоновое изображение города"
       >
         <Container className={styles.city__contaiiner_title}>
           <Row className={styles.city__row}>
@@ -64,6 +70,7 @@ const City = ({ data }) => {
               style={{
                 backgroundImage: `url(${img_1})`,
               }}
+              aria-label="Изображение города"
             ></Col>
             <Col md={6} className={styles.section__one_text}>
               <ul className={styles.section__text_list}>
@@ -119,7 +126,7 @@ const City = ({ data }) => {
                   styles.section__two_icon_first
                 }
                 src={img_2}
-                alt=""
+                alt="Изображение города"
               />
             </Col>
             <Col className={styles.section__two_col}>
@@ -130,7 +137,7 @@ const City = ({ data }) => {
                   styles.section__two_icon_second
                 }
                 src={img_3}
-                alt=""
+                alt="Изображение города"
               />
               <img
                 className={
@@ -139,7 +146,7 @@ const City = ({ data }) => {
                   styles.section__two_icon_third
                 }
                 src={img_4}
-                alt=""
+                alt="Изображение города"
               />
             </Col>
           </Row>

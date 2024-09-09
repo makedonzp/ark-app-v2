@@ -4,8 +4,10 @@ import { DataProvider } from "./components/DataContext/DataContext";
 
 export default function App() {
   return (
-    <DataProvider>
-      <Layout />
-    </DataProvider>
+    <div role="application" aria-label="Основное приложение" tabIndex={0}>
+      <DataProvider>
+        <Layout />
+      </DataProvider>
+    </div>
   );
 }

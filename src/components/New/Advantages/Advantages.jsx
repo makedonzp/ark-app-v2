@@ -32,7 +32,12 @@ const buildsPreority = [
 
 export default function Advantages() {
   return (
-    <Container fluid className={styles.advantages__content_details}>
+    <Container
+      fluid
+      className={styles.advantages__content_details}
+      role="region"
+      aria-label="Преимущества покупки квартиры в новостройке"
+    >
       <Container className={styles.advantages__content}>
         <WhyComponent
           bgr={build_img}

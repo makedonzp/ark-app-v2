@@ -7,7 +7,12 @@ import contacts__clock from "../../assets/contacts__clock.png";
 
 export default function Contacts() {
   return (
-    <Container fluid className={styles.contacts}>
+    <Container
+      fluid
+      className={styles.contacts}
+      role="main"
+      aria-label="Контактная информация АРК"
+    >
       <Container className={styles.contacts__container}>
         <Row className={styles.contacts__row_title}>
           <Col md={12} className={styles.contacts__title_wrapper}>
@@ -29,7 +34,7 @@ export default function Contacts() {
               <h5 className={styles.contacts__card_title}>Симферополь</h5>
               <ul className={styles.contacts__col_loc}>
                 <li className={styles.contacts__card_loc}>
-                  <img src={contacts__loc} alt="" />
+                  <img src={contacts__loc} alt="Иконка местоположения" />
                   <p className={styles.contacts__card_desc}>
                     г. Симферополь, ул. Набережная <br /> им. 60-летия СССР, 75,
                     лит. З,
@@ -41,7 +46,7 @@ export default function Contacts() {
                   <img
                     src={contacts__clock}
                     className={styles.contacts__clock_icon}
-                    alt=""
+                    alt="Иконка часов"
                   />
                   <p className={styles.contacts__card_desc}>
                     Пн-Пт с 8:00 до 17:00 офис <br /> С 8:00 до 20:00 прием
@@ -50,7 +55,7 @@ export default function Contacts() {
                 </li>
 
                 <li className={styles.contacts__card_phone}>
-                  <img src={contacts__phone} alt="" />
+                  <img src={contacts__phone} alt="Иконка телефона" />
                   <p className={styles.contacts__card_desc}>
                     +7 (978) 682-58-53
                   </p>
@@ -61,7 +66,7 @@ export default function Contacts() {
               <h5 className={styles.contacts__card_title}>Феодосия</h5>
               <ul className={styles.contacts__col_loc}>
                 <li className={styles.contacts__card_loc}>
-                  <img src={contacts__loc} alt="" />
+                  <img src={contacts__loc} alt="Иконка местоположения" />
                   <p className={styles.contacts__card_desc}>
                     г. Феодосия, ул. Назукина 1,
                     <br /> Напротив Вечного огня
@@ -72,7 +77,7 @@ export default function Contacts() {
                   <img
                     src={contacts__clock}
                     className={styles.contacts__clock_icon}
-                    alt=""
+                    alt="Иконка часов"
                   />
                   <p className={styles.contacts__card_desc}>
                     Пн-Пт с 8:00 до 17:00 офис <br />С 8:00 до 20:00 прием
@@ -81,7 +86,7 @@ export default function Contacts() {
                 </li>
 
                 <li className={styles.contacts__card_phone}>
-                  <img src={contacts__phone} alt="" />
+                  <img src={contacts__phone} alt="Иконка телефона" />
                   <p className={styles.contacts__card_desc}>
                     +7 (978) 692-01-64
                   </p>
@@ -120,7 +125,7 @@ export default function Contacts() {
                 <li className={styles.contacts__form_li}>
                   <p className={styles.contacts__form_p}>Форма</p>
                   <p className={styles.contacts__form_p}>
-                    ООО "АРК Недвижимость" 
+                    ООО "АРК Недвижимость"
                   </p>
                 </li>
                 <li className={styles.contacts__form_li}>
@@ -132,7 +137,7 @@ export default function Contacts() {
                 <li className={styles.contacts__form_li}>
                   <p className={styles.contacts__form_p}>ИНН/КПП</p>
                   <p className={styles.contacts__form_p}>
-                     9108126365 / 910801001
+                    9108126365 / 910801001
                   </p>
                 </li>
                 <li className={styles.contacts__form_li}>

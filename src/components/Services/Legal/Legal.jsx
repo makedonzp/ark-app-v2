@@ -4,7 +4,11 @@ import { Col, Container, Row } from "react-bootstrap";
 
 const Legal = forwardRef(({ id, scrollToForm }, ref) => {
   return (
-    <Container className={styles.legal}>
+    <Container
+      className={styles.legal}
+      role="region"
+      aria-label="Юридические услуги"
+    >
       <Row className={styles.legal__row}>
         <Col md={12} className={styles.legal__col}>
           <div className={styles.wrapper}>
@@ -24,6 +28,7 @@ const Legal = forwardRef(({ id, scrollToForm }, ref) => {
         <Row className={styles.content__row}>
           <Col
             className={styles.content__col_img + " " + styles.content__col}
+            aria-label="Изображение юридических услуг"
           ></Col>
           <Col className={styles.content__col}>
             <ul className={styles.content__list}>
@@ -69,7 +74,12 @@ const Legal = forwardRef(({ id, scrollToForm }, ref) => {
         </Row>
         <Row className={styles.button__row}>
           <Col md={6} className={styles.button__col}>
-            <button onClick={scrollToForm} className={styles.button}>
+            <button
+              onClick={scrollToForm}
+              className={styles.button}
+              aria-label="Узнать стоимость услуг"
+              tabIndex={0}
+            >
               Узнать стоимость услуг
             </button>
           </Col>

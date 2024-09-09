@@ -12,6 +12,7 @@ import shield from "../../assets/secure.png";
 import home from "../../assets/home.png";
 import peoples from "../../assets/peoples.png";
 import hands from "../../assets/hands.png";
+
 const buildsPreority = [
   {
     id: 1,
@@ -38,6 +39,7 @@ const buildsPreority = [
     title: "Возможность получения дохода",
   },
 ];
+
 const staticCards = [
   {
     id: 1,
@@ -84,7 +86,12 @@ export default function Main() {
   };
 
   return (
-    <Container fluid className={styles.main}>
+    <Container
+      fluid
+      className={styles.main}
+      role="main"
+      aria-label="Основной контент"
+    >
       <MainTop scrollToForm={scrollToForm} />
       <MainButton scrollToForm={scrollToForm} />
       <MainCards />
@@ -110,6 +117,42 @@ export default function Main() {
         </Row>
       </Container>
       <Form id="form" formRef={formRef} />
+
+      {/* Schema.org разметка */}
+      <script type="application/ld+json">
+        {JSON.stringify({
+          "@context": "https://schema.org",
+          "@type": "RealEstateAgent",
+          name: "Агентство Риэлтерского Консалтинга АРК недвижимость",
+          url: "https://arkcrimea.ru",
+          description:
+            "Агентство выполняет операции с недвижимостью, оформлению документов, консультации юристов в направлении, помощь в оформлении ипотек",
+          contactPoint: {
+            "@type": "ContactPoint",
+            email: "agericon@gmail.com",
+            telephone: "+79786920164",
+            address: {
+              "@type": "PostalAddress",
+              streetAddress: "ул. Назукина 1",
+              addressLocality: "Феодосия",
+              addressRegion: "Крым",
+              postalCode: "298100",
+              addressCountry: "Россия",
+            },
+          },
+          logo: "https://ark-dom.com/images/logo/g78.png", // Замените на URL вашего логотипа
+          sameAs: [
+            "https://ваш-сайт.com/ссылка-на-facebook",
+            "https://ваш-сайт.com/ссылка-на-twitter",
+            "https://ваш-сайт.com/ссылка-на-instagram",
+          ],
+          potentialAction: {
+            "@type": "SearchAction",
+            target: "https://arkcrimea.ru/search?q={search_term_string}",
+            "query-input": "required name=search_term_string",
+          },
+        })}
+      </script>
     </Container>
   );
 }

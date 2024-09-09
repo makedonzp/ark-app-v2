@@ -31,10 +31,14 @@ const Land = ({ data }) => {
   const price = firstLand
     ? parseInt(firstLand.price).toLocaleString()
     : "Нет данных";
-  // console.log(districtData);
 
   return (
-    <Container fluid className={styles.land}>
+    <Container
+      fluid
+      className={styles.land}
+      role="main"
+      aria-label="Информация о районе"
+    >
       <Container fluid className={styles.land__slider_container}>
         <div className={styles.land__slider_text}>
           <h1 className={styles.land__title}>{districtData.district}</h1>

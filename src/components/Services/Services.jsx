@@ -61,7 +61,12 @@ export default function Services() {
     }
   };
   return (
-    <Container fluid className={styles.services_fluid}>
+    <Container
+      fluid
+      className={styles.services_fluid}
+      role="main"
+      aria-label="Основной контент страницы Услуги"
+    >
       <Container fluid className={styles.services}>
         <Container className={styles.services__container}>
           <Row className={styles.services__row}>
@@ -77,14 +82,24 @@ export default function Services() {
             <Col md={12} className={styles.services__col_center}>
               <ul className={styles.services__list_center}>
                 <li className={styles.services__item_center}>
-                  <button className={styles.button} onClick={scrollToSale}>
+                  <button
+                    className={styles.button}
+                    onClick={scrollToSale}
+                    aria-label="Продать недвижимость"
+                    tabIndex={0}
+                  >
                     <p className={styles.services__text_center}>
                       Продать недвижимость
                     </p>
                   </button>
                 </li>
                 <li className={styles.services__item_center}>
-                  <button className={styles.button} onClick={scrollToRealtor}>
+                  <button
+                    className={styles.button}
+                    onClick={scrollToRealtor}
+                    aria-label="Риелторские услуги"
+                    tabIndex={0}
+                  >
                     <p className={styles.services__text_center}>
                       Риелторские услуги
                     </p>
@@ -95,6 +110,8 @@ export default function Services() {
                     className={styles.button}
                     onClick={scrollToCost}
                     to="#"
+                    aria-label="Оценка"
+                    tabIndex={0}
                   >
                     <p className={styles.services__text_center}>Оценка</p>
                   </button>
@@ -104,6 +121,8 @@ export default function Services() {
                     className={styles.button}
                     onClick={scrollToMortgage}
                     to="#"
+                    aria-label="Ипотечный центр"
+                    tabIndex={0}
                   >
                     <p className={styles.services__text_center}>
                       Ипотечный центр
@@ -111,7 +130,12 @@ export default function Services() {
                   </button>
                 </li>
                 <li className={styles.services__item_center}>
-                  <button className={styles.button} onClick={scrollToLegal}>
+                  <button
+                    className={styles.button}
+                    onClick={scrollToLegal}
+                    aria-label="Юридические услуги"
+                    tabIndex={0}
+                  >
                     <p className={styles.services__text_center}>
                       Юридические услуги
                     </p>

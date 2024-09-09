@@ -26,8 +26,6 @@ const LandDetails = ({ data }) => {
     return <div>Город не найден</div>;
   }
 
-  // console.log("City Data:", cityData);
-
   // Проверяем, есть ли массив plots у cityData
   if (!cityData.plots || !Array.isArray(cityData.plots)) {
     console.error(
@@ -46,8 +44,6 @@ const LandDetails = ({ data }) => {
     return <div>Район не найден</div>;
   }
 
-  // console.log("District Data:", districtData);
-
   // Найдем участок по landSlug
   const landData = districtData.lands?.find((item) => item.path === landSlug);
 
@@ -55,13 +51,17 @@ const LandDetails = ({ data }) => {
     console.log("Участок не найден:", landSlug);
     return <div>Участок не найден</div>;
   }
-  console.log(landData);
 
   // Получаем данные для слайдера из landData
   const sliderData = landData.slider || [];
-  console.log(districtData);
+
   return (
-    <Container fluid className={styles.landDetails}>
+    <Container
+      fluid
+      className={styles.landDetails}
+      role="main"
+      aria-label="Детали участка"
+    >
       <Container fluid className={styles.landDetails__slider_container}>
         <LandSlider data={sliderData} />
       </Container>
@@ -90,16 +90,19 @@ const LandDetails = ({ data }) => {
             <Col
               className={styles.landDetails__image_col}
               style={{ backgroundImage: `url(${landData.image_1_url})` }}
+              aria-label="Изображение участка"
             ></Col>
           </Col>
           <Col className={styles.landDetails__image_col_wrapper}>
             <Col
               className={styles.landDetails__image}
               style={{ backgroundImage: `url(${landData.image_2_url})` }}
+              aria-label="Изображение участка"
             ></Col>
             <Col
               className={styles.landDetails__image}
               style={{ backgroundImage: `url(${landData.image_3_url})` }}
+              aria-label="Изображение участка"
             ></Col>
           </Col>
         </Row>
@@ -112,7 +115,7 @@ const LandDetails = ({ data }) => {
               <img
                 className={styles.landDetails__image_sector}
                 src={landData.image_4_url}
-                alt=""
+                alt="Изображение участка"
               />
             </Col>
             <Col className={styles.landDetails__address}>
@@ -122,7 +125,7 @@ const LandDetails = ({ data }) => {
               <img
                 className={styles.landDetails__image_sector}
                 src={landData.image_5_url}
-                alt=""
+                alt="Изображение участка"
               />
             </Col>
           </Col>
@@ -156,6 +159,7 @@ const LandDetails = ({ data }) => {
                 <button
                   onClick={scrollToForm}
                   className={styles.landDetails__button}
+                  tabIndex={0}
                 >
                   Забронировать
                 </button>

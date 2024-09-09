@@ -17,7 +17,14 @@ export default function MainButton({ scrollToForm }) {
             </p>
           </Col>
           <Col md={4} className={styles.main__col_btn}>
-            <Link to="#" onClick={scrollToForm} className={styles.main__button}>
+            <Link
+              to="#"
+              onClick={scrollToForm}
+              className={styles.main__button}
+              role="button"
+              aria-label="Связаться с нами"
+              tabIndex={0}
+            >
               Связаться с нами
             </Link>
           </Col>

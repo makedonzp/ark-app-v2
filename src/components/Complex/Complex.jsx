@@ -43,7 +43,12 @@ const Complex = ({ data, type }) => {
     : "Нет данных";
 
   return (
-    <Container fluid className={styles.complex}>
+    <Container
+      fluid
+      className={styles.complex}
+      role="main"
+      aria-label="Информация о жилом комплексе"
+    >
       <Container fluid className={styles.complex__slider_container}>
         <div className={styles.complex__slider_text}>
           <h1 className={styles.complex__title}>{complexData.name}</h1>

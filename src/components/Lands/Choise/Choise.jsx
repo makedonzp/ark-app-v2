@@ -4,7 +4,12 @@ import styles from "./Choise.module.css";
 
 export default function Choise() {
   return (
-    <Container fluid className={styles.choise__container}>
+    <Container
+      fluid
+      className={styles.choise__container}
+      role="region"
+      aria-label="Как правильно выбрать земельный участок"
+    >
       <Container className={styles.choise}>
         <Row className={styles.choise__row}>
           <Col
@@ -24,7 +29,7 @@ export default function Choise() {
               <li className={styles.choise__item}>
                 <p className={styles.choise__text}>
                   Купить землю в Крыму несложно, но правильно купить – задача не
-                  из легких. 
+                  из легких.
                 </p>
               </li>
               <li className={styles.choise__item}>
@@ -44,7 +49,7 @@ export default function Choise() {
               <li className={styles.choise__item}>
                 <p className={styles.choise__text + " " + styles.center__last}>
                   Наши опытные квалифицированные специалисты помогут вам выбрать
-                  участок. Мы предлагаем комплексное обслуживание "под ключ" по
+                  участок. Мы предлагаем комплексное обслуживание "под ключ" по
                   самым высоким стандартам.
                 </p>
               </li>
@@ -54,6 +59,7 @@ export default function Choise() {
             md={6}
             sm={12}
             className={styles.choise__img + " " + styles.order__img}
+            aria-label="Изображение выбора земельного участка"
           ></Col>
         </Row>
       </Container>

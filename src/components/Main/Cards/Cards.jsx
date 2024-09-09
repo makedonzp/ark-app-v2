@@ -27,10 +27,10 @@ export default function Cards({ cards }) {
 
   return (
     <>
-      {cards.map((card, index) => {
+      {cards.map((card) => {
         return (
           <Col
-            key={index} // Используйте индекс в качестве ключа
+            key={card.id} // Используйте уникальный идентификатор в качестве ключа
             className={styles.card_section}
             itemProp="mainContentOfPage"
             itemScope
@@ -39,15 +39,19 @@ export default function Cards({ cards }) {
             {card.image ? (
               <img
                 src={card.image}
-                alt="card_icon"
+                alt={`Иконка карточки ${card.title}`}
                 className={styles.card__icon}
               />
             ) : (
               <div>Изображение недоступно</div>
             )}
-            <h2 className={styles.card__title_text}>{card.title}</h2>
-            <p className={styles.card__desc}>{card.description}</p>
-            <Link to={card.path} className={styles.card__btn}>
+            <h2 className={styles.card__title_text} itemProp="headline">
+              {card.title}
+            </h2>
+            <p className={styles.card__desc} itemProp="description">
+              {card.description}
+            </p>
+            <Link to={card.path} className={styles.card__btn} tabIndex={0}>
               <span className={styles.card__btn_text}>Подробнее</span>
             </Link>
           </Col>

@@ -24,7 +24,12 @@ export default function Layout() {
   const data = useContext(DataContext);
 
   return (
-    <div className={styles.layout}>
+    <div
+      className={styles.layout}
+      role="application"
+      aria-label="Основное приложение"
+      tabIndex={0}
+    >
       <Header />
       <Routes>
         <Route path="/" exact element={<Main />} />

@@ -6,7 +6,11 @@ const Selling = forwardRef((props, ref) => {
   const { id, idCost, refCost } = props;
 
   return (
-    <Container className={styles.sell}>
+    <Container
+      className={styles.sell}
+      role="region"
+      aria-label="Продажа недвижимости и оценка"
+    >
       <Container className={styles.sell__container}>
         <Row className={styles.sell__row}>
           <Col ref={ref} id={id} className={styles.sell__col}>

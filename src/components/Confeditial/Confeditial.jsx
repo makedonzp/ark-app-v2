@@ -4,7 +4,11 @@ import styles from "./Confeditial.module.css";
 
 export default function Confeditial() {
   return (
-    <Container className={styles.conf__container}>
+    <Container
+      className={styles.conf__container}
+      role="main"
+      aria-label="Политика конфиденциальности и использования файлов cookie"
+    >
       <Container className={styles.conf__container_side}>
         <Row className={styles.conf__row}>
           <Col md={12}>

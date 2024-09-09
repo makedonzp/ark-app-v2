@@ -10,7 +10,11 @@ import num_6 from "../../../assets/num_6.png";
 
 const Realtor = forwardRef(({ id }, ref) => {
   return (
-    <Container className={styles.realtor}>
+    <Container
+      className={styles.realtor}
+      role="region"
+      aria-label="Услуги риэлтора"
+    >
       <Row className={styles.realtor__row}>
         <Col md={12} className={styles.realtor__col}>
           <div className={styles.wrapper}>
@@ -23,35 +27,59 @@ const Realtor = forwardRef(({ id }, ref) => {
           <Col ref={ref} id={id} className={styles.content__col}>
             <ul className={styles.content__list}>
               <li className={styles.content__item}>
-                <img className={styles.content__img} src={num_1} alt="" />
+                <img
+                  className={styles.content__img}
+                  src={num_1}
+                  alt="Номер 1"
+                />
                 <p className={styles.content__text}>
                   Оценка рыночной стоимости объекта
                 </p>
               </li>
               <li className={styles.content__item}>
-                <img className={styles.content__img} src={num_2} alt="" />
+                <img
+                  className={styles.content__img}
+                  src={num_2}
+                  alt="Номер 2"
+                />
                 <p className={styles.content__text}>Предпродажная подготовка</p>
               </li>
               <li className={styles.content__item}>
-                <img className={styles.content__img} src={num_3} alt="" />
+                <img
+                  className={styles.content__img}
+                  src={num_3}
+                  alt="Номер 3"
+                />
                 <p className={styles.content__text}>
                   Переговоры в интересах клиента
                 </p>
               </li>
               <li className={styles.content__item}>
-                <img className={styles.content__img} src={num_4} alt="" />
+                <img
+                  className={styles.content__img}
+                  src={num_4}
+                  alt="Номер 4"
+                />
                 <p className={styles.content__text}>
                   Точный подбор вариантов по потребностям
                 </p>
               </li>
               <li className={styles.content__item}>
-                <img className={styles.content__img} src={num_5} alt="" />
+                <img
+                  className={styles.content__img}
+                  src={num_5}
+                  alt="Номер 5"
+                />
                 <p className={styles.content__text}>
                   Профессиональная фотосъемка при продаже
                 </p>
               </li>
               <li className={styles.content__item}>
-                <img className={styles.content__img} src={num_6} alt="" />
+                <img
+                  className={styles.content__img}
+                  src={num_6}
+                  alt="Номер 6"
+                />
                 <p className={styles.content__text}>
                   Организация серии показов объектов недвижимости
                 </p>
@@ -60,6 +88,7 @@ const Realtor = forwardRef(({ id }, ref) => {
           </Col>
           <Col
             className={styles.content__col_img + " " + styles.content__col}
+            aria-label="Изображение услуг риэлтора"
           ></Col>
         </Row>
         <Row className={styles.payment__row}>

@@ -31,7 +31,12 @@ const Lands = ({ data }) => {
   };
 
   return (
-    <Container fluid className={styles.lands_fluid}>
+    <Container
+      fluid
+      className={styles.lands_fluid}
+      role="main"
+      aria-label="Основной контент страницы Участки в Крыму"
+    >
       <Container fluid className={styles.lands}>
         <Container className={styles.lands__container}>
           <Row className={styles.lands__row}>
@@ -43,7 +48,9 @@ const Lands = ({ data }) => {
             </Col>
             <Col md={12} className={styles.lands__col}>
               <p className={styles.lands__subtitle}>
-                {sliderData.length > 0 ? sliderData[0].desc : ""}
+                {sliderData.length > 0
+                  ? sliderData[0].desc
+                  : "Информация недоступна."}
               </p>
             </Col>
           </Row>

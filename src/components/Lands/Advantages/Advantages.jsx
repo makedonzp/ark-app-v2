@@ -30,9 +30,15 @@ const landsPreority = [
     title: "Выгодная инвестиция",
   },
 ];
+
 export default function Advantages() {
   return (
-    <Container fluid className={styles.advantages__content_details}>
+    <Container
+      fluid
+      className={styles.advantages__content_details}
+      role="region"
+      aria-label="Преимущества покупки земельного участка"
+    >
       <Container className={styles.advantages__content}>
         <WhyComponent
           bgr={lands_img}

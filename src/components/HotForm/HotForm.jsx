@@ -5,7 +5,12 @@ import styles from "./HotForm.module.css";
 
 export default function HotForm() {
   return (
-    <Container fluid className={styles.container}>
+    <Container
+      fluid
+      className={styles.container}
+      role="region"
+      aria-label="Горячая форма"
+    >
       <Form />
     </Container>
   );

@@ -60,7 +60,11 @@ const ComplexSlider = ({ data }) => {
   }
 
   return (
-    <div className={styles.slider}>
+    <div
+      className={styles.slider}
+      role="region"
+      aria-label="Слайдер изображений жилого комплекса"
+    >
       <div className={styles.sliderWrapper}>
         <div
           className={styles.sliderContainer}
@@ -74,16 +78,27 @@ const ComplexSlider = ({ data }) => {
               key={index}
               className={styles.sliderSlide}
               style={{ backgroundImage: `url(${image})` }}
+              aria-label={`Изображение ${index + 1} из ${data.length}`}
             ></div>
           ))}
         </div>
       </div>
       <div className={styles.sliderControls}>
-        <button className={styles.sliderButton} onClick={prevSlide}>
-          <img src={control_left} alt="" />
+        <button
+          className={styles.sliderButton}
+          onClick={prevSlide}
+          aria-label="Предыдущее изображение"
+          tabIndex={0}
+        >
+          <img src={control_left} alt="Предыдущий" />
         </button>
-        <button className={styles.sliderButton} onClick={nextSlide}>
-          <img src={control_right} alt="" />
+        <button
+          className={styles.sliderButton}
+          onClick={nextSlide}
+          aria-label="Следующее изображение"
+          tabIndex={0}
+        >
+          <img src={control_right} alt="Следующий" />
         </button>
       </div>
     </div>

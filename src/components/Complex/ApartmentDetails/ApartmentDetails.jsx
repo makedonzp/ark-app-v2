@@ -50,7 +50,12 @@ const ApartmentDetails = ({ data }) => {
   // console.log(apartmentData.floor_count);
 
   return (
-    <Container fluid className={styles.apartmentDetails}>
+    <Container
+      fluid
+      className={styles.apartmentDetails}
+      role="main"
+      aria-label="Информация о квартире"
+    >
       <Container fluid className={styles.apartmentDetails__slider_container}>
         <ApartmentsSlider data={sliderData} />
       </Container>
@@ -80,16 +85,19 @@ const ApartmentDetails = ({ data }) => {
             <Col
               className={styles.apartmentDetails__image_col}
               style={{ backgroundImage: `url(${section.image_1_url})` }}
+              aria-label="Изображение квартиры"
             ></Col>
           </Col>
           <Col className={styles.apartmentDetails__image_col_wrapper}>
             <Col
               className={styles.apartmentDetails__image}
               style={{ backgroundImage: `url(${section.image_2_url})` }}
+              aria-label="Изображение квартиры"
             ></Col>
             <Col
               className={styles.apartmentDetails__image}
               style={{ backgroundImage: `url(${section.image_3_url})` }}
+              aria-label="Изображение квартиры"
             ></Col>
           </Col>
         </Row>
@@ -155,6 +163,8 @@ const ApartmentDetails = ({ data }) => {
                 <button
                   onClick={scrollToForm}
                   className={styles.apartmentDetails__button}
+                  aria-label="Забронировать квартиру"
+                  tabIndex={0}
                 >
                   Забронировать
                 </button>

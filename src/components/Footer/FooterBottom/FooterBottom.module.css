@@ -5,14 +5,17 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: 30px;
+  gap: 25px;
   padding: 0;
+}
+.footer__list {
+  min-width: 34px;
 }
 .footer__links {
   text-decoration: none;
   color: #252627;
   font-family: "Roboto-Medium", "sans-serif";
-  font-size: 15px;
+  font-size: clamp(0.75rem, 0.416rem + 0.58vw, 0.938rem);
 }
 .footer__col_right {
   display: flex;

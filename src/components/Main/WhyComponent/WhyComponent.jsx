@@ -14,7 +14,11 @@ export default function WhyComponent({
   sixth,
 }) {
   return (
-    <Container className={styles.why__container}>
+    <Container
+      className={styles.why__container}
+      role="article"
+      aria-label="Почему Крым"
+    >
       <Row className={styles.row_title_section}>
         <Col
           md={12}
@@ -34,7 +38,7 @@ export default function WhyComponent({
           <div
             className={styles.crimea__icon}
             style={{ backgroundImage: `url(${bgr})` }}
-            alt="crimea_icon"
+            alt="Иконка Крыма"
           />
         </Col>
         <Col

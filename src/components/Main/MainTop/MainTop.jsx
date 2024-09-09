@@ -8,7 +8,12 @@ export default function MainTop({ scrollToForm }) {
   const linkRef = useRef(null);
 
   return (
-    <Container fluid className={styles.main__container}>
+    <Container
+      fluid
+      className={styles.main__container}
+      role="banner"
+      aria-label="Главный баннер"
+    >
       <Row className={styles.main__row}>
         <Col md={12} className={styles.main__col}>
           <h1 className={styles.main__title}>АРК</h1>
@@ -55,14 +60,15 @@ export default function MainTop({ scrollToForm }) {
             itemType="http://schema.org/URL"
             className={styles.main__first_description_link}
             ref={linkRef}
-            // Привязываем реф к ссылке
-            onClick={scrollToForm} // Привязываем событие клика
+            onClick={scrollToForm}
+            tabIndex={0}
+            aria-label="Прокрутить вниз"
           >
             <img
               src={arrow_down}
               className={styles.arrow}
               itemProp="image url"
-              alt="arrow_down_icon"
+              alt="Стрелка вниз"
             />
           </Link>
         </Col>

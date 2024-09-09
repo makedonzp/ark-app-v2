@@ -64,7 +64,12 @@ export default function New({ data }) {
   }
 
   return (
-    <Container fluid className={styles.new_fluid}>
+    <Container
+      fluid
+      className={styles.new_fluid}
+      role="main"
+      aria-label="Основной контент страницы Новостройки"
+    >
       <Container fluid className={styles.new}>
         <Container className={styles.new__container}>
           <Row className={styles.new__row}>

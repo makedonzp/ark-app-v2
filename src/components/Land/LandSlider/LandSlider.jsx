@@ -11,7 +11,7 @@ const LandSlider = ({ data }) => {
 
   // Отладка данных
   useEffect(() => {
-    // console.log("Data for slider:", data);
+    console.log("Data for slider:", data);
   }, [data]);
 
   const nextSlide = () => {
@@ -65,7 +65,11 @@ const LandSlider = ({ data }) => {
   }
 
   return (
-    <div className={styles.slider}>
+    <div
+      className={styles.slider}
+      role="region"
+      aria-label="Слайдер изображений участка"
+    >
       <div className={styles.sliderWrapper}>
         <div
           className={styles.sliderContainer}
@@ -74,24 +78,35 @@ const LandSlider = ({ data }) => {
           onTouchMove={handleTouchMove}
           onTouchEnd={handleTouchEnd}
         >
-          {data.map((images, index) => (
+          {data.map((image, index) => (
             <div
               key={index}
               className={styles.sliderSlide}
               style={{
-                backgroundImage: `url(${images})`,
+                backgroundImage: `url(${image})`,
                 backgroundSize: "cover", // Это важный стиль, чтобы изображение правильно отображалось
                 backgroundPosition: "center",
               }}
+              aria-label={`Изображение ${index + 1} из ${data.length}`}
             ></div>
           ))}
         </div>
       </div>
       <div className={styles.sliderControls}>
-        <button className={styles.sliderButton} onClick={prevSlide}>
+        <button
+          className={styles.sliderButton}
+          onClick={prevSlide}
+          aria-label="Предыдущее изображение"
+          tabIndex={0}
+        >
           <img src={control_left} alt="Предыдущий" />
         </button>
-        <button className={styles.sliderButton} onClick={nextSlide}>
+        <button
+          className={styles.sliderButton}
+          onClick={nextSlide}
+          aria-label="Следующее изображение"
+          tabIndex={0}
+        >
           <img src={control_right} alt="Следующий" />
         </button>
       </div>

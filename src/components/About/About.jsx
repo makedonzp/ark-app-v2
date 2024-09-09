@@ -5,7 +5,12 @@ import about__img from "../../assets/about__ark_img.webp";
 
 export default function About() {
   return (
-    <Container fluid className={styles.about_fluid}>
+    <Container
+      fluid
+      className={styles.about_fluid}
+      role="main"
+      aria-label="О нас"
+    >
       <Container fluid className={styles.about}>
         <Container className={styles.about__container}>
           <Row>
@@ -19,7 +24,7 @@ export default function About() {
                 <p className={styles.about__text_title}>
                   Агентство{" "}
                   <span className={styles.about__title_color}>АРК</span>{" "}
-                  Феодосия известно в регионе более 16 лет.{" "}
+                  Феодосия известно в регионе более 16 лет.{" "}
                 </p>
                 <p className={styles.about__text_p}>
                   За все годы, благодаря действиям слаженной профессиональной
@@ -29,7 +34,7 @@ export default function About() {
                 <p className={styles.about__text_p + " " + styles.third}>
                   В 2019 году Агентству{" "}
                   <span className={styles.about__title_color}>АРК</span>{" "}
-                  Феодосия вручен диплом конкурса «Народный Бренд».
+                  Феодосия вручен диплом конкурса «Народный Бренд».
                 </p>
               </div>
               <div>
@@ -44,7 +49,7 @@ export default function About() {
               </div>
             </Col>
             <Col md={5} className={styles.about__img_col}>
-              <img src={about__img} className={styles.about__img} alt="" />
+              <img src={about__img} className={styles.about__img} alt="О нас" />
             </Col>
           </Row>
         </Container>
@@ -60,7 +65,10 @@ export default function About() {
             </Col>
           </Row>
           <Row className={styles.about__row_garanty}>
-            <Col className={styles.about__col_garanty_img}></Col>
+            <Col
+              className={styles.about__col_garanty_img}
+              aria-label="Гарантия безопасности"
+            ></Col>
             <Col className={styles.about__col_garanty_text}>
               <h5 className={styles.about__h5}>
                 Наши клиенты получают полный спектр услуг специалистов, которые
@@ -149,7 +157,10 @@ export default function About() {
                 </li>
               </ul>
             </Col>
-            <Col className={styles.about__col_expert_img}></Col>
+            <Col
+              className={styles.about__col_expert_img}
+              aria-label="Экспертная команда"
+            ></Col>
           </Row>
         </Container>
       </Container>
@@ -159,6 +170,7 @@ export default function About() {
             <a
               className={styles.download__a}
               href="https://ark-dom.com/%D0%94%D0%BE%D0%B3%D0%BE%D0%B2%D0%BE%D1%80%20%D1%81%20%D0%BF%D0%BE%D0%BA%D1%83%D0%BF%D0%B0%D1%82%D0%B5%D0%BB%D0%B5%D0%BC.%D0%9E%D1%84%D0%B5%D1%80%D1%82%D0%B0.pdf"
+              tabIndex={0}
             >
               Договор с покупателем.Оферта.pdf
             </a>
@@ -167,6 +179,7 @@ export default function About() {
             <a
               className={styles.download__a}
               href="https://ark-dom.com/%D0%94%D0%BE%D0%B3%D0%BE%D0%B2%D0%BE%D1%80%20%D1%81%20%D0%BF%D1%80%D0%BE%D0%B4%D0%B0%D0%B2%D1%86%D0%BE%D0%BC.%D0%9E%D1%84%D0%B5%D1%80%D1%82%D0%B0.pdf"
+              tabIndex={0}
             >
               Договор с продавцом.Оферта.pdf
             </a>

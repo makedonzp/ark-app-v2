@@ -6,7 +6,11 @@ import { Link } from "react-router-dom";
 
 export default function Map({ scrollToForm }) {
   return (
-    <Container className={styles.map}>
+    <Container
+      className={styles.map}
+      role="region"
+      aria-label="Карта направлений поиска"
+    >
       <Row>
         <Col>
           <h1 className={styles.map__title}>Направления поиска</h1>
@@ -16,6 +20,7 @@ export default function Map({ scrollToForm }) {
         <Col
           className={styles.map__img}
           style={{ backgroundImage: `url(${map__img})` }}
+          aria-label="Карта Крыма с направлениями поиска"
         ></Col>
         <Col md={4}>
           <ul className={styles.map__list}>
@@ -50,7 +55,12 @@ export default function Map({ scrollToForm }) {
           </p>
         </Col>
         <Col className={styles.map__col_btn}>
-          <Link to="#" onClick={scrollToForm} className={styles.map__button}>
+          <Link
+            to="#"
+            onClick={scrollToForm}
+            className={styles.map__button}
+            tabIndex={0}
+          >
             Связаться с нами
           </Link>
         </Col>

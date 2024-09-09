@@ -5,7 +5,11 @@ import map__img from "../../../assets/choise_img.png";
 
 export default function Map() {
   return (
-    <Container className={styles.map}>
+    <Container
+      className={styles.map}
+      role="region"
+      aria-label="Как правильно выбрать земельный участок"
+    >
       <Row>
         <Col className={styles.map__col_text}>
           <h1 className={styles.map__title}>
@@ -17,13 +21,14 @@ export default function Map() {
         <Col
           className={styles.map__img}
           style={{ backgroundImage: `url(${map__img})` }}
+          aria-label="Карта выбора земельного участка"
         ></Col>
         <Col>
           <ul className={styles.map__list}>
             <li className={styles.map__item}>
               <p className={styles.map__text}>
                 Купить землю в Крыму несложно, но правильно купить – задача не
-                из легких. 
+                из легких.
               </p>
             </li>
             <li className={styles.map__item}>
@@ -43,7 +48,7 @@ export default function Map() {
             <li className={styles.map__item}>
               <p className={styles.map__text}>
                 Наши опытные квалифицированные специалисты помогут вам выбрать
-                участок. Мы предлагаем комплексное обслуживание "под ключ" по
+                участок. Мы предлагаем комплексное обслуживание "под ключ" по
                 самым высоким стандартам.
               </p>{" "}
             </li>

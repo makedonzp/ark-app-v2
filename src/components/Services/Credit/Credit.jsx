@@ -6,7 +6,11 @@ const Credit = forwardRef((props, ref) => {
   const { id } = props;
 
   return (
-    <Container className={styles.credit}>
+    <Container
+      className={styles.credit}
+      role="region"
+      aria-label="Ипотечный центр"
+    >
       <Row className={styles.credit__row}>
         <Col md={12} className={styles.credit__col}>
           <div className={styles.wrapper}>
@@ -51,12 +55,18 @@ const Credit = forwardRef((props, ref) => {
               </li>
             </ul>
           </Col>
-          <Col className={styles.content__img}></Col>
+          <Col
+            className={styles.content__img}
+            aria-label="Изображение ипотечного центра"
+          ></Col>
         </Row>
       </Container>
       <Container className={styles.conditions__container}>
         <Row className={styles.conditions__row}>
-          <Col className={styles.conditions__img}></Col>
+          <Col
+            className={styles.conditions__img}
+            aria-label="Изображение условий ипотеки"
+          ></Col>
           <Col className={styles.conditions__col}>
             <h5 className={styles.conditions__title}>
               Ипотека с нами – это просто!

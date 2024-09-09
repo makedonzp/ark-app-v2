@@ -5,7 +5,12 @@ import { Link } from "react-router-dom";
 
 export default function MainCards() {
   return (
-    <Container fluid className={styles.main__cards_fluid}>
+    <Container
+      fluid
+      className={styles.main__cards_fluid}
+      role="navigation"
+      aria-label="Основные категории недвижимости"
+    >
       <Container className={styles.main__cards_container}>
         <Row className={styles.main__cards_row}>
           <Col
@@ -14,7 +19,7 @@ export default function MainCards() {
               styles.main__cards_col + " " + styles.main__cards_col_new
             }
           >
-            <Link className={styles.main__cards_link} to="/new">
+            <Link className={styles.main__cards_link} to="/new" tabIndex={0}>
               Новостройки
             </Link>
           </Col>
@@ -24,7 +29,7 @@ export default function MainCards() {
               styles.main__cards_col + " " + styles.main__cards_col_land
             }
           >
-            <Link className={styles.main__cards_link} to="/plots">
+            <Link className={styles.main__cards_link} to="/plots" tabIndex={0}>
               Участки под застройку
             </Link>
           </Col>

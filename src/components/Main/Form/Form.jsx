@@ -297,7 +297,9 @@ export default function Form({ formRef, sectionPath }) {
                     </span>
                   )}
                 </div>
-                <div className={styles.form__wrapper}>
+                <div
+                  className={styles.form__wrapper + " " + styles.form__honeypot}
+                >
                   <input
                     className={styles.form_input}
                     type="text"
@@ -349,7 +351,7 @@ export default function Form({ formRef, sectionPath }) {
             <ul className={styles.socials__list}>
               <li className={styles.socisals__item}>
                 <Link
-                  to="https://t.me/makedonzp"
+                  to="https://t.me/ARK_Agency"
                   className={styles.socials__link}
                 >
                   <img src={tg_icon} alt="Telegram" />
@@ -357,7 +359,7 @@ export default function Form({ formRef, sectionPath }) {
               </li>
               <li className={styles.socisals__item}>
                 <Link
-                  to="https://wa.me/+79785857056"
+                  to="https://wa.me/+79786920164"
                   className={styles.socials__link}
                 >
                   <img src={whats_icon} alt="WhatsApp" />
@@ -365,7 +367,7 @@ export default function Form({ formRef, sectionPath }) {
               </li>
               <li className={styles.socisals__item}>
                 <Link
-                  to="tel:+7 (978) 692–01–64"
+                  to="tel:+7 (978) 113-23-25"
                   className={styles.socials__link}
                 >
                   <img src={call_icon} alt="Call" />

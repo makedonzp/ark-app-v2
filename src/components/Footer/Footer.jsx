@@ -7,7 +7,12 @@ import FooterBottom from "./FooterBottom/FooterBottom";
 
 export default function Footer() {
   return (
-    <Container fluid className={styles.footer}>
+    <Container
+      fluid
+      className={styles.footer}
+      role="contentinfo"
+      aria-label="Подвал сайта"
+    >
       <Container className={styles.footer__contaiiner}>
         <FooterTop />
         <FooterBottom />

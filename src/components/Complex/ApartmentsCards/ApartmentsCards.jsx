@@ -26,6 +26,8 @@ export default function ApartmentsCards({ apartments, citySlug, complexSlug }) {
             itemProp="mainContentOfPage"
             itemScope
             itemType="http://schema.org/BlogPosting"
+            role="article"
+            aria-label={`Квартира: ${title}`}
           >
             <h2 className={styles.card__title_text}>{title}</h2>
             <p className={styles.card__desc}>
@@ -35,6 +37,7 @@ export default function ApartmentsCards({ apartments, citySlug, complexSlug }) {
             <Link
               to={`/new/${citySlug}/${complexSlug}/${apartment.path}`}
               className={styles.card__btn}
+              tabIndex={0}
             >
               <span className={styles.card__btn_text}>Подробнее</span>
             </Link>

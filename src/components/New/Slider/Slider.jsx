@@ -95,10 +95,13 @@ const Slider = ({ data }) => {
       prevSlide();
     }
   };
-  // console.log(data);
 
   return (
-    <div className={styles.slider}>
+    <div
+      className={styles.slider}
+      role="region"
+      aria-label="Слайдер с новостройками"
+    >
       <div className={styles.sliderWrapper}>
         <div
           className={styles.sliderContainer}
@@ -112,9 +115,14 @@ const Slider = ({ data }) => {
               key={index}
               className={styles.sliderSlide}
               style={{ backgroundImage: `url(${item.complex_card_bg})` }}
+              aria-label={`Слайд ${index + 1}: ${item.city || item.name}`}
             >
               <h2 className={styles.sliderTitle}>{item.city || item.name}</h2>
-              <Link to={item.path} className={styles.sliderButton_more}>
+              <Link
+                to={item.path}
+                className={styles.sliderButton_more}
+                tabIndex={0}
+              >
                 Подробнее
               </Link>
             </div>
@@ -122,11 +130,21 @@ const Slider = ({ data }) => {
         </div>
       </div>
       <div className={styles.sliderControls}>
-        <button className={styles.sliderButton} onClick={prevSlide}>
-          <img src={control_left} alt="" />
+        <button
+          className={styles.sliderButton}
+          onClick={prevSlide}
+          aria-label="Предыдущий слайд"
+          tabIndex={0}
+        >
+          <img src={control_left} alt="Предыдущий слайд" />
         </button>
-        <button className={styles.sliderButton} onClick={nextSlide}>
-          <img src={control_right} alt="" />
+        <button
+          className={styles.sliderButton}
+          onClick={nextSlide}
+          aria-label="Следующий слайд"
+          tabIndex={0}
+        >
+          <img src={control_right} alt="Следующий слайд" />
         </button>
       </div>
     </div>

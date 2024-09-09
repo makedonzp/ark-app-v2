@@ -114,7 +114,7 @@
   opacity: 0;
 }
 .form__honeypot {
-  display: none;
+  display: none !important;
 }
 @media (max-width: 1440px) {
   .form__title {
