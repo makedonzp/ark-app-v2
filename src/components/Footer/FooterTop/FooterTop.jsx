@@ -5,7 +5,7 @@ import { Link } from "react-router-dom";
 import telegram_icon from "../../../assets/telegram_icon.png";
 import whatsapp_icon from "../../../assets/whatsapp_icon.png";
 import footer_call_icon from "../../../assets/footer_call_icon.png";
-import youtube_icon from "../../../assets/youtube_icon.png";
+import instagram_icon from "../../../assets/instagram_icon.png";
 import vk_icon from "../../../assets/vk_icon.png";
 
 export default function FooterTop() {
@@ -46,13 +46,13 @@ export default function FooterTop() {
           </li>
           <li className={styles.footer__socials_list}>
             <a
-              href="https://www.instagram.com/ark.crimea?igsh=NXcwbDk2cmY4YXZj"
+              href="https://www.instagram.com/ark.crimea"
               className={styles.footer__socials_link}
               tabIndex={0}
               target="_blank"
               rel="noopener noreferrer"
             >
-              <img src={youtube_icon} alt="instagram" />
+              <img src={instagram_icon} alt="instagram" />
             </a>
           </li>
           <li className={styles.footer__socials_list}>
