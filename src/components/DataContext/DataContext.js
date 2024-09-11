@@ -12,15 +12,14 @@ export const DataProvider = ({ children }) => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await axios.get(
-          "https://arc-backend-steel.vercel.app/api/full-data/"
-        );
+        const response = await axios.get("https://dom-ark.com/api/full-data/");
         const newData = response.data;
         localStorage.setItem("data", JSON.stringify(newData));
         setData(newData);
       } catch (error) {
         console.error(error);
         setError("Ошибка при загрузке данных. Пожалуйста, попробуйте позже.");
+        console.log(data);
       }
     };
 
