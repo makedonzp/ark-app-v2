@@ -9,18 +9,32 @@ export default function ValueFormRequest() {
   const navigate = useNavigate();
 
   useEffect(() => {
-    // Проверяем, была ли форма отправлена
-    const isFormSubmitted = localStorage.getItem("formSubmitted");
+    const checkFormSubmitted = () => {
+      // Проверяем, была ли форма отправлена
+      const isFormSubmitted = localStorage.getItem("formSubmitted");
 
+      if (!isFormSubmitted) {
+        // Если формы не было, перенаправляем на главную страницу
+        console.log("Form not submitted, redirecting to home");
+        navigate("/");
+      } else {
+        // Удаляем флаг через 10 секунд
+        setTimeout(() => {
+          localStorage.removeItem("formSubmitted");
+          console.log("Removed formSubmitted key from localStorage");
+        }, 10000);
+      }
+    };
+
+    // Проверяем наличие ключа после 10 секунд
+    setTimeout(checkFormSubmitted, 10000);
+
+    // Проверяем наличие ключа сразу после загрузки страницы
+    const isFormSubmitted = localStorage.getItem("formSubmitted");
     if (!isFormSubmitted) {
-      // Если формы не было, перенаправляем на главную страницу
+      console.log("Form not submitted, redirecting to home");
       navigate("/");
     }
-
-    // Удаляем флаг после перехода на страницу, чтобы нельзя было перезагрузить страницу
-    return () => {
-      localStorage.removeItem("formSubmitted");
-    };
   }, [navigate]);
 
   return (
