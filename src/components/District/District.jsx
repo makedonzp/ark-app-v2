@@ -24,10 +24,10 @@ const District = ({ data }) => {
   const title = section.title || "Default Title";
   const desc_1 = section.desc_1 || "Default Description";
   const desc_2 = section.desc_2 || "Default Description";
-  const img_1 = section.image_1_url || "";
-  const img_2 = section.image_2_url || "";
-  const img_3 = section.image_3_url || "";
-  const img_4 = section.image_4_url || "";
+  const img_1 = section.image_1 || "";
+  const img_2 = section.image_2 || "";
+  const img_3 = section.image_3 || "";
+  const img_4 = section.image_4 || "";
   const loc = section.loc || "Default Location";
 
   return (
