@@ -3,7 +3,7 @@
   padding-bottom: clamp(1.875rem, 0.679rem + 5.98vw, 6.063rem);
 }
 .head__girl {
-  background-image: url("../../../assets/services__girl_bgr.png");
+  background-image: url("../../../assets/services__girl_bgr.webp");
   background-repeat: no-repeat;
   background-size: cover;
   background-position: center;

@@ -1,11 +1,11 @@
 import React, { useState } from "react";
 import styles from "./Form.module.css";
-import form_img from "../../../assets/form_icon.png";
+import form_img from "../../../assets/form_icon.webp";
 import { Col, Container, Row } from "react-bootstrap";
 import { Link, useNavigate } from "react-router-dom";
-import tg_icon from "../../../assets/telegram_icon.png";
-import whats_icon from "../../../assets/whatsapp_icon.png";
-import call_icon from "../../../assets/footer_call_icon.png";
+import tg_icon from "../../../assets/telegram_icon.webp";
+import whats_icon from "../../../assets/whatsapp_icon.webp";
+import call_icon from "../../../assets/footer_call_icon.webp";
 
 export default function Form({ formRef, sectionPath }) {
   const [formData, setFormData] = useState({

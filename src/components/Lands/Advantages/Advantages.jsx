@@ -2,7 +2,7 @@ import React from "react";
 import { Container } from "react-bootstrap";
 import styles from "./Advantages.module.css";
 import WhyComponent from "../WhyComponent/WhyComponent";
-import lands_img from "../../../assets/lands__why_bgr.png";
+import lands_img from "../../../assets/lands__why_bgr.webp";
 
 const landsPreority = [
   {

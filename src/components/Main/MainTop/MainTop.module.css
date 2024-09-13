@@ -1,6 +1,6 @@
 .main__container {
   padding: 0;
-  background-image: url("../../../assets/header_bgr.JPEG.jpg");
+  background-image: url("../../../assets/header_bgr.webp");
   background-repeat: no-repeat;
   background-position: center;
   background-size: cover;
@@ -105,7 +105,7 @@
   }
   .main__container {
     text-align: left;
-    /* background-image: url("../../../assets/header_bgr_320.jpg"); */
+    /* background-image: url("../../../assets/header_bgr_320.webp"); */
   }
 
   .main__row,

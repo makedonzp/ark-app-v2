@@ -72,15 +72,16 @@
 }
 
 .landDetails__image_sector {
-  height: clamp(5rem, 3.714rem + 11.43vw, 15.5rem);
+  /* height: clamp(5rem, 3.714rem + 11.43vw, 15.5rem); */
   width: 100%;
+  border-radius: 17px;
 }
 
 .landDetails__address {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  text-align: center;
+  background-size: cover;
+  height: 100%;
+  border-radius: 17px;
+  background-position: center;
 }
 
 .landDetails__address_p {
@@ -133,14 +134,20 @@
   border-radius: 10px;
   margin-top: 23px;
 }
-
-@media (max-width: 768px) {
-  .landDetails__image_col {
+.desc__large {
+  align-items: flex-start;
+}
+@media (max-width: 992px) {
+  .landDetails__image_col,
+  .landDetails__address {
     min-height: 300px;
   }
   .landDetails__image_row,
   .landDetails__address_row {
     flex-direction: column;
+  }
+  .landDetails__image_col {
+    background-position: top;
   }
   .landDetails__image_col_wrapper {
     gap: 20px;

@@ -59,7 +59,7 @@ export default function Header() {
               addressCountry: "Россия",
             },
           },
-          logo: "https://ark-dom.com/images/logo/g78.png",
+          logo: "https://ark-dom.com/images/logo/g78.webp",
           sameAs: [
             "https://ваш-сайт.com/ссылка-на-facebook",
             "https://ваш-сайт.com/ссылка-на-twitter",

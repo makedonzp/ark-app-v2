@@ -4,14 +4,14 @@ import MainTop from "./MainTop/MainTop";
 import MainButton from "./MainButton/MainButton";
 import MainCards from "./MainCards/MainCards";
 import WhyComponent from "./WhyComponent/WhyComponent";
-import crimea_img from "../../assets/Crimea_icon.png";
+import crimea_img from "../../assets/Crimea_icon.webp";
 import Cards from "../Main/Cards/Cards";
 import { Col, Container, Row } from "react-bootstrap";
 import Form from "../Main/Form/Form";
-import shield from "../../assets/secure.png";
-import home from "../../assets/home.png";
-import peoples from "../../assets/peoples.png";
-import hands from "../../assets/hands.png";
+import shield from "../../assets/secure.webp";
+import home from "../../assets/home.webp";
+import peoples from "../../assets/peoples.webp";
+import hands from "../../assets/hands.webp";
 
 const buildsPreority = [
   {
@@ -140,7 +140,7 @@ export default function Main() {
               addressCountry: "Россия",
             },
           },
-          logo: "https://ark-dom.com/images/logo/g78.png", // Замените на URL вашего логотипа
+          logo: "https://ark-dom.com/images/logo/g78.webp", // Замените на URL вашего логотипа
           sameAs: [
             "https://ваш-сайт.com/ссылка-на-facebook",
             "https://ваш-сайт.com/ссылка-на-twitter",

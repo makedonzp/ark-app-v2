@@ -26,7 +26,7 @@ export default function DistrictCards({ lands, citySlug, districtSlug }) {
             aria-label={`Участки: ${title}`}
           >
             <h2 className={styles.card__title_text}>{title}</h2>
-            <p className={styles.card__price}>{price}</p>
+            <p className={styles.card__price}>от {price}</p>
             <Link
               to={`/plots/${citySlug}/${districtSlug}/${land.path}`}
               className={styles.card__btn}

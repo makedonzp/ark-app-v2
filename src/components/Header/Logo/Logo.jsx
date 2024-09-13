@@ -1,6 +1,6 @@
 import React from "react";
 import styles from "./Logo.module.css";
-import logo_icon from "../../../assets/ark_logo.png";
+import logo_icon from "../../../assets/ark_logo.webp";
 import { Link } from "react-router-dom";
 
 export default function Logo() {

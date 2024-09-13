@@ -2,11 +2,11 @@ import React from "react";
 import styles from "./FooterTop.module.css";
 import { Col, Row } from "react-bootstrap";
 import { Link } from "react-router-dom";
-import telegram_icon from "../../../assets/telegram_icon.png";
-import whatsapp_icon from "../../../assets/whatsapp_icon.png";
-import footer_call_icon from "../../../assets/footer_call_icon.png";
-import instagram_icon from "../../../assets/instagram_icon.png";
-import vk_icon from "../../../assets/vk_icon.png";
+import telegram_icon from "../../../assets/telegram_icon.webp";
+import whatsapp_icon from "../../../assets/whatsapp_icon.webp";
+import footer_call_icon from "../../../assets/footer_call_icon.webp";
+import instagram_icon from "../../../assets/instagram_icon.webp";
+import vk_icon from "../../../assets/vk_icon.webp";
 
 export default function FooterTop() {
   return (

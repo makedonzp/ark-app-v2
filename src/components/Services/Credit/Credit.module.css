@@ -65,7 +65,7 @@
   font-family: "Roboto-Regular", "sans-serif";
 }
 .content__img {
-  background-image: url("../../../assets/credit__girl.png");
+  background-image: url("../../../assets/credit__girl.webp");
   background-repeat: no-repeat;
   background-position: center;
   background-size: cover;
@@ -73,7 +73,7 @@
   border-radius: 17px;
 }
 .conditions__img {
-  background-image: url("../../../assets/family__icon.png");
+  background-image: url("../../../assets/family__icon.webp");
   background-repeat: no-repeat;
   background-position: center;
   background-size: cover;
