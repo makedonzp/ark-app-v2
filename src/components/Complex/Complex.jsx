@@ -41,6 +41,7 @@ const Complex = ({ data, type }) => {
   const price = firstSection
     ? parseInt(firstSection.price).toLocaleString()
     : "Нет данных";
+  // console.log(complexData.slider);
 
   return (
     <Container

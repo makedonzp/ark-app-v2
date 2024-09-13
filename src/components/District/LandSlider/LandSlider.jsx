@@ -11,7 +11,7 @@ const LandSlider = ({ data }) => {
 
   // Отладка данных
   useEffect(() => {
-    console.log("Data for slider:", data);
+    // console.log("Data for slider:", data);
   }, [data]);
 
   const nextSlide = () => {
@@ -63,6 +63,7 @@ const LandSlider = ({ data }) => {
   if (data.length === 0) {
     return <div>Нет доступных изображений</div>;
   }
+  // console.log(data);
 
   return (
     <div
@@ -78,13 +79,13 @@ const LandSlider = ({ data }) => {
           onTouchMove={handleTouchMove}
           onTouchEnd={handleTouchEnd}
         >
-          {data.map((image, index) => (
+          {data.map((item, index) => (
             <div
               key={index}
               className={styles.sliderSlide}
               style={{
-                backgroundImage: `url(${image})`,
-                backgroundSize: "cover", // Это важный стиль, чтобы изображение правильно отображалось
+                backgroundImage: `url(${item.image_url})`,
+                backgroundSize: "cover",
                 backgroundPosition: "center",
               }}
               aria-label={`Изображение ${index + 1} из ${data.length}`}

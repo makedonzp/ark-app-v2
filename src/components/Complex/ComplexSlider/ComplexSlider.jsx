@@ -58,6 +58,7 @@ const ComplexSlider = ({ data }) => {
   if (data.length === 0) {
     return <div>Нет доступных изображений</div>;
   }
+  // console.log(data.image_url);
 
   return (
     <div
@@ -73,11 +74,11 @@ const ComplexSlider = ({ data }) => {
           onTouchMove={handleTouchMove}
           onTouchEnd={handleTouchEnd}
         >
-          {data.map((image, index) => (
+          {data.map((item, index) => (
             <div
               key={index}
               className={styles.sliderSlide}
-              style={{ backgroundImage: `url(${image})` }}
+              style={{ backgroundImage: `url(${item.image_url})` }}
               aria-label={`Изображение ${index + 1} из ${data.length}`}
             ></div>
           ))}
