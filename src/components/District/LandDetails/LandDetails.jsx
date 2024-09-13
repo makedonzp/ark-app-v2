@@ -54,6 +54,8 @@ const LandDetails = ({ data }) => {
 
   // Получаем данные для слайдера из landData
   const sliderData = landData.slider || [];
+  const landImages = landData?.sections[0] || [];
+  console.log(landImages.title);
 
   return (
     <Container
@@ -69,7 +71,7 @@ const LandDetails = ({ data }) => {
         <Row>
           <Col md={12}>
             <h1 className={styles.landDetails__title}>
-              Участок №{landData.number}
+              Тип участка {landImages.title}
             </h1>
             <h1 className={styles.landDetails__title}>
               Площадь:{" "}
@@ -89,36 +91,39 @@ const LandDetails = ({ data }) => {
           <Col className={styles.landDetails__image_col_wrapper}>
             <Col
               className={styles.landDetails__image_col}
-              style={{ backgroundImage: `url(${landData.image_1_url})` }}
+              style={{ backgroundImage: `url(${landImages.image_1_url})` }}
               aria-label="Изображение участка"
             ></Col>
           </Col>
           <Col className={styles.landDetails__image_col_wrapper}>
             <Col
               className={styles.landDetails__image}
-              style={{ backgroundImage: `url(${landData.image_2_url})` }}
+              style={{ backgroundImage: `url(${landImages.image_2_url})` }}
               aria-label="Изображение участка"
             ></Col>
             <Col
               className={styles.landDetails__image}
-              style={{ backgroundImage: `url(${landData.image_3_url})` }}
+              style={{ backgroundImage: `url(${landImages.image_3_url})` }}
               aria-label="Изображение участка"
             ></Col>
           </Col>
         </Row>
         <Row className={styles.landDetails__address_row}>
           <Col className={styles.landDetails__address_col}>
-            <Col className={styles.landDetails__address}>
-              <p className={styles.landDetails__address_p}>
+            <Col
+              className={styles.landDetails__address}
+              style={{ backgroundImage: `url(${landImages.image_4_url})` }}
+            >
+              {/* <p className={styles.landDetails__address_p}>
                 Участок в районе {districtData.name}
-              </p>
-              <img
+              </p> */}
+              {/* <img
                 className={styles.landDetails__image_sector}
-                src={landData.image_4_url}
+                src={landImages.image_4_url}
                 alt="Изображение участка"
-              />
+              /> */}
             </Col>
-            <Col className={styles.landDetails__address}>
+            {/* <Col className={styles.landDetails__address}>
               <p className={styles.landDetails__address_p}>
                 Участок в городе {cityData.name}
               </p>
@@ -127,32 +132,54 @@ const LandDetails = ({ data }) => {
                 src={landData.image_5_url}
                 alt="Изображение участка"
               />
-            </Col>
+            </Col> */}
           </Col>
           <Col className={styles.landDetails__details_col_description}>
             <ul className={styles.landDetails__details}>
               <li className={styles.landDetails__details_li}>
-                <p className={styles.landDetails__details_p_desc}>Участок №</p>
+                <p className={styles.landDetails__details_p_desc}>
+                  Тип участка:
+                </p>
                 <p className={styles.landDetails__details_p}>
-                  {landData.number}
+                  {landData.land_type_display}
                 </p>
               </li>
               <li className={styles.landDetails__details_li}>
                 <p className={styles.landDetails__details_p_desc}>Цена: </p>
                 <p className={styles.landDetails__details_p}>
-                  {parseInt(landData.price).toLocaleString()} ₽
+                  от {parseInt(landData.price).toLocaleString()} ₽
                 </p>
               </li>
               <li className={styles.landDetails__details_li}>
-                <p className={styles.landDetails__details_p_desc}>
-                  Тип участка:
-                </p>
-                <p className={styles.landDetails__details_p}>{landData.type}</p>
-              </li>
-              <li className={styles.landDetails__details_li}>
-                <p className={styles.landDetails__details_p_desc}>Описание: </p>
+                <p className={styles.landDetails__details_p}>свет:</p>
                 <p className={styles.landDetails__details_p}>
-                  {landData.description}
+                  {landData.electricity}
+                </p>
+              </li>
+              <li className={styles.landDetails__details_li}>
+                <p className={styles.landDetails__details_p}>газ:</p>
+                <p className={styles.landDetails__details_p}>{landData.gas}</p>
+              </li>
+              <li className={styles.landDetails__details_li}>
+                <p className={styles.landDetails__details_p}>вода:</p>
+                <p className={styles.landDetails__details_p}>
+                  {landData.water}
+                </p>
+              </li>
+
+              <li
+                className={
+                  styles.landDetails__details_li + " " + styles.desc__large
+                }
+              >
+                <p className={styles.landDetails__details_p_desc}>Описание: </p>
+              </li>
+              <li className={styles.landDetails__details_li}>
+                <p className={styles.landDetails__details_p}>
+                  Участок в СНТ — отличное место для строительства вашего
+                  загородного дома. Тихое окружение, доступная инфраструктура и
+                  близость к природе делают его идеальным для отдыха и
+                  постоянного проживания.
                 </p>
               </li>
               <li>

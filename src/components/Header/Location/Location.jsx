@@ -1,6 +1,6 @@
 import React from "react";
 import styles from "./Location.module.css";
-import location_img from "../../../assets/location_icon.png";
+import location_img from "../../../assets/location_icon.webp";
 
 export default function Location() {
   return (

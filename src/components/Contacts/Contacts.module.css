@@ -74,7 +74,7 @@
   gap: 15px;
 }
 .contacts__map {
-  background-image: url("../../assets/contacts_map_bg.png");
+  background-image: url("../../assets/contacts_map_bg.webp");
   background-repeat: no-repeat;
   background-size: cover;
   background-position: center;

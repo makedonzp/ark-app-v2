@@ -1,7 +1,7 @@
 import React, { useRef } from "react";
 import styles from "./MainTop.module.css";
 import { Container, Row, Col } from "react-bootstrap";
-import arrow_down from "../../../assets/arrow_down_header_bottom.png";
+import arrow_down from "../../../assets/arrow_down_header_bottom.webp";
 import { Link } from "react-router-dom";
 
 export default function MainTop({ scrollToForm }) {

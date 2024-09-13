@@ -37,6 +37,8 @@
   margin-block: 20px;
   padding-inline: 5%;
   gap: 15px;
+  position: absolute;
+  bottom: 0;
 }
 
 .sliderButton {
@@ -46,6 +48,6 @@
   cursor: pointer;
   font-size: 1rem;
   margin-left: 10px;
-  border: solid 1px #e21a18;
+  border: solid 1px #ffffff;
   border-radius: 6px;
 }

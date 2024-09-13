@@ -18,7 +18,7 @@
   flex-grow: 1 !important;
 }
 .main__cards_col_new {
-  background-image: url("../../../assets/builds_bgr.png");
+  background-image: url("../../../assets/builds_bgr.webp");
   background-repeat: no-repeat;
   background-position: center;
   background-size: cover;
@@ -26,7 +26,7 @@
   transition: all 0.7s ease;
 }
 .main__cards_col_land {
-  background-image: url("../../../assets/landBgr.png");
+  background-image: url("../../../assets/landBgr.webp");
   background-repeat: no-repeat;
   background-position: center;
   background-size: cover;

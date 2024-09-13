@@ -2,7 +2,7 @@ import React from "react";
 import { Container } from "react-bootstrap";
 import styles from "./Advantages.module.css";
 import WhyComponent from "../../Main/WhyComponent/WhyComponent";
-import build_img from "../../../assets/newBuildBgr.png";
+import build_img from "../../../assets/newBuildBgr.webp";
 const buildsPreority = [
   {
     id: 1,

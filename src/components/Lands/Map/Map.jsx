@@ -1,7 +1,7 @@
 import React from "react";
 import styles from "./Map.module.css";
 import { Col, Container, Row } from "react-bootstrap";
-import map__img from "../../../assets/choise_img.png";
+import map__img from "../../../assets/plot_map.webp";
 
 export default function Map() {
   return (

@@ -45,7 +45,7 @@
   height: clamp(2.5rem, 2.321rem + 0.89vw, 3.125rem);
 }
 .content__col_img {
-  background-image: url("../../../assets/content__office.png");
+  background-image: url("../../../assets/content__office.webp");
   background-repeat: no-repeat;
   background-position: center;
   background-size: cover;

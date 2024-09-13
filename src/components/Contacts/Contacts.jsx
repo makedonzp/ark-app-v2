@@ -1,9 +1,9 @@
 import React from "react";
 import styles from "./Contacts.module.css";
 import { Container, Row, Col } from "react-bootstrap";
-import contacts__loc from "../../assets/contacts__loc.png";
-import contacts__phone from "../../assets/contacts__call.png";
-import contacts__clock from "../../assets/contacts__clock.png";
+import contacts__loc from "../../assets/contacts__loc.webp";
+import contacts__phone from "../../assets/contacts__call.webp";
+import contacts__clock from "../../assets/contacts__clock.webp";
 
 export default function Contacts() {
   return (

@@ -8,10 +8,10 @@
 }
 .map__img {
   height: clamp(13.438rem, 8.313rem + 25.62vw, 31.375rem);
-  background-size: contain;
+  background-size: cover;
   background-repeat: no-repeat;
   background-position: center;
-  width: 64.666667%;
+  border-radius: 17px;
 }
 .map__list {
   padding: 0;

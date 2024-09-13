@@ -1,7 +1,7 @@
 import React from "react";
 import styles from "./Contants.module.css";
 import { Link } from "react-router-dom";
-import contants__icon from "../../../assets/call_icon.png";
+import contants__icon from "../../../assets/call_icon.webp";
 
 export default function Contants() {
   return (

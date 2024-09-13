@@ -75,7 +75,7 @@ export default function New({ data }) {
           <Row className={styles.new__row}>
             <Col md={12} className={styles.new__col}>
               <h1 className={styles.new__title}>
-                Построй свой дом в Крыму с{" "}
+                Построй свой дом с{" "}
                 <span className={styles.new__title_color}>арк</span>
               </h1>
             </Col>

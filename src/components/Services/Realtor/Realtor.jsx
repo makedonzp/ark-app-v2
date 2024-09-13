@@ -1,12 +1,12 @@
 import React, { forwardRef } from "react";
 import styles from "./Realtor.module.css";
 import { Col, Container, Row } from "react-bootstrap";
-import num_1 from "../../../assets/num_1.png";
-import num_2 from "../../../assets/num_2.png";
-import num_3 from "../../../assets/num_3.png";
-import num_4 from "../../../assets/num_4.png";
-import num_5 from "../../../assets/num_5.png";
-import num_6 from "../../../assets/num_6.png";
+import num_1 from "../../../assets/num_1.webp";
+import num_2 from "../../../assets/num_2.webp";
+import num_3 from "../../../assets/num_3.webp";
+import num_4 from "../../../assets/num_4.webp";
+import num_5 from "../../../assets/num_5.webp";
+import num_6 from "../../../assets/num_6.webp";
 
 const Realtor = forwardRef(({ id }, ref) => {
   return (
