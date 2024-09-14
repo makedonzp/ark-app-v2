@@ -7,6 +7,15 @@
   text-align: center;
   padding-top: 10px;
 }
+.complex_desc {
+  font-size: clamp(1.5rem, 1.286rem + 1.07vw, 2.25rem);
+}
+.description_container {
+  padding-block: 30px;
+}
+.complex_title_text {
+  text-align: center;
+}
 .apartments__container {
   min-height: clamp(33.25rem, 27.536rem + 23.57vw, 52.75rem);
   padding-top: clamp(2.5rem, 1.786rem + 3.57vw, 5rem);

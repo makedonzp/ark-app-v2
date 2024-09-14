@@ -26,6 +26,7 @@ const Complex = ({ data, type }) => {
   if (!complexData) {
     return <div>Жилой комплекс не найден</div>;
   }
+  // console.log(complexData);
 
   // Получаем цену первой квартиры, если она существует
   const firstApartment =
@@ -99,6 +100,14 @@ const Complex = ({ data, type }) => {
           </Container>
         </Container>
       )}
+      <Container className={styles.description_container}>
+        <Row>
+          <Col>
+            <h1 className={styles.complex_title_text}>{complexData.title}</h1>
+            <p className={styles.complex_desc}>{complexData.desk}</p>
+          </Col>
+        </Row>
+      </Container>
       <Container fluid className={styles.apartments__text_container_fluid}>
         <Container className={styles.apartments__text_container}>
           <Row className={styles.apartments__row}>

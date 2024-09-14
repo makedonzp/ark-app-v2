@@ -53,10 +53,6 @@
   display: flex;
 }
 .apartmentDetails__address_col {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  text-align: center;
 }
 /* .apartmentDetails__image_sector {
   height: clamp(5rem, 3.714rem + 11.43vw, 15.5rem);

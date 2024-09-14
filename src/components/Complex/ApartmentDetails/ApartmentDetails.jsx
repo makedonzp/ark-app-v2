@@ -49,6 +49,8 @@ const ApartmentDetails = ({ data }) => {
   const sliderData = apartmentData.slider || [];
   // console.log(apartmentData.floor_count);
 
+  console.log(apartmentData);
+
   return (
     <Container
       fluid
@@ -84,49 +86,31 @@ const ApartmentDetails = ({ data }) => {
           <Col className={styles.apartmentDetails__image_col_wrapper}>
             <Col
               className={styles.apartmentDetails__image_col}
-              style={{ backgroundImage: `url(${section.image_1_url})` }}
+              style={{ backgroundImage: `url(${section.image_1})` }}
               aria-label="Изображение квартиры"
             ></Col>
           </Col>
           <Col className={styles.apartmentDetails__image_col_wrapper}>
             <Col
               className={styles.apartmentDetails__image}
-              style={{ backgroundImage: `url(${section.image_2_url})` }}
+              style={{ backgroundImage: `url(${section.image_2})` }}
               aria-label="Изображение квартиры"
             ></Col>
             <Col
               className={styles.apartmentDetails__image}
-              style={{ backgroundImage: `url(${section.image_3_url})` }}
+              style={{ backgroundImage: `url(${section.image_3})` }}
               aria-label="Изображение квартиры"
             ></Col>
           </Col>
         </Row>
         <Row className={styles.apartmentDetails__address_row}>
-          {/* <Col className={styles.apartmentDetails__address_col}>
-            <Col className={styles.apartmentDetails__address}>
-              <p className={styles.apartmentDetails__address_p}>
-                квартира в доме {section.address}
-              </p>
-              <img
-                className={styles.apartmentDetails__image_sector}
-                src={section.image_4_url}
-                alt=""
-              />
-            </Col>
-            <Col className={styles.apartmentDetails__address}>
-              <p className={styles.apartmentDetails__address_p}>
-                квартира в секции {section.address}
-              </p>
-              <img
-                className={styles.apartmentDetails__image_sector}
-                src={section.image_5_url}
-                alt=""
-              />
-            </Col>
-          </Col> */}
-          <Col>
-            <p>{section.address}</p>
+          <Col className={styles.apartmentDetails__address_col}>
+            <h5>{apartmentData.title}</h5>
+            <p>{apartmentData.desk}</p>
           </Col>
+          {/* <Col>
+            <p>{section.address}</p>
+          </Col> */}
           <Col className={styles.apartmentDetails__details_col_description}>
             <ul className={styles.apartmentDetails__details}>
               <li className={styles.apartmentDetails__details_li}>
@@ -156,7 +140,7 @@ const ApartmentDetails = ({ data }) => {
               <li className={styles.apartmentDetails__details_li}>
                 <p className={styles.apartmentDetails__details_p_desc}>Цена:</p>
                 <p className={styles.apartmentDetails__details_p}>
-                  {parseInt(section.price).toLocaleString()} ₽
+                  от {parseInt(section.price).toLocaleString()} ₽
                 </p>
               </li>
               <li>

@@ -88,6 +88,14 @@ const Land = ({ data }) => {
           )}
         </Container>
       )}
+      <Container className={styles.description_container}>
+        <Row>
+          <Col>
+            <h3 className={styles.complex_title_text}>{districtData.title}</h3>
+            <p className={styles.complex_desc}>{districtData.desk}</p>
+          </Col>
+        </Row>
+      </Container>
       <Container fluid className={styles.builds__text_container_fluid}>
         <Container className={styles.builds__text_container}>
           <Row className={styles.builds__row}>

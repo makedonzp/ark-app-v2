@@ -59,10 +59,6 @@
   justify-content: center;
 }
 
-.landDetails__address {
-  display: flex;
-}
-
 .landDetails__address_col {
   display: flex;
   justify-content: center;
@@ -75,13 +71,6 @@
   /* height: clamp(5rem, 3.714rem + 11.43vw, 15.5rem); */
   width: 100%;
   border-radius: 17px;
-}
-
-.landDetails__address {
-  background-size: cover;
-  height: 100%;
-  border-radius: 17px;
-  background-position: center;
 }
 
 .landDetails__address_p {
@@ -99,7 +88,9 @@
   display: flex;
   align-items: center;
 }
-
+.description {
+  font-size: clamp(1rem, 0.893rem + 0.54vw, 1.375rem);
+}
 .landDetails__details_p_desc {
   font-size: clamp(1rem, 0.857rem + 0.71vw, 1.5rem);
   margin-bottom: 0;
