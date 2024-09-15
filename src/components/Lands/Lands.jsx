@@ -16,8 +16,8 @@ const Lands = ({ data }) => {
         city: item.name,
         plot_card_bg: item.plot_card_bg,
         path: item.path,
-        title: item.title,
-        desc: item.desc,
+        plot_title: item.plot_title,
+        plot_desc: item.plot_desc,
       }));
       setSliderData(cityData);
     }
@@ -39,21 +39,20 @@ const Lands = ({ data }) => {
     >
       <Container fluid className={styles.lands}>
         <Container className={styles.lands__container}>
-          <Row className={styles.lands__row}>
-            <Col md={12} className={styles.lands__col}>
-              <h1 className={styles.lands__title}>
-                Участки в Крыму с{" "}
-                <span className={styles.lands__title_color}>арк</span>
-              </h1>
-            </Col>
-            <Col md={12} className={styles.lands__col}>
-              <p className={styles.lands__subtitle}>
-                {sliderData.length > 0
-                  ? sliderData[0].desc
-                  : "Информация недоступна."}
-              </p>
-            </Col>
-          </Row>
+          {data.map((item, index) => (
+            <Row key={index} className={styles.lands__row}>
+              <Col md={12} className={styles.lands__col}>
+                <h1 className={styles.lands__title}>
+                  {item.plot_title || "Информация недоступна."}
+                </h1>
+              </Col>
+              <Col md={12} className={styles.lands__col}>
+                <p className={styles.lands__subtitle}>
+                  {item.plot_desc || "Информация недоступна."}
+                </p>
+              </Col>
+            </Row>
+          ))}
         </Container>
         <Row className={styles.lands__row_slider}>
           <Slider data={sliderData} />

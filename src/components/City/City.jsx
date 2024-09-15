@@ -49,8 +49,8 @@ const City = ({ data }) => {
         <Container className={styles.city__contaiiner_title}>
           <Row className={styles.city__row}>
             <Col className={styles.city__col}>
-              <h1 className={styles.city__title}>{cityData.title}</h1>
-              <p className={styles.city__desc}>{cityData.desc}</p>
+              <h1 className={styles.city__title}>{cityData.new_title}</h1>
+              <p className={styles.city__desc}>{cityData.new_desc}</p>
             </Col>
           </Row>
         </Container>

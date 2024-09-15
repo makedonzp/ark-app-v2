@@ -17,8 +17,8 @@ export default function New({ data }) {
         city: item.name,
         complex_card_bg: item.complex_card_bg,
         path: item.path,
-        title: item.title,
-        desc: item.desc,
+        new_title: item.new_title,
+        new_desc: item.new_desc,
       }));
 
       // Устанавливаем данные только если они изменились
@@ -72,21 +72,20 @@ export default function New({ data }) {
     >
       <Container fluid className={styles.new}>
         <Container className={styles.new__container}>
-          <Row className={styles.new__row}>
-            <Col md={12} className={styles.new__col}>
-              <h1 className={styles.new__title}>
-                Построй свой дом с{" "}
-                <span className={styles.new__title_color}>арк</span>
-              </h1>
-            </Col>
-            <Col md={12} className={styles.new__col}>
-              <p className={styles.new__subtitle}>
-                {sliderData.length > 0
-                  ? sliderData[0].desc
-                  : "Информация недоступна."}
-              </p>
-            </Col>
-          </Row>
+          {data.map((item, index) => (
+            <Row key={index} className={styles.new__row}>
+              <Col md={12} className={styles.new__col}>
+                <h1 className={styles.new__title}>
+                  {item.new_title || "Информация недоступна."}
+                </h1>
+              </Col>
+              <Col md={12} className={styles.new__col}>
+                <p className={styles.new__subtitle}>
+                  {item.new_desc || "Информация недоступна."}
+                </p>
+              </Col>
+            </Row>
+          ))}
         </Container>
         <Row className={styles.new__row_slider}>
           <Slider data={sliderData} />

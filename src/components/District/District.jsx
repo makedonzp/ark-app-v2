@@ -29,7 +29,7 @@ const District = ({ data }) => {
   const img_3 = section.image_3 || "";
   const img_4 = section.image_4 || "";
   const loc = section.loc || "Default Location";
-  // console.log(cityData);
+  console.log(cityData);
 
   return (
     <Container
@@ -46,8 +46,8 @@ const District = ({ data }) => {
         <Container className={styles.district__container_title}>
           <Row className={styles.district__row}>
             <Col className={styles.district__col}>
-              <h1 className={styles.district__title}>{cityData.title}</h1>
-              <p className={styles.district__desc}>{cityData.desc}</p>
+              <h1 className={styles.district__title}>{cityData.plot_title}</h1>
+              <p className={styles.district__desc}>{cityData.plot_desc}</p>
             </Col>
           </Row>
         </Container>
