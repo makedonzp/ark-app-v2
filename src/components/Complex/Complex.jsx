@@ -74,10 +74,10 @@ const Complex = ({ data, type }) => {
             <p className={styles.complex__details}>Стоимость</p>
             <p className={styles.complex__details_desc}>от {price}</p>
           </Col>
-          <Col className={styles.complex__col + " " + styles.border_left}>
+          {/* <Col className={styles.complex__col + " " + styles.border_left}>
             <p className={styles.complex__details}>Высота потолка</p>
             <p className={styles.complex__details_desc}>2.9м</p>
-          </Col>
+          </Col> */}
         </Row>
       </Container>
       {complexData.apartments && (
