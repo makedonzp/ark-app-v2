@@ -52,12 +52,14 @@
 .apartmentDetails__address {
   display: flex;
 }
-.apartmentDetails__address_col {
+.dec_title {
+  font-size: clamp(1.5rem, 1.357rem + 0.71vw, 2rem);
+  font-family: "Montserrat-Medium", "sans-serif";
 }
-/* .apartmentDetails__image_sector {
-  height: clamp(5rem, 3.714rem + 11.43vw, 15.5rem);
-  width: clamp(2.5rem, 1.875rem + 6.13vw, 8.688rem);
-} */
+.desc_text {
+  font-family: "Montserrat-Light", "sans-serif";
+  font-size: clamp(1rem, 0.857rem + 0.71vw, 1.5rem);
+}
 .apartmentDetails__address {
   display: flex;
   flex-direction: column;

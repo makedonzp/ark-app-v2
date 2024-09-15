@@ -96,7 +96,14 @@
   margin-bottom: 0;
   font-family: "Montserrat-Regular", "sans-serif";
 }
-
+.dec_title {
+  font-size: clamp(1.5rem, 1.357rem + 0.71vw, 2rem);
+  font-family: "Montserrat-Medium", "sans-serif";
+}
+.desc_text {
+  font-family: "Montserrat-Light", "sans-serif";
+  font-size: clamp(1rem, 0.857rem + 0.71vw, 1.5rem);
+}
 .landDetails__details {
   width: 100%;
   padding: 0;

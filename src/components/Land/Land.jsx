@@ -91,7 +91,7 @@ const Land = ({ data }) => {
       <Container className={styles.description_container}>
         <Row>
           <Col>
-            <h3 className={styles.complex_title_text}>{districtData.title}</h3>
+            <h1 className={styles.complex_title_text}>{districtData.title}</h1>
             <p className={styles.complex_desc}>{districtData.desk}</p>
           </Col>
         </Row>

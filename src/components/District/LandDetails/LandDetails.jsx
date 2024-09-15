@@ -111,8 +111,8 @@ const LandDetails = ({ data }) => {
         <Row className={styles.landDetails__address_row}>
           <Col className={styles.landDetails__address_col_desc}>
             <Col className={styles.landDetails__address_desc}>
-              <h3>Описание: {landData.title}</h3>
-              <p className={styles.description}>{landData.desk}</p>
+              <h2 className={styles.dec_title}>{landData.title}</h2>
+              <p className={styles.desc_text}>{landData.desk}</p>
             </Col>
             {/* <Col className={styles.landDetails__address}>
               <p className={styles.landDetails__address_p}>

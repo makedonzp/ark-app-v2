@@ -105,8 +105,8 @@ const ApartmentDetails = ({ data }) => {
         </Row>
         <Row className={styles.apartmentDetails__address_row}>
           <Col className={styles.apartmentDetails__address_col}>
-            <h5>{apartmentData.title}</h5>
-            <p>{apartmentData.desk}</p>
+            <h2 className={styles.dec_title}>{apartmentData.title}</h2>
+            <p className={styles.desc_text}>{apartmentData.desk}</p>
           </Col>
           {/* <Col>
             <p>{section.address}</p>
