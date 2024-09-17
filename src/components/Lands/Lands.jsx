@@ -39,20 +39,21 @@ const Lands = ({ data }) => {
     >
       <Container fluid className={styles.lands}>
         <Container className={styles.lands__container}>
-          {data.map((item, index) => (
-            <Row key={index} className={styles.lands__row}>
-              <Col md={12} className={styles.lands__col}>
-                <h1 className={styles.lands__title}>
-                  {item.plot_title || "Информация недоступна."}
-                </h1>
-              </Col>
-              <Col md={12} className={styles.lands__col}>
-                <p className={styles.lands__subtitle}>
-                  {item.plot_desc || "Информация недоступна."}
-                </p>
-              </Col>
-            </Row>
-          ))}
+          <Row className={styles.lands__row}>
+            <Col md={12} className={styles.lands__col}>
+              <h1 className={styles.lands__title}>
+                Участки с нами— ваш уютный уголок у моря
+              </h1>
+            </Col>
+            <Col md={12} className={styles.lands__col}>
+              <p className={styles.lands__subtitle}>
+                Участок в Крыму — идеальный выбор для строительства загородного
+                дома у моря. Удобное расположение, развитая инфраструктура и
+                спокойная атмосфера создают отличные условия для комфортного
+                проживания и отдыха.
+              </p>
+            </Col>
+          </Row>
         </Container>
         <Row className={styles.lands__row_slider}>
           <Slider data={sliderData} />

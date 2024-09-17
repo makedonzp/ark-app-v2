@@ -32,6 +32,7 @@ const City = ({ data }) => {
   const img_3 = section.image_3 || "";
   const img_4 = section.image_4 || "";
   const loc = section.loc || "Default Location";
+  // console.log(data);
 
   return (
     <Container

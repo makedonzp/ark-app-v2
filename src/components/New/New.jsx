@@ -72,20 +72,20 @@ export default function New({ data }) {
     >
       <Container fluid className={styles.new}>
         <Container className={styles.new__container}>
-          {data.map((item, index) => (
-            <Row key={index} className={styles.new__row}>
-              <Col md={12} className={styles.new__col}>
-                <h1 className={styles.new__title}>
-                  {item.new_title || "Информация недоступна."}
-                </h1>
-              </Col>
-              <Col md={12} className={styles.new__col}>
-                <p className={styles.new__subtitle}>
-                  {item.new_desc || "Информация недоступна."}
-                </p>
-              </Col>
-            </Row>
-          ))}
+          <Row className={styles.new__row}>
+            <Col md={12} className={styles.new__col}>
+              <h1 className={styles.new__title}>
+                Новостройки в Крыму — ваш ключ к морской мечте
+              </h1>
+            </Col>
+            <Col md={12} className={styles.new__col}>
+              <p className={styles.new__subtitle}>
+                Новостройки в Крыму— это современное жилье у моря с продуманной
+                инфраструктурой. Комфортные квартиры в новых жилых комплексах
+                сочетают удобство городской жизни и близость к чистым пляжам.
+              </p>
+            </Col>
+          </Row>
         </Container>
         <Row className={styles.new__row_slider}>
           <Slider data={sliderData} />
