@@ -26,7 +26,7 @@
   min-height: clamp(12.5rem, 9.339rem + 16.8vw, 26.563rem);
   min-width: clamp(17.5rem, 15.768rem + 8.66vw, 23.563rem);
   background-repeat: no-repeat;
-  background-size: cover;
+  background-size: contain;
   background-position: center;
   border-radius: 17px;
   padding-inline: 2%;
