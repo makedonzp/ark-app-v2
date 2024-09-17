@@ -14,7 +14,7 @@
   padding-block: 30px;
 }
 .complex_title_text {
-  text-align: center;
+  padding-bottom: 30px;
 }
 .apartments__container {
   min-height: clamp(33.25rem, 27.536rem + 23.57vw, 52.75rem);
