@@ -1,11 +1,38 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { Container, Row, Col } from "react-bootstrap";
 import styles from "./District.module.css";
 import Slider from "../Lands/Slider/Slider";
 
-const District = ({ data }) => {
+const District = ({ data: initialData }) => {
   const { citySlug } = useParams();
+  const [data, setData] = useState(initialData);
+  const [loading, setLoading] = useState(false);
+
+  useEffect(() => {
+    const fetchData = async () => {
+      setLoading(true);
+      try {
+        const response = await fetch("https://dom-ark.com/api/full-data/");
+        const result = await response.json();
+        setData(result.plots);
+      } catch (error) {
+        console.error("Ошибка при загрузке данных:", error);
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    fetchData(); // Загрузка данных каждый раз при монтировании компонента
+  }, [citySlug]); // Зависимость от citySlug для перезагрузки данных при изменении города
+
+  if (loading) {
+    return <div>Загрузка данных, пожалуйста, подождите...</div>;
+  }
+
+  if (!data) {
+    return <div>Данные не загружены</div>;
+  }
 
   const cityData = data.find(
     (item) => item.path && item.path.split("/").pop() === citySlug

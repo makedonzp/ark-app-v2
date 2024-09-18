@@ -1,13 +1,32 @@
-import React, { useRef } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import { useParams } from "react-router-dom";
 import { Container, Row, Col } from "react-bootstrap";
 import styles from "./ApartmentDetails.module.css";
 import ApartmentsSlider from "./ApartmentsSlider/ApartmentsSlider";
 import Form from "../../Main/Form/Form";
 
-const ApartmentDetails = ({ data }) => {
+const ApartmentDetails = ({ data: initialData }) => {
   const { citySlug, complexSlug, apartmentSlug } = useParams();
   const formRef = useRef(null);
+  const [data, setData] = useState(initialData);
+  const [loading, setLoading] = useState(false);
+
+  useEffect(() => {
+    const fetchData = async () => {
+      setLoading(true);
+      try {
+        const response = await fetch("https://dom-ark.com/api/full-data/");
+        const result = await response.json();
+        setData(result.new);
+      } catch (error) {
+        console.error("Ошибка при загрузке данных:", error);
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    fetchData(); // Загрузка данных каждый раз при монтировании компонента
+  }, [citySlug, complexSlug, apartmentSlug]); // Зависимость от параметров для перезагрузки данных при изменении
 
   const scrollToForm = (e) => {
     e.preventDefault();
@@ -15,6 +34,15 @@ const ApartmentDetails = ({ data }) => {
       formRef.current.scrollIntoView({ behavior: "smooth", block: "center" });
     }
   };
+
+  if (loading) {
+    return <div>Загрузка данных, пожалуйста, подождите...</div>;
+  }
+
+  if (!data) {
+    return <div>Данные не загружены</div>;
+  }
+
   // Найдем город по citySlug
   const cityData = data.find(
     (item) => item.path && item.path.split("/").pop() === citySlug

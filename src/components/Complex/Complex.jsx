@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { Container, Row, Col } from "react-bootstrap";
 import styles from "./Complex.module.css";
@@ -6,9 +6,35 @@ import ApartmentsCards from "./ApartmentsCards/ApartmentsCards";
 import Form from "../Main/Form/Form";
 import ComplexSlider from "./ComplexSlider/ComplexSlider";
 
-const Complex = ({ data, type }) => {
-  const { complexSlug } = useParams();
-  const { citySlug } = useParams();
+const Complex = ({ data: initialData, type }) => {
+  const { complexSlug, citySlug } = useParams();
+  const [data, setData] = useState(initialData);
+  const [loading, setLoading] = useState(false);
+
+  useEffect(() => {
+    const fetchData = async () => {
+      setLoading(true);
+      try {
+        const response = await fetch("https://dom-ark.com/api/full-data/");
+        const result = await response.json();
+        setData(result.new);
+      } catch (error) {
+        console.error("Ошибка при загрузке данных:", error);
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    fetchData(); // Загрузка данных каждый раз при монтировании компонента
+  }, [citySlug, complexSlug]); // Зависимость от citySlug и complexSlug для перезагрузки данных при изменении
+
+  if (loading) {
+    return <div>Загрузка данных, пожалуйста, подождите...</div>;
+  }
+
+  if (!data) {
+    return <div>Данные не загружены</div>;
+  }
 
   // Найдем город по citySlug
   const cityData = data.find(
