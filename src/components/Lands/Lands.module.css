@@ -15,6 +15,11 @@
   font-size: clamp(1rem, 0.714rem + 1.43vw, 2rem);
   font-family: "Montserrat-Medium", sans-serif;
 }
+.loading {
+  flex-grow: 1;
+  margin-top: clamp(3.125rem, 2.518rem + 3.04vw, 5.25rem);
+  padding: 0 !important;
+}
 .lands_fluid {
   padding: 0;
   flex-grow: 1;

@@ -1,19 +1,22 @@
-import React, { useEffect, useRef, useState } from "react";
+import React, { useEffect, useRef, useState, useContext } from "react";
 import styles from "./New.module.css";
 import { Col, Container, Row } from "react-bootstrap";
 import Slider from "./Slider/Slider";
 import Advantages from "./Advantages/Advantages";
 import Map from "./Map/Map";
 import Form from "../Main/Form/Form";
+import { DataContext } from "../DataContext/DataContext";
 
-export default function New({ data }) {
+export default function New() {
   const formRef = useRef(null);
   const [sliderData, setSliderData] = useState([]);
   const [imagesLoaded, setImagesLoaded] = useState(false);
+  const data = useContext(DataContext);
 
   useEffect(() => {
-    if (data) {
-      const cityData = data.map((item) => ({
+    if (data && data.new) {
+      // Проверка, что data и data.new существуют
+      const cityData = data.new.map((item) => ({
         city: item.name,
         complex_card_bg: item.complex_card_bg,
         path: item.path,
@@ -49,6 +52,8 @@ export default function New({ data }) {
       };
 
       loadImages();
+    } else {
+      console.error("Данные в контексте некорректны или отсутствуют:", data);
     }
   }, [data]);
 
@@ -59,8 +64,17 @@ export default function New({ data }) {
     }
   };
 
+  if (!data || !data.new) {
+    return <div>Данные не загружены</div>;
+  }
+
   if (!imagesLoaded) {
-    return <div>Загрузка изображений, пожалуйста, подождите...</div>;
+    return (
+      <h1 className={styles.loading}>
+        Загрузка данных, скорость вашего интернета может задерживать процесс,
+        пожалуйста, подождите...
+      </h1>
+    );
   }
 
   return (

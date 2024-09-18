@@ -14,7 +14,11 @@
   flex-direction: column;
   justify-content: space-between;
 }
-
+.loading {
+  flex-grow: 1;
+  margin-top: clamp(3.125rem, 2.518rem + 3.04vw, 5.25rem);
+  padding: 0 !important;
+}
 .district__container_title {
   padding-top: clamp(1.875rem, 1.518rem + 1.79vw, 3.125rem);
 }

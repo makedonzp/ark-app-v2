@@ -5,19 +5,30 @@ import styles from "./LandDetails.module.css";
 import LandSlider from "../LandSlider/LandSlider";
 import Form from "../../Main/Form/Form";
 
-const LandDetails = ({ data: initialData }) => {
+const LandDetails = () => {
   const { citySlug, districtSlug, landSlug } = useParams();
   const formRef = useRef(null);
-  const [data, setData] = useState(initialData);
-  const [loading, setLoading] = useState(false);
+  const [data, setData] = useState(null);
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    const fetchData = async () => {
-      setLoading(true);
+    const loadData = async () => {
+      // Проверяем наличие данных в localStorage
+      const cachedData = localStorage.getItem("data");
+      if (cachedData) {
+        setData(JSON.parse(cachedData).plots);
+        setLoading(false);
+        return;
+      }
+
+      // Если данных нет в localStorage, делаем запрос к серверу
       try {
         const response = await fetch("https://dom-ark.com/api/full-data/");
         const result = await response.json();
         setData(result.plots);
+
+        // Сохраняем данные в localStorage
+        localStorage.setItem("data", JSON.stringify(result));
       } catch (error) {
         console.error("Ошибка при загрузке данных:", error);
       } finally {
@@ -25,7 +36,7 @@ const LandDetails = ({ data: initialData }) => {
       }
     };
 
-    fetchData(); // Загрузка данных каждый раз при монтировании компонента
+    loadData();
   }, [citySlug, districtSlug, landSlug]); // Зависимость от параметров для перезагрузки данных при изменении
 
   const scrollToForm = (e) => {
@@ -36,7 +47,12 @@ const LandDetails = ({ data: initialData }) => {
   };
 
   if (loading) {
-    return <div>Загрузка данных, пожалуйста, подождите...</div>;
+    return (
+      <h1 className={styles.loading}>
+        Загрузка данных, скорость вашего интернета может задерживать процесс,
+        пожалуйста, подождите...
+      </h1>
+    );
   }
 
   if (!data) {
@@ -141,16 +157,6 @@ const LandDetails = ({ data: initialData }) => {
               <h2 className={styles.dec_title}>{landData.title}</h2>
               <p className={styles.desc_text}>{landData.desk}</p>
             </Col>
-            {/* <Col className={styles.landDetails__address}>
-              <p className={styles.landDetails__address_p}>
-                Участок в городе {cityData.name}
-              </p>
-              <img
-                className={styles.landDetails__image_sector}
-                src={landData.image_5_url}
-                alt="Изображение участка"
-              />
-            </Col> */}
           </Col>
           <Col className={styles.landDetails__details_col_description}>
             <ul className={styles.landDetails__details}>
@@ -184,7 +190,6 @@ const LandDetails = ({ data: initialData }) => {
                   {landData.water}
                 </p>
               </li>
-
               <li
                 className={
                   styles.landDetails__details_li + " " + styles.desc__large
@@ -192,11 +197,6 @@ const LandDetails = ({ data: initialData }) => {
               >
                 <p className={styles.landDetails__details_p_desc}> </p>
               </li>
-              {/* <li className={styles.landDetails__details_li}>
-                <p className={styles.landDetails__details_p}>
-                  
-                </p>
-              </li> */}
               <li>
                 <button
                   onClick={scrollToForm}

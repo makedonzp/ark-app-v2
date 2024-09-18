@@ -7,6 +7,11 @@
   flex-direction: column;
   justify-content: space-around;
 }
+.loading {
+  flex-grow: 1;
+  margin-top: clamp(3.125rem, 2.518rem + 3.04vw, 5.25rem);
+  padding: 0 !important;
+}
 .new__title {
   font-size: clamp(2.25rem, 2.036rem + 1.07vw, 3rem);
   font-family: "Montserrat-Regular", sans-serif;

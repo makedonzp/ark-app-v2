@@ -4,18 +4,29 @@ import { Container, Row, Col } from "react-bootstrap";
 import styles from "./City.module.css";
 import Slider from "../New/Slider/Slider";
 
-const City = ({ data: initialData }) => {
+const City = ({ initialData }) => {
   const { citySlug } = useParams();
   const [data, setData] = useState(initialData);
   const [loading, setLoading] = useState(false);
 
   useEffect(() => {
-    const fetchData = async () => {
-      setLoading(true);
+    const loadData = async () => {
+      // Проверяем наличие данных в localStorage
+      const cachedData = localStorage.getItem("data");
+      if (cachedData) {
+        setData(JSON.parse(cachedData));
+        return;
+      }
+
+      // Если данных нет в localStorage, делаем запрос к серверу
       try {
+        setLoading(true);
         const response = await fetch("https://dom-ark.com/api/full-data/");
         const result = await response.json();
-        setData(result.new);
+        setData(result);
+
+        // Сохраняем данные в localStorage
+        localStorage.setItem("data", JSON.stringify(result));
       } catch (error) {
         console.error("Ошибка при загрузке данных:", error);
       } finally {
@@ -23,18 +34,23 @@ const City = ({ data: initialData }) => {
       }
     };
 
-    fetchData(); // Загрузка данных каждый раз при монтировании компонента
+    loadData();
   }, [citySlug]); // Зависимость от citySlug для перезагрузки данных при изменении города
 
   if (loading) {
-    return <div>Загрузка данных, пожалуйста, подождите...</div>;
+    return (
+      <h1 className={styles.loading}>
+        Загрузка данных, скорость вашего интернета может задерживать процесс,
+        пожалуйста, подождите...
+      </h1>
+    );
   }
 
-  if (!data) {
+  if (!data || !data.new) {
     return <div>Данные не загружены</div>;
   }
 
-  const cityData = data.find(
+  const cityData = data.new.find(
     (item) => item.path && item.path.split("/").pop() === citySlug
   );
 
@@ -59,7 +75,6 @@ const City = ({ data: initialData }) => {
   const img_3 = section.image_3 || "";
   const img_4 = section.image_4 || "";
   const loc = section.loc || "Default Location";
-  // console.log(data);
 
   return (
     <Container

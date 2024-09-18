@@ -132,7 +132,11 @@
   border-radius: 12px;
   font-family: "Montserrat-Regular", "sans-serif";
 }
-
+.loading {
+  flex-grow: 1;
+  margin-top: clamp(3.125rem, 2.518rem + 3.04vw, 5.25rem);
+  padding: 0 !important;
+}
 .lands__cards_wrapper {
   gap: 24px;
   padding-top: clamp(2.5rem, 1.786rem + 3.57vw, 5rem);

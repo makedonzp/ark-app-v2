@@ -6,13 +6,43 @@ import Advantages from "./Advantages/Advantages";
 import Map from "./Map/Map";
 import Form from "../Main/Form/Form";
 
-const Lands = ({ data }) => {
+const Lands = () => {
   const formRef = useRef(null);
   const [sliderData, setSliderData] = useState([]);
+  const [data, setData] = useState(null);
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    if (data) {
-      const cityData = data.map((item) => ({
+    const loadData = async () => {
+      // Проверяем наличие данных в localStorage
+      const cachedData = localStorage.getItem("data");
+      if (cachedData) {
+        setData(JSON.parse(cachedData));
+        setLoading(false);
+        return;
+      }
+
+      // Если данных нет в localStorage, делаем запрос к серверу
+      try {
+        const response = await fetch("https://dom-ark.com/api/full-data/");
+        const result = await response.json();
+        setData(result);
+
+        // Сохраняем данные в localStorage
+        localStorage.setItem("data", JSON.stringify(result));
+      } catch (error) {
+        console.error("Ошибка при загрузке данных:", error);
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    loadData();
+  }, []);
+
+  useEffect(() => {
+    if (data && data.plots) {
+      const cityData = data.plots.map((item) => ({
         city: item.name,
         plot_card_bg: item.plot_card_bg,
         path: item.path,
@@ -29,6 +59,18 @@ const Lands = ({ data }) => {
       formRef.current.scrollIntoView({ behavior: "smooth", block: "center" });
     }
   };
+
+  if (loading) {
+    return (
+      <h1 className={styles.loading}>
+        Загрузка данных, пожалуйста, подождите...
+      </h1>
+    );
+  }
+
+  if (!data || !data.plots) {
+    return <div>Данные не загружены</div>;
+  }
 
   return (
     <Container

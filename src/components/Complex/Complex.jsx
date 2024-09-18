@@ -6,18 +6,29 @@ import ApartmentsCards from "./ApartmentsCards/ApartmentsCards";
 import Form from "../Main/Form/Form";
 import ComplexSlider from "./ComplexSlider/ComplexSlider";
 
-const Complex = ({ data: initialData, type }) => {
+const Complex = ({ type }) => {
   const { complexSlug, citySlug } = useParams();
-  const [data, setData] = useState(initialData);
-  const [loading, setLoading] = useState(false);
+  const [data, setData] = useState(null);
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    const fetchData = async () => {
-      setLoading(true);
+    const loadData = async () => {
+      // Проверяем наличие данных в localStorage
+      const cachedData = localStorage.getItem("data");
+      if (cachedData) {
+        setData(JSON.parse(cachedData).new);
+        setLoading(false);
+        return;
+      }
+
+      // Если данных нет в localStorage, делаем запрос к серверу
       try {
         const response = await fetch("https://dom-ark.com/api/full-data/");
         const result = await response.json();
         setData(result.new);
+
+        // Сохраняем данные в localStorage
+        localStorage.setItem("data", JSON.stringify(result));
       } catch (error) {
         console.error("Ошибка при загрузке данных:", error);
       } finally {
@@ -25,11 +36,16 @@ const Complex = ({ data: initialData, type }) => {
       }
     };
 
-    fetchData(); // Загрузка данных каждый раз при монтировании компонента
+    loadData();
   }, [citySlug, complexSlug]); // Зависимость от citySlug и complexSlug для перезагрузки данных при изменении
 
   if (loading) {
-    return <div>Загрузка данных, пожалуйста, подождите...</div>;
+    return (
+      <h1 className={styles.loading}>
+        Загрузка данных, скорость вашего интернета может задерживать процесс,
+        пожалуйста, подождите...
+      </h1>
+    );
   }
 
   if (!data) {
@@ -100,10 +116,6 @@ const Complex = ({ data: initialData, type }) => {
             <p className={styles.complex__details}>Стоимость</p>
             <p className={styles.complex__details_desc}>от {price}</p>
           </Col>
-          {/* <Col className={styles.complex__col + " " + styles.border_left}>
-            <p className={styles.complex__details}>Высота потолка</p>
-            <p className={styles.complex__details_desc}>2.9м</p>
-          </Col> */}
         </Row>
       </Container>
       {complexData.apartments && (

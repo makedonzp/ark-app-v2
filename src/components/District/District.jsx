@@ -4,18 +4,29 @@ import { Container, Row, Col } from "react-bootstrap";
 import styles from "./District.module.css";
 import Slider from "../Lands/Slider/Slider";
 
-const District = ({ data: initialData }) => {
+const District = () => {
   const { citySlug } = useParams();
-  const [data, setData] = useState(initialData);
-  const [loading, setLoading] = useState(false);
+  const [data, setData] = useState(null);
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    const fetchData = async () => {
-      setLoading(true);
+    const loadData = async () => {
+      // Проверяем наличие данных в localStorage
+      const cachedData = localStorage.getItem("data");
+      if (cachedData) {
+        setData(JSON.parse(cachedData).plots);
+        setLoading(false);
+        return;
+      }
+
+      // Если данных нет в localStorage, делаем запрос к серверу
       try {
         const response = await fetch("https://dom-ark.com/api/full-data/");
         const result = await response.json();
         setData(result.plots);
+
+        // Сохраняем данные в localStorage
+        localStorage.setItem("data", JSON.stringify(result));
       } catch (error) {
         console.error("Ошибка при загрузке данных:", error);
       } finally {
@@ -23,11 +34,16 @@ const District = ({ data: initialData }) => {
       }
     };
 
-    fetchData(); // Загрузка данных каждый раз при монтировании компонента
+    loadData();
   }, [citySlug]); // Зависимость от citySlug для перезагрузки данных при изменении города
 
   if (loading) {
-    return <div>Загрузка данных, пожалуйста, подождите...</div>;
+    return (
+      <h1 className={styles.loading}>
+        Загрузка данных, скорость вашего интернета может задерживать процесс,
+        пожалуйста, подождите...
+      </h1>
+    );
   }
 
   if (!data) {
