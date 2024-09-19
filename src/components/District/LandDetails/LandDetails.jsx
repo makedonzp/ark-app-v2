@@ -117,11 +117,7 @@ const LandDetails = () => {
               Тип участка {landImages.title}
             </h1>
             <h1 className={styles.landDetails__title}>
-              Площадь:{" "}
-              {parseFloat(landData.area)
-                .toString()
-                .replace(/\.?0+$/, "")}{" "}
-              соток
+              Площадь: {parseFloat(landData.area).toString()} соток
             </h1>
           </Col>
           <Col md={12} className={styles.landDetails__subtitle_col}>
