@@ -70,21 +70,14 @@ const Complex = ({ type }) => {
   }
   // console.log(complexData);
 
-  // Получаем цену первой квартиры, если она существует
-  const firstApartment =
-    complexData.apartments && complexData.apartments.length > 0
-      ? complexData.apartments[0]
-      : null;
-  const firstSection =
-    firstApartment &&
-    firstApartment.sections &&
-    firstApartment.sections.length > 0
-      ? firstApartment.sections[0]
-      : null;
-  const price = firstSection
-    ? parseInt(firstSection.price).toLocaleString()
+  // Найти самое меньшее значение price
+  const minPrice = complexData.apartments
+    ? Math.min(
+        ...complexData.apartments.flatMap((apartment) =>
+          apartment.sections.map((section) => parseFloat(section.price))
+        )
+      )
     : "Нет данных";
-  // console.log(cityData);
 
   return (
     <Container
@@ -114,7 +107,9 @@ const Complex = ({ type }) => {
           </Col>
           <Col className={styles.complex__col}>
             <p className={styles.complex__details}>Стоимость</p>
-            <p className={styles.complex__details_desc}>от {price}</p>
+            <p className={styles.complex__details_desc}>
+              от {minPrice.toLocaleString()}
+            </p>
           </Col>
         </Row>
       </Container>

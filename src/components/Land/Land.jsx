@@ -68,12 +68,9 @@ const Land = () => {
     return <div>Район не найден</div>;
   }
 
-  const firstLand =
-    districtData.lands && districtData.lands.length > 0
-      ? districtData.lands[0]
-      : null;
-  const price = firstLand
-    ? parseInt(firstLand.price).toLocaleString()
+  // Найти самое меньшее значение price
+  const minPrice = districtData.lands
+    ? Math.min(...districtData.lands.map((land) => parseFloat(land.price)))
     : "Нет данных";
 
   return (
@@ -104,7 +101,9 @@ const Land = () => {
           </Col>
           <Col className={styles.land__col}>
             <p className={styles.land__details}>Стоимость</p>
-            <p className={styles.land__details_desc}>от {price}</p>
+            <p className={styles.land__details_desc}>
+              от {minPrice.toLocaleString()}
+            </p>
           </Col>
         </Row>
       </Container>
