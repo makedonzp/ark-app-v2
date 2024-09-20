@@ -8,7 +8,7 @@ export default function DistrictCards({ lands, citySlug, districtSlug }) {
   if (!lands || lands.length === 0) {
     return <div>Нет доступных участков</div>;
   }
-  console.log(lands);
+  // console.log(lands);
 
   return (
     <>

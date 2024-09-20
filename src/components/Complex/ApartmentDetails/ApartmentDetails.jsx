@@ -93,7 +93,7 @@ const ApartmentDetails = () => {
   const sliderData = apartmentData.slider || [];
   // console.log(apartmentData.floor_count);
 
-  console.log(apartmentData);
+  // console.log(apartmentData);
 
   return (
     <Container

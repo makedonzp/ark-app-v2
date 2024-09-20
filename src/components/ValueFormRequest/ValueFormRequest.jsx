@@ -15,13 +15,13 @@ export default function ValueFormRequest() {
 
       if (!isFormSubmitted) {
         // Если формы не было, перенаправляем на главную страницу
-        console.log("Form not submitted, redirecting to home");
+        // console.log("Form not submitted, redirecting to home");
         navigate("/");
       } else {
         // Удаляем флаг через 10 секунд
         setTimeout(() => {
           localStorage.removeItem("formSubmitted");
-          console.log("Removed formSubmitted key from localStorage");
+          // console.log("Removed formSubmitted key from localStorage");
         }, 10000);
       }
     };
@@ -32,7 +32,7 @@ export default function ValueFormRequest() {
     // Проверяем наличие ключа сразу после загрузки страницы
     const isFormSubmitted = localStorage.getItem("formSubmitted");
     if (!isFormSubmitted) {
-      console.log("Form not submitted, redirecting to home");
+      // console.log("Form not submitted, redirecting to home");
       navigate("/");
     }
   }, [navigate]);

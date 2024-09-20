@@ -65,7 +65,7 @@ const LandDetails = () => {
   );
 
   if (!cityData) {
-    console.log("Город не найден:", citySlug);
+    // console.log("Город не найден:", citySlug);
     return <div>Город не найден</div>;
   }
 
@@ -83,7 +83,7 @@ const LandDetails = () => {
   );
 
   if (!districtData) {
-    console.log("Район не найден:", districtSlug);
+    // console.log("Район не найден:", districtSlug);
     return <div>Район не найден</div>;
   }
 
@@ -98,7 +98,7 @@ const LandDetails = () => {
   // Получаем данные для слайдера из landData
   const sliderData = landData.slider || [];
   const landImages = landData?.sections[0] || [];
-  console.log(landData);
+  // console.log(landData);
 
   return (
     <Container
