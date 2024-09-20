@@ -8,13 +8,15 @@ export default function DistrictCards({ lands, citySlug, districtSlug }) {
   if (!lands || lands.length === 0) {
     return <div>Нет доступных участков</div>;
   }
+  console.log(lands);
 
   return (
     <>
       {lands.map((land, index) => {
-        const title = land.land_type_display || "Нет данных";
+        const title = land.land_type_display + ":" || "Нет данных";
         const price = parseInt(land.price).toLocaleString() + " ₽";
-
+        const area =
+          parseInt(land.area).toLocaleString() + " сот " || "Нет данных";
         return (
           <Col
             key={index} // Используйте индекс в качестве ключа
@@ -25,7 +27,9 @@ export default function DistrictCards({ lands, citySlug, districtSlug }) {
             role="article"
             aria-label={`Участки: ${title}`}
           >
-            <h2 className={styles.card__title_text}>{title}</h2>
+            <h2 className={styles.card__title_text}>
+              {title} {area}
+            </h2>
             <p className={styles.card__price}>от {price}</p>
             <Link
               to={`/plots/${citySlug}/${districtSlug}/${land.path}`}
