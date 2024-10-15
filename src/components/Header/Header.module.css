@@ -1,6 +1,6 @@
 .header {
   height: clamp(3.125rem, 2.518rem + 3.04vw, 5.25rem);
-  background-color: #252627;
+  background-color: #252627a3;
   position: fixed;
   top: 0;
   width: 100%;

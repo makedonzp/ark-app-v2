@@ -1,7 +1,8 @@
 .main {
   flex-grow: 1;
-  margin-top: clamp(3.125rem, 2.518rem + 3.04vw, 5.25rem);
+  /* margin-top: clamp(3.125rem, 2.518rem + 3.04vw, 5.25rem); */
   padding: 0 !important;
+  min-height: clamp(37.5rem, 33.929rem + 17.86vw, 50rem);
 }
 .cards__row {
   display: flex;

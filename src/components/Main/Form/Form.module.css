@@ -117,9 +117,9 @@
   display: none !important;
 }
 @media (max-width: 1440px) {
-  .form__title {
+  /* .form__title {
     width: 80%;
-  }
+  } */
 }
 @media (max-width: 992px) {
   .row_form {

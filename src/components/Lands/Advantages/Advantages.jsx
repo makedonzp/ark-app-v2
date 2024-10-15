@@ -2,7 +2,7 @@ import React from "react";
 import { Container } from "react-bootstrap";
 import styles from "./Advantages.module.css";
 import WhyComponent from "../WhyComponent/WhyComponent";
-import lands_img from "../../../assets/lands__why_bgr.webp";
+import lands_img from "../../../assets/3d-rendering-house-model.webp";
 
 const landsPreority = [
   {
@@ -40,15 +40,7 @@ export default function Advantages() {
       aria-label="Преимущества покупки земельного участка"
     >
       <Container className={styles.advantages__content}>
-        <WhyComponent
-          bgr={lands_img}
-          first={landsPreority[0].title}
-          second={landsPreority[1].title}
-          third={landsPreority[2].title}
-          fourth={landsPreority[3].title}
-          fifth={landsPreority[4].title}
-          sixth={landsPreority[5].title}
-        >
+        <WhyComponent bgr={lands_img} data={landsPreority}>
           Преимущество покупки земельного участка от{" "}
           <span className={styles.details__title_color}>арк</span>
         </WhyComponent>

@@ -1,11 +1,11 @@
 .contacts {
   flex-grow: 1;
-  margin-top: clamp(3.125rem, 2.518rem + 3.04vw, 5.25rem);
+  /* margin-top: clamp(3.125rem, 2.518rem + 3.04vw, 5.25rem); */
   padding: 0 !important;
   background-color: #a7dbff;
 }
 .contacts__container {
-  padding-top: 50px;
+  padding-top: clamp(3.875rem, 1.518rem + 4.79vw, 7.125rem);
 }
 .contacts__row_desc {
   padding-bottom: clamp(1.25rem, 0.625rem + 3.13vw, 3.438rem);

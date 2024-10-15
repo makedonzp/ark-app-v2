@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import styles from "./Form.module.css";
-import form_img from "../../../assets/form_icon.webp";
+import form_img from "../../../assets/photorealistic-house-with-wooden-architecture-timber-structure.webp";
 import { Col, Container, Row } from "react-bootstrap";
 import { Link, useNavigate } from "react-router-dom";
 import tg_icon from "../../../assets/telegram_icon.webp";
@@ -23,7 +23,7 @@ export default function Form({ formRef, sectionPath }) {
   const [placeholders, setPlaceholders] = useState({
     name: "Ваше имя, фамилия",
     email: "Адрес эл. почты",
-    phone: "+7 (999) 999-99-99",
+    phone: "+7 (999)-999-99-99",
     middleName: "Отчество",
   });
 
@@ -249,9 +249,7 @@ export default function Form({ formRef, sectionPath }) {
             className={styles.form + " " + styles.orderFormSecond}
           >
             <div className={styles.form__title_wrapper}>
-              <h2 className={styles.form__title}>
-                Ответим на все ваши вопросы
-              </h2>
+              <h2 className={styles.form__title}>Заказать звонок</h2>
             </div>
             <form onSubmit={handleSubmit}>
               <div className={styles.form__input_wrapper}>

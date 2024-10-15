@@ -8,7 +8,7 @@
 
 .main__title,
 .main__subtitle {
-  font-size: clamp(0.813rem, 0.188rem + 3.13vw, 3rem);
+  font-size: clamp(0.813rem, 0.588rem + 1.13vw, 2rem);
   font-family: "Montserrat-Regular", "sans-serif";
 }
 .main__col_btn {

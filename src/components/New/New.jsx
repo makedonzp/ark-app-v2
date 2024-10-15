@@ -88,15 +88,11 @@ export default function New() {
         <Container className={styles.new__container}>
           <Row className={styles.new__row}>
             <Col md={12} className={styles.new__col}>
-              <h1 className={styles.new__title}>
-                Новостройки в Крыму — ваш ключ к морской мечте
-              </h1>
+              <h1 className={styles.new__title}>Новые горизонты Крыма</h1>
             </Col>
             <Col md={12} className={styles.new__col}>
               <p className={styles.new__subtitle}>
-                Новостройки в Крыму— это современное жилье у моря с продуманной
-                инфраструктурой. Комфортные квартиры в новых жилых комплексах
-                сочетают удобство городской жизни и близость к чистым пляжам.
+                Идеальное жильё для вашей семьи
               </p>
             </Col>
           </Row>

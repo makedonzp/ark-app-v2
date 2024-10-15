@@ -3,13 +3,13 @@
 }
 .about {
   flex-grow: 1;
-  margin-top: clamp(3.125rem, 2.518rem + 3.04vw, 5.25rem);
+  /* margin-top: clamp(3.125rem, 2.518rem + 3.04vw, 5.25rem); */
   background-color: #dfeeee;
   padding-bottom: clamp(2.5rem, 1.286rem + 6.07vw, 6.75rem) !important;
   padding-inline: 0 !important;
 }
 .about__container {
-  padding-top: clamp(1.875rem, 1.518rem + 1.79vw, 3.125rem);
+  padding-top: clamp(3.875rem, 1.518rem + 4.79vw, 7.125rem);
   max-width: 1200px;
 }
 .about__img_col,
@@ -22,6 +22,7 @@
   width: clamp(12.5rem, 6.429rem + 26.36vw, 29.75rem);
   height: clamp(18.75rem, 14.393rem + 24.79vw, 39rem);
   border-radius: 17px;
+  object-fit: cover;
 }
 .about__text_title {
   font-size: clamp(1.125rem, 1.018rem + 0.54vw, 1.5rem);
@@ -151,7 +152,7 @@
   color: #000;
 }
 .about__col_garanty_img {
-  background-image: url("../../assets/about__garanty_img.webp");
+  background-image: url("../../assets/view-professional-handshake-business-people.webp");
   background-repeat: no-repeat;
   background-size: cover;
   background-position: center;

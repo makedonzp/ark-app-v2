@@ -1,6 +1,6 @@
 .services {
   flex-grow: 1;
-  margin-top: clamp(3.125rem, 2.518rem + 3.04vw, 5.25rem);
+  /* margin-top: clamp(3.125rem, 2.518rem + 3.04vw, 5.25rem); */
   padding: 0 !important;
   background-color: #e2ecee;
   display: flex;
@@ -17,7 +17,7 @@
   flex-grow: 1;
 }
 .services__container {
-  padding-top: clamp(1.875rem, 1.518rem + 1.79vw, 3.125rem);
+  padding-top: clamp(3.875rem, 1.518rem + 4.79vw, 7.125rem);
 }
 .services__row_center {
   padding-top: clamp(1.875rem, 1.179rem + 3.48vw, 4.313rem);

@@ -1,10 +1,11 @@
 .new {
   flex-grow: 1;
-  margin-top: clamp(3.125rem, 2.518rem + 3.04vw, 5.25rem);
+  /* margin-top: clamp(3.125rem, 2.518rem + 3.04vw, 5.25rem); */
   padding: 0 !important;
   background-color: #dfeeee;
   display: flex;
   flex-direction: column;
+  min-height: clamp(37.5rem, 33.929rem + 17.86vw, 50rem);
   justify-content: space-around;
 }
 .loading {
@@ -25,7 +26,8 @@
   flex-grow: 1;
 }
 .new__container {
-  padding-top: clamp(1.875rem, 1.518rem + 1.79vw, 3.125rem);
+  /* min-height: clamp(27.813rem, 25.58rem + 19.16vw, 31.625rem); */
+  padding-top: clamp(3.875rem, 1.518rem + 4.79vw, 7.125rem);
 }
 .new__row_slider {
   padding-top: clamp(1.875rem, 1.179rem + 3.48vw, 4.313rem);

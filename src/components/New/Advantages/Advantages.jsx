@@ -2,7 +2,7 @@ import React from "react";
 import { Container } from "react-bootstrap";
 import styles from "./Advantages.module.css";
 import WhyComponent from "../../Main/WhyComponent/WhyComponent";
-import build_img from "../../../assets/newBuildBgr.webp";
+import build_img from "../../../assets/view-city-with-apartment-buildings-green-vegetation.webp";
 const buildsPreority = [
   {
     id: 1,
@@ -39,15 +39,7 @@ export default function Advantages() {
       aria-label="Преимущества покупки квартиры в новостройке"
     >
       <Container className={styles.advantages__content}>
-        <WhyComponent
-          bgr={build_img}
-          first={buildsPreority[0].title}
-          second={buildsPreority[1].title}
-          third={buildsPreority[2].title}
-          fourth={buildsPreority[3].title}
-          fifth={buildsPreority[4].title}
-          sixth={buildsPreority[5].title}
-        >
+        <WhyComponent bgr={build_img} data={buildsPreority}>
           Преимущество покупки квартиры в новостройке от{" "}
           <span className={styles.details__title_color}>арк</span>
         </WhyComponent>

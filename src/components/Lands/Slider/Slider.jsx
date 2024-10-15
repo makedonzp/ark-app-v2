@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useRef } from "react";
 import styles from "./Slider.module.css";
-import control_left from "../../../assets/control_left.webp";
-import control_right from "../../../assets/control_right.webp";
+import control_left from "../../../assets/new__controls_left.webp";
+import control_right from "../../../assets/new__controls_right.webp";
 import { Link } from "react-router-dom";
 
 const Slider = ({ data }) => {

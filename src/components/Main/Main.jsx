@@ -4,7 +4,7 @@ import MainTop from "./MainTop/MainTop";
 import MainButton from "./MainButton/MainButton";
 import MainCards from "./MainCards/MainCards";
 import WhyComponent from "./WhyComponent/WhyComponent";
-import crimea_img from "../../assets/Crimea_icon.webp";
+import crimea_img from "../../assets/beautiful-nature-landscape-with-black-sandy-beach-ocean.webp";
 import Cards from "../Main/Cards/Cards";
 import { Col, Container, Row } from "react-bootstrap";
 import Form from "../Main/Form/Form";
@@ -16,44 +16,56 @@ import hands from "../../assets/hands.webp";
 const buildsPreority = [
   {
     id: 1,
-    title: "Солнце, море, лето круглый год",
+    title: "Климат и природа",
+    description:
+      "Крымский климат — это уникальная комбинация мягкой морской погоды и теплых солнечных дней, что делает регион идеальным для круглогодичного проживания и отдыха.",
   },
   {
     id: 2,
-    title: "Мягкий климат",
+    title: "Высокий спрос на аренду",
+    description:
+      "Туристический поток в Крым стабильно увеличивается, что поддерживает высокий спрос на аренду недвижимости круглый год. Доход от сдачи жилья в аренду в новостройках может составлять от 10-12% годовых.",
   },
   {
     id: 3,
-    title: "Природные условия",
+    title: "Постоянный рост цен на недвижимость",
+    description:
+      "Крымский рынок недвижимости демонстрирует устойчивый рост, особенно в новостройках на побережье. Жилье увеличивается в стоимости уже на стадии строительства, что может привести к росту капитала на 20-30% ещё до завершения объекта.",
   },
   {
     id: 4,
-    title: "Доступность отдыха",
+    title: "Престижные районы и новые проекты",
+    description:
+      "Среди современных жилых комплексов можно выбрать объекты в самых востребованных локациях: Ялта, Симферополь, Севастополь, Феодосия. Эти районы привлекают как туристов, так и тех, кто ищет жилье для постоянного проживания.",
   },
   {
     id: 5,
     title: "Развитая инфраструктура",
+    description:
+      "Развитие инфраструктуры — новых дорог, аэропортов, социальной сферы — повышает популярность региона для долгосрочного планирования.",
   },
   {
     id: 6,
     title: "Возможность получения дохода",
+    description:
+      "Приобретайте новостройки в Крыму сегодня, чтобы обеспечить себе стабильный доход завтра.",
   },
 ];
 
 const staticCards = [
   {
     id: 1,
-    title: "Более 16 лет успешной работы",
+    title: "Многолетний опыт",
     description:
-      "Через наше агентство прошло сотни успешных сделок различной сложности.",
+      "Работаем на рынке недвижимости Крыма с 2010 года, успешно решая задачи любой сложности.",
     path: "/about",
     image: shield,
   },
   {
     id: 2,
-    title: "АРК – гарант безопасности",
+    title: "Гарантия безопасности",
     description:
-      "является гарантом безопасности на всех этапах сделки купли/продажи.",
+      "Проверяем документы и сопровождаем сделки, исключая любые риски.",
     path: "/about",
     image: home,
   },
@@ -61,15 +73,15 @@ const staticCards = [
     id: 3,
     title: "Экспертная команда",
     description:
-      "профессионалы своего дела, которые работают с каждым клиентом от начала и до результата.",
+      "Наши специалисты глубоко знают рынок и предлагают только проверенные решения.",
     path: "/about",
     image: peoples,
   },
   {
     id: 4,
-    title: "Клиентский  сервис",
+    title: "Индивидуальный подход",
     description:
-      "Мы оказываем риэлторские, юридические услуги, сопровождение ипотеки  и другие услуги",
+      "Каждый клиент получает персональные решения, адаптированные под его потребности.",
     path: "/about",
     image: hands,
   },
@@ -96,22 +108,14 @@ export default function Main() {
       <MainButton scrollToForm={scrollToForm} />
       <MainCards />
       <Container>
-        <WhyComponent
-          bgr={crimea_img}
-          first={buildsPreority[0].title}
-          second={buildsPreority[1].title}
-          third={buildsPreority[2].title}
-          fourth={buildsPreority[3].title}
-          fifth={buildsPreority[4].title}
-          sixth={buildsPreority[5].title}
-        >
+        <WhyComponent bgr={crimea_img} data={buildsPreority}>
           Почему Крым?
         </WhyComponent>
       </Container>
       <Container className={styles.cards__container}>
         <Row className={styles.cards__row}>
           <Col md={12} sm={12} className={styles.cards__title_section}>
-            <h1 className={styles.cards__title}>Почему нам доверяют</h1>
+            <h1 className={styles.cards__title}>Почему нам доверяют?</h1>
           </Col>
           <Cards cards={staticCards} />
         </Row>

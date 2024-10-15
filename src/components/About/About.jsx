@@ -1,7 +1,7 @@
 import React from "react";
 import { Container, Row, Col } from "react-bootstrap";
 import styles from "./About.module.css";
-import about__img from "../../assets/about__ark_img.webp";
+import about__img from "../../assets/real-estate-agents-working-close-up-office-backgrounds.webp";
 
 export default function About() {
   return (

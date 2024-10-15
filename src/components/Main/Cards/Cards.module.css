@@ -1,5 +1,5 @@
 .card__title {
-  font-size: 24px;
+  font-size: clamp(0.938rem, 0.866rem + 0.36vw, 1.188rem);
   text-align: center;
 }
 
@@ -8,12 +8,23 @@
   padding: 28px;
   display: flex;
   flex-direction: column;
-  align-items: flex-start;
+  align-items: center;
   gap: clamp(0rem, -0.357rem + 1.79vw, 1.25rem);
   border-radius: 16px;
   border: #cee0e8 solid 1px;
   height: clamp(18rem, 15.679rem + 13.61vw, 30.125rem);
+  position: relative; /* Добавлено для позиционирования Tooltip */
 }
+
+.card_content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-around;
+  gap: clamp(0rem, -0.357rem + 1.79vw, 1.25rem);
+  height: 100%;
+}
+
 .card__btn {
   border-style: none;
   color: #252627;
@@ -30,11 +41,13 @@
   justify-content: center;
   align-items: center;
 }
+
 .card__btn:hover {
   background-color: #e21a18;
   color: #f2f4f6;
   transition: all 0.3s ease;
 }
+
 .card__btn_text {
   height: 100%;
   width: 100%;
@@ -42,16 +55,21 @@
   justify-content: center;
   align-items: center;
 }
+
 .card__btn_text:hover {
   color: #f2f4f6;
 }
+
 .card__title_text {
   font-size: 20px;
   font-weight: 500;
+  text-align: center;
 }
+
 .card__desc {
   font-size: 14px;
 }
+
 .card__icon {
   align-self: center;
 }

@@ -15,37 +15,35 @@ export default function MainTop({ scrollToForm }) {
       aria-label="Главный баннер"
     >
       <Row className={styles.main__row}>
-        <Col md={12} className={styles.main__col}>
-          <h1 className={styles.main__title}>АРК</h1>
+        <Col className={styles.main__col}>
+          <h1 className={styles.main__title}>
+            <span>АРК</span> — Ваш проводник в крымской недвижимости
+          </h1>
         </Col>
-        <Col md={4} className={styles.main__col_agency}>
+        {/* <Col className={styles.main__col_agency}>
           <p
             className={
               styles.main__subtitle + " " + styles.main__subtitle_agency
             }
           >
-            Агентство
+            
           </p>
         </Col>
-        <Col
-          md={7}
-          sm={12}
-          className={styles.main__col + " " + styles.main__col_realtor}
-        >
+        <Col className={styles.main__col + " " + styles.main__col_realtor}>
           <p
             className={
               styles.main__subtitle + " " + styles.main__subtitle_realtor
             }
           >
-            риэлтерского консалтинга
+            
           </p>
-        </Col>
+        </Col> */}
       </Row>
       <Row className={styles.main__row_bottom}>
         <Col className={styles.main__col_personal}>
-          <p className={styles.main__text_personal}>Персональный подход</p>
-          <p className={styles.main__text_security}>Безопасность</p>
-          <p className={styles.main__text_transparency}>Прозрачность</p>
+          <p className={styles.main__text_personal}>Комфорт</p>
+          <p className={styles.main__text_security}>Качество</p>
+          <p className={styles.main__text_transparency}>Надёжность</p>
         </Col>
         <Col
           md={12}

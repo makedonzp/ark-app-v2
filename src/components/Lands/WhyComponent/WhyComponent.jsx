@@ -1,18 +1,15 @@
-import React from "react";
+import React, { useState } from "react";
 import "bootstrap/dist/css/bootstrap.min.css";
 import styles from "./WhyComponent.module.css";
 import { Col, Container, Row } from "react-bootstrap";
 
-export default function WhyComponent({
-  children,
-  bgr,
-  first,
-  second,
-  third,
-  fourth,
-  fifth,
-  sixth,
-}) {
+export default function WhyComponent({ children, bgr, data }) {
+  const [openIndex, setOpenIndex] = useState(null);
+
+  const handleItemClick = (index) => {
+    setOpenIndex(openIndex === index ? null : index);
+  };
+
   return (
     <Container
       className={styles.why__container}
@@ -30,8 +27,6 @@ export default function WhyComponent({
           </h3>
         </Col>
         <Col
-          md={6}
-          sm={12}
           itemProp="mainContentOfPage"
           itemScope
           itemType="http://schema.org/WebPageElement"
@@ -44,8 +39,6 @@ export default function WhyComponent({
           />
         </Col>
         <Col
-          md={6}
-          sm={12}
           className={
             styles.why__row +
             " " +
@@ -54,40 +47,45 @@ export default function WhyComponent({
             styles.orderLast
           }
         >
-          <p className={styles.main__text} itemProp="description">
-            {first}
-          </p>
           <ul className={styles.main__list}>
-            <li className={styles.main__list_item}>
-              <p itemProp="headline" className={styles.main__list_title}>
-                {second}
-              </p>
-              <p className={styles.main__list_num}>01</p>
-            </li>
-            <li className={styles.main__list_item}>
-              <p itemProp="headline" className={styles.main__list_title}>
-                {third}
-              </p>
-              <p className={styles.main__list_num}>02</p>
-            </li>
-            <li className={styles.main__list_item}>
-              <p itemProp="headline" className={styles.main__list_title}>
-                {fourth}
-              </p>
-              <p className={styles.main__list_num}>03</p>
-            </li>
-            <li className={styles.main__list_item}>
-              <p itemProp="headline" className={styles.main__list_title}>
-                {fifth}
-              </p>
-              <p className={styles.main__list_num}>04</p>
-            </li>
-            <li className={styles.main__list_item}>
-              <p itemProp="headline" className={styles.main__list_title}>
-                {sixth}
-              </p>
-              <p className={styles.main__list_num}>05</p>
-            </li>
+            {data.map((item, index) => (
+              <li key={item.id} className={styles.main__list_item}>
+                <div
+                  className={styles.spoiler__item}
+                  onClick={() => handleItemClick(index)}
+                >
+                  <p itemProp="headline" className={styles.main__list_title}>
+                    {item.title}
+                  </p>
+
+                  <button
+                    className={styles.spoiler__button}
+                    aria-expanded={openIndex === index}
+                  >
+                    <svg width="12" height="12" viewBox="0 0 12 12">
+                      <path
+                        d="M1 4L6 9L11 4"
+                        stroke="currentColor"
+                        strokeWidth="2"
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                        fill="none"
+                      />
+                    </svg>
+                  </button>
+                </div>
+                <div
+                  className={`${styles.spoiler__content} ${
+                    openIndex === index ? styles.open : ""
+                  }`}
+                  aria-hidden={openIndex !== index}
+                >
+                  <p className={styles.main__text} itemProp="description">
+                    {item.description}
+                  </p>
+                </div>
+              </li>
+            ))}
           </ul>
         </Col>
       </Row>

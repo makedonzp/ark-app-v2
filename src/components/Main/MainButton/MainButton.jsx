@@ -8,12 +8,14 @@ export default function MainButton({ scrollToForm }) {
     <Container fluid className={styles.main__container}>
       <Container>
         <Row className={styles.main__row}>
-          <Col md={12}>
+          {/* <Col md={12}>
             <h1 className={styles.main__title}>Крым.</h1>
-          </Col>
+          </Col> */}
           <Col md={8}>
             <p className={styles.main__subtitle}>
-              Превращаем мечты в реальность
+              С нами вы найдете подходящее жилье или участок в Крыму. Мы
+              обеспечиваем прозрачность условий и поддержку на каждом этапе
+              сделки
             </p>
           </Col>
           <Col md={4} className={styles.main__col_btn}>
