@@ -266,7 +266,7 @@ export default function Form({ formRef, sectionPath }) {
         const employeeIds = [4, 5, 6, 98, 66];
         for (const employeeId of employeeIds) {
           const crmFormData = {
-            oauth_token: "db261d739af48b5089afa551226ec0b7", // API-ключ для просмотра и изменения данных
+            oauth_token: "db261d739af48b5089afa551226ec0b7",
             name: formData.name,
             email: formData.email,
             phone: formData.phone,
