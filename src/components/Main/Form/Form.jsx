@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import styles from "./Form.module.css";
 import form_img from "../../../assets/photorealistic-house-with-wooden-architecture-timber-structure.webp";
 import { Col, Container, Row } from "react-bootstrap";
@@ -18,8 +18,6 @@ export default function Form({ formRef, sectionPath }) {
     sectionPath: sectionPath || "", // Добавляем путь раздела
     submissionDate: "", // Добавляем поле для даты заполнения заявки
     referrer: "", // Добавляем поле для отслеживания с какой страницы была отправлена форма
-    ip: "", // Добавляем поле для IP-адреса
-    region: "", // Добавляем поле для региона
     message: "", // Текстовое сообщение от клиента
     url: "", // Адрес страницы, с которой была отправлена заявка
     source: "", // ID рекламного источника
@@ -272,12 +270,12 @@ export default function Form({ formRef, sectionPath }) {
             name: formData.name,
             email: formData.email,
             phone: formData.phone,
-            description: `Страница: ${referrer}, Локация: ${formData.region}`,
+            description: `Страница: ${referrer}`,
             employee: employeeId,
           };
 
           const crmResponse = await fetch(
-            "https://ark.yucrm.ru/api/orders/post",
+            "https://ark.yucrm.ru/api/submit-form/",
             {
               method: "POST",
               headers: {
@@ -299,39 +297,6 @@ export default function Form({ formRef, sectionPath }) {
       }
     }
   };
-
-  useEffect(() => {
-    // Получаем IP-адрес пользователя
-    fetch("https://api.ipify.org?format=json")
-      .then((response) => response.json())
-      .then((data) => {
-        const ip = data.ip;
-        setFormData((prevFormData) => ({
-          ...prevFormData,
-          ip,
-        }));
-
-        // Получаем информацию о местоположении по IP-адресу
-        fetch(`https://ipinfo.io/${ip}/json?token=YOUR_IPINFO_TOKEN`)
-          .then((response) => response.json())
-          .then((locationData) => {
-            const region = locationData.city;
-            setFormData((prevFormData) => ({
-              ...prevFormData,
-              region,
-            }));
-          })
-          .catch((error) => {
-            console.error(
-              "Ошибка при получении информации о местоположении:",
-              error
-            );
-          });
-      })
-      .catch((error) => {
-        console.error("Ошибка при получении IP-адреса:", error);
-      });
-  }, []);
 
   return (
     <Container fluid className={styles.form_fluid}>
