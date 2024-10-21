@@ -277,7 +277,7 @@ export default function Form({ formRef, sectionPath }) {
           };
 
           const crmResponse = await fetch(
-            "https://ark.yucrm.ru/api/submit-form/",
+            "https://ark.yucrm.ru/api/orders/post",
             {
               method: "POST",
               headers: {
