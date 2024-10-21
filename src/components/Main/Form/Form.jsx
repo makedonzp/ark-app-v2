@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import styles from "./Form.module.css";
 import form_img from "../../../assets/photorealistic-house-with-wooden-architecture-timber-structure.webp";
 import { Col, Container, Row } from "react-bootstrap";
@@ -18,6 +18,7 @@ export default function Form({ formRef, sectionPath }) {
     sectionPath: sectionPath || "", // Добавляем путь раздела
     submissionDate: "", // Добавляем поле для даты заполнения заявки
     referrer: "", // Добавляем поле для отслеживания с какой страницы была отправлена форма
+    ip: "", // Добавляем поле для IP-адреса
   });
 
   const [placeholders, setPlaceholders] = useState({
@@ -115,11 +116,8 @@ export default function Form({ formRef, sectionPath }) {
     e.preventDefault();
     let isValid = true;
 
-    // console.log("Form data before validation:", formData);
-
     if (formData.honeypot) {
       // Если honeypot поле заполнено, считаем, что форма отправлена роботом
-      // console.log("Form submitted by a bot");
       return;
     }
 
@@ -186,9 +184,6 @@ export default function Form({ formRef, sectionPath }) {
       isValid = false;
     }
 
-    // console.log("Form data after validation:", formData);
-    // console.log("Validation result:", isValid);
-
     if (isValid) {
       // Устанавливаем текущую дату и время перед отправкой формы
       const submissionDate = new Date().toISOString();
@@ -200,30 +195,56 @@ export default function Form({ formRef, sectionPath }) {
         referrer,
       };
 
-      // console.log("Form data to be sent:", updatedFormData);
-
       try {
-        // Отправка данных на API
-        const response = await fetch("https://dom-ark.com/api/submit-form/", {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-          },
-          body: JSON.stringify(updatedFormData),
-        });
+        // Отправка данных в админку
+        const adminResponse = await fetch(
+          "https://dom-ark.com/api/submit-form/",
+          {
+            method: "POST",
+            headers: {
+              "Content-Type": "application/json",
+            },
+            body: JSON.stringify(updatedFormData),
+          }
+        );
 
-        // console.log("Response status:", response.status);
-        // console.log("Response headers:", response.headers);
-
-        if (response.ok) {
-          // console.log("Navigating to /we-will-connect");
+        if (adminResponse.ok) {
           localStorage.setItem("formSubmitted", "true");
-          // console.log("Set formSubmitted key in localStorage");
           navigate("/we-will-connect");
         } else {
-          const errorData = await response.json();
+          const errorData = await adminResponse.json();
           console.error("Server error:", errorData);
           alert("Ошибка при отправке формы: " + errorData.message);
+        }
+
+        // Отправка данных в CRM
+        const crmFormData = {
+          oauth_token: "db261d739af48b5089afa551226ec0b7", // API-ключ для просмотра и изменения данных
+          name: formData.name,
+          email: formData.email,
+          phone: formData.phone,
+          description: "Заявка с сайта", // Пример описания
+          ip: formData.ip, // Используем полученный IP-адрес
+          message: "Заявка с сайта", // Пример сообщения
+          url: referrer,
+          time: submissionDate,
+        };
+
+        const crmResponse = await fetch(
+          "https://ark.yucrm.ru/api/submit-form/",
+          {
+            method: "POST",
+            headers: {
+              "Content-Type": "application/json",
+            },
+            body: JSON.stringify(crmFormData),
+          }
+        );
+
+        if (!crmResponse.ok) {
+          const crmErrorData = await crmResponse.json();
+          console.error("CRM Server error:", crmErrorData);
+          alert("Ошибка при отправке формы в CRM: " + crmErrorData.message);
         }
       } catch (error) {
         console.error("Ошибка при отправке формы:", error);
@@ -231,6 +252,21 @@ export default function Form({ formRef, sectionPath }) {
       }
     }
   };
+
+  useEffect(() => {
+    // Получаем IP-адрес пользователя
+    fetch("https://api.ipify.org?format=json")
+      .then((response) => response.json())
+      .then((data) => {
+        setFormData((prevFormData) => ({
+          ...prevFormData,
+          ip: data.ip,
+        }));
+      })
+      .catch((error) => {
+        console.error("Ошибка при получении IP-адреса:", error);
+      });
+  }, []);
 
   return (
     <Container fluid className={styles.form_fluid}>
