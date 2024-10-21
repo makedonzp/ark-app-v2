@@ -15,26 +15,6 @@ export default function Form({ formRef, sectionPath }) {
     middleName: "",
     consent: false,
     honeypot: "", // Скрытое поле honeypot
-    sectionPath: sectionPath || "", // Добавляем путь раздела
-    submissionDate: "", // Добавляем поле для даты заполнения заявки
-    referrer: "", // Добавляем поле для отслеживания с какой страницы была отправлена форма
-    message: "", // Текстовое сообщение от клиента
-    url: "", // Адрес страницы, с которой была отправлена заявка
-    source: "", // ID рекламного источника
-    employee: "", // ID сотрудника в CRM
-    department: "", // ID отдела в CRM
-    external_id: "", // ID заявки в вашей внутренней системе
-    object_code: "", // Код объекта
-    object_name: "", // Название объекта
-    object_price: "", // Цена объекта
-    visitor: {
-      utm_campaign: "",
-      utm_source: "",
-      utm_medium: "",
-      gclid: "",
-      ym_client_id: "",
-      yclid: "",
-    },
   });
 
   const [placeholders, setPlaceholders] = useState({
@@ -42,15 +22,6 @@ export default function Form({ formRef, sectionPath }) {
     email: "Адрес эл. почты",
     phone: "+7 (999)-999-99-99",
     middleName: "Отчество",
-    message: "Текстовое сообщение от клиента",
-    url: "Адрес страницы, с которой была отправлена заявка",
-    source: "ID рекламного источника",
-    employee: "ID сотрудника в CRM",
-    department: "ID отдела в CRM",
-    external_id: "ID заявки в вашей внутренней системе",
-    object_code: "Код объекта",
-    object_name: "Название объекта",
-    object_price: "Цена объекта",
   });
 
   const [errors, setErrors] = useState({
@@ -58,15 +29,6 @@ export default function Form({ formRef, sectionPath }) {
     email: "",
     phone: "",
     middleName: "",
-    message: "",
-    url: "",
-    source: "",
-    employee: "",
-    department: "",
-    external_id: "",
-    object_code: "",
-    object_name: "",
-    object_price: "",
   });
 
   const navigate = useNavigate();
@@ -275,7 +237,7 @@ export default function Form({ formRef, sectionPath }) {
           };
 
           const crmResponse = await fetch(
-            "https://ark.yucrm.ru/api/submit-form/",
+            "https://ark.yucrm.ru/api/orders/post",
             {
               method: "POST",
               headers: {
@@ -390,168 +352,6 @@ export default function Form({ formRef, sectionPath }) {
                   {errors.middleName && (
                     <span className={styles.form__span_error}>
                       {errors.middleName}
-                    </span>
-                  )}
-                </div>
-                <div className={styles.form__wrapper}>
-                  <input
-                    className={styles.form_input}
-                    type="text"
-                    name="message"
-                    placeholder={placeholders.message}
-                    value={formData.message}
-                    onChange={handleChange}
-                  />
-                  <span className={styles.form__span}>
-                    * Это поле обязательное для заполнения
-                  </span>
-                  {errors.message && (
-                    <span className={styles.form__span_error}>
-                      {errors.message}
-                    </span>
-                  )}
-                </div>
-                <div className={styles.form__wrapper}>
-                  <input
-                    className={styles.form_input}
-                    type="text"
-                    name="url"
-                    placeholder={placeholders.url}
-                    value={formData.url}
-                    onChange={handleChange}
-                  />
-                  <span className={styles.form__span}>
-                    * Это поле обязательное для заполнения
-                  </span>
-                  {errors.url && (
-                    <span className={styles.form__span_error}>
-                      {errors.url}
-                    </span>
-                  )}
-                </div>
-                <div className={styles.form__wrapper}>
-                  <input
-                    className={styles.form_input}
-                    type="text"
-                    name="source"
-                    placeholder={placeholders.source}
-                    value={formData.source}
-                    onChange={handleChange}
-                  />
-                  <span className={styles.form__span}>
-                    * Это поле обязательное для заполнения
-                  </span>
-                  {errors.source && (
-                    <span className={styles.form__span_error}>
-                      {errors.source}
-                    </span>
-                  )}
-                </div>
-                <div className={styles.form__wrapper}>
-                  <input
-                    className={styles.form_input}
-                    type="text"
-                    name="employee"
-                    placeholder={placeholders.employee}
-                    value={formData.employee}
-                    onChange={handleChange}
-                  />
-                  <span className={styles.form__span}>
-                    * Это поле обязательное для заполнения
-                  </span>
-                  {errors.employee && (
-                    <span className={styles.form__span_error}>
-                      {errors.employee}
-                    </span>
-                  )}
-                </div>
-                <div className={styles.form__wrapper}>
-                  <input
-                    className={styles.form_input}
-                    type="text"
-                    name="department"
-                    placeholder={placeholders.department}
-                    value={formData.department}
-                    onChange={handleChange}
-                  />
-                  <span className={styles.form__span}>
-                    * Это поле обязательное для заполнения
-                  </span>
-                  {errors.department && (
-                    <span className={styles.form__span_error}>
-                      {errors.department}
-                    </span>
-                  )}
-                </div>
-                <div className={styles.form__wrapper}>
-                  <input
-                    className={styles.form_input}
-                    type="text"
-                    name="external_id"
-                    placeholder={placeholders.external_id}
-                    value={formData.external_id}
-                    onChange={handleChange}
-                  />
-                  <span className={styles.form__span}>
-                    * Это поле обязательное для заполнения
-                  </span>
-                  {errors.external_id && (
-                    <span className={styles.form__span_error}>
-                      {errors.external_id}
-                    </span>
-                  )}
-                </div>
-                <div className={styles.form__wrapper}>
-                  <input
-                    className={styles.form_input}
-                    type="text"
-                    name="object_code"
-                    placeholder={placeholders.object_code}
-                    value={formData.object_code}
-                    onChange={handleChange}
-                  />
-                  <span className={styles.form__span}>
-                    * Это поле обязательное для заполнения
-                  </span>
-                  {errors.object_code && (
-                    <span className={styles.form__span_error}>
-                      {errors.object_code}
-                    </span>
-                  )}
-                </div>
-                <div className={styles.form__wrapper}>
-                  <input
-                    className={styles.form_input}
-                    type="text"
-                    name="object_name"
-                    placeholder={placeholders.object_name}
-                    value={formData.object_name}
-                    onChange={handleChange}
-                  />
-                  <span className={styles.form__span}>
-                    * Это поле обязательное для заполнения
-                  </span>
-                  {errors.object_name && (
-                    <span className={styles.form__span_error}>
-                      {errors.object_name}
-                    </span>
-                  )}
-                </div>
-                <div className={styles.form__wrapper}>
-                  <input
-                    className={styles.form_input}
-                    type="text"
-                    name="object_price"
-                    placeholder={placeholders.object_price}
-                    value={formData.object_price}
-                    onChange={handleChange}
-                  />
-                  <span className={styles.form__span}>
-                    * Это поле обязательное для заполнения
-                  </span>
-                  {errors.object_price && (
-                    <span className={styles.form__span_error}>
-                      {errors.object_price}
                     </span>
                   )}
                 </div>
