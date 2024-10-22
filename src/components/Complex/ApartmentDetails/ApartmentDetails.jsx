@@ -191,7 +191,7 @@ const ApartmentDetails = () => {
                   aria-label="Забронировать квартиру"
                   tabIndex={0}
                 >
-                  Забронировать
+                  Получить консультацию
                 </button>
               </li>
             </ul>

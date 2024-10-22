@@ -11,3 +11,10 @@
   color: #e21a18;
   text-transform: uppercase;
 }
+.details__text {
+  font-size: clamp(1rem, 0.714rem + 1.43vw, 2rem);
+  padding-top: clamp(0.625rem, 0.268rem + 3.04vw, 2rem);
+  max-width: clamp(17.5rem, 10.821rem + 45.39vw, 80.875rem);
+  line-height: normal;
+  font-weight: 400;
+}
