@@ -6,7 +6,6 @@ import { Link, useNavigate } from "react-router-dom";
 import tg_icon from "../../../assets/telegram_icon.webp";
 import whats_icon from "../../../assets/whatsapp_icon.webp";
 import call_icon from "../../../assets/footer_call_icon.webp";
-import axios from "axios";
 
 export default function Form({ formRef, sectionPath }) {
   const [formData, setFormData] = useState({
@@ -16,6 +15,9 @@ export default function Form({ formRef, sectionPath }) {
     middleName: "",
     consent: false,
     honeypot: "", // Скрытое поле honeypot
+    sectionPath: sectionPath || "", // Добавляем путь раздела
+    submissionDate: "", // Добавляем поле для даты заполнения заявки
+    referrer: "", // Добавляем поле для отслеживания с какой страницы была отправлена форма
   });
 
   const [placeholders, setPlaceholders] = useState({
@@ -32,7 +34,6 @@ export default function Form({ formRef, sectionPath }) {
     middleName: "",
   });
 
-  const [message, setMessage] = useState("");
   const navigate = useNavigate();
 
   const handleChange = (e) => {
@@ -110,21 +111,15 @@ export default function Form({ formRef, sectionPath }) {
     return allowedDomains.includes(domain);
   };
 
-  const generateExternalId = () => {
-    const letters = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
-    const randomLetter = letters[Math.floor(Math.random() * letters.length)];
-    const randomNumber = Math.floor(Math.random() * 1000000)
-      .toString()
-      .padStart(6, "0");
-    return randomLetter + randomNumber;
-  };
-
   const handleSubmit = async (e) => {
     e.preventDefault();
     let isValid = true;
 
+    // console.log("Form data before validation:", formData);
+
     if (formData.honeypot) {
       // Если honeypot поле заполнено, считаем, что форма отправлена роботом
+      // console.log("Form submitted by a bot");
       return;
     }
 
@@ -191,33 +186,44 @@ export default function Form({ formRef, sectionPath }) {
       isValid = false;
     }
 
+    // console.log("Form data after validation:", formData);
+    // console.log("Validation result:", isValid);
+
     if (isValid) {
       // Устанавливаем текущую дату и время перед отправкой формы
       const submissionDate = new Date().toISOString();
       const referrer = window.location.href; // Получаем текущий URL
-      const external_id = generateExternalId(); // Генерируем уникальный external_id
 
       const updatedFormData = {
         ...formData,
         submissionDate,
         referrer,
-        external_id,
       };
 
-      try {
-        // Отправка данных в админку
-        const adminResponse = await axios.post(
-          "https://dom-ark.com/api/submit-form/",
-          updatedFormData
-        );
+      // console.log("Form data to be sent:", updatedFormData);
 
-        if (adminResponse.status === 200) {
+      try {
+        // Отправка данных на API
+        const response = await fetch("https://dom-ark.com/api/submit-form/", {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify(updatedFormData),
+        });
+
+        // console.log("Response status:", response.status);
+        // console.log("Response headers:", response.headers);
+
+        if (response.ok) {
+          // console.log("Navigating to /we-will-connect");
           localStorage.setItem("formSubmitted", "true");
+          // console.log("Set formSubmitted key in localStorage");
           navigate("/we-will-connect");
         } else {
-          const errorData = adminResponse.data;
+          const errorData = await response.json();
           console.error("Server error:", errorData);
-          alert("Ошибка при отправке формы: " + errorData);
+          alert("Ошибка при отправке формы: " + errorData.message);
         }
       } catch (error) {
         console.error("Ошибка при отправке формы:", error);
@@ -351,7 +357,6 @@ export default function Form({ formRef, sectionPath }) {
                 />
               </div>
             </form>
-            {message && <p>{message}</p>}
           </Col>
           <Col md={12} sm={12}>
             <ul className={styles.socials__list}>
