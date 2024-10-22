@@ -115,11 +115,9 @@ export default function Form({ formRef, sectionPath }) {
     e.preventDefault();
     let isValid = true;
 
-    // console.log("Form data before validation:", formData);
-
     if (formData.honeypot) {
       // Если honeypot поле заполнено, считаем, что форма отправлена роботом
-      // console.log("Form submitted by a bot");
+
       return;
     }
 
@@ -186,9 +184,6 @@ export default function Form({ formRef, sectionPath }) {
       isValid = false;
     }
 
-    // console.log("Form data after validation:", formData);
-    // console.log("Validation result:", isValid);
-
     if (isValid) {
       // Устанавливаем текущую дату и время перед отправкой формы
       const submissionDate = new Date().toISOString();
@@ -200,8 +195,6 @@ export default function Form({ formRef, sectionPath }) {
         referrer,
       };
 
-      // console.log("Form data to be sent:", updatedFormData);
-
       try {
         // Отправка данных на API
         const response = await fetch("https://dom-ark.com/api/submit-form/", {
@@ -212,13 +205,8 @@ export default function Form({ formRef, sectionPath }) {
           body: JSON.stringify(updatedFormData),
         });
 
-        // console.log("Response status:", response.status);
-        // console.log("Response headers:", response.headers);
-
         if (response.ok) {
-          // console.log("Navigating to /we-will-connect");
           localStorage.setItem("formSubmitted", "true");
-          // console.log("Set formSubmitted key in localStorage");
           navigate("/we-will-connect");
         } else {
           const errorData = await response.json();
