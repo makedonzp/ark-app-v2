@@ -1,4 +1,3 @@
-// metrics.js
 export function trackPageView(url, title) {
   ym(98721913, "hit", url, {
     title: title,
