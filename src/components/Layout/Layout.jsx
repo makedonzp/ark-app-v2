@@ -1,5 +1,5 @@
-import React, { useContext } from "react";
-import { Routes, Route } from "react-router-dom";
+import React, { useContext, useEffect } from "react";
+import { Routes, Route, useLocation } from "react-router-dom";
 import styles from "./Layout.module.css";
 import Header from "../Header/Header";
 import Main from "../Main/Main";
@@ -19,9 +19,16 @@ import LandDetails from "../District/LandDetails/LandDetails";
 import HotForm from "../HotForm/HotForm";
 import ValueFormRequest from "../ValueFormRequest/ValueFormRequest";
 import { DataContext } from "../DataContext/DataContext";
+import { trackPageView } from "../metrika/metrics"; // Импортируйте функцию отправки метрики
 
 export default function Layout() {
   const data = useContext(DataContext);
+  const location = useLocation(); // Получаем текущий путь
+
+  useEffect(() => {
+    // Отправляем данные о просмотре страницы при каждом изменении маршрута
+    trackPageView(location.pathname, document.title);
+  }, [location]);
 
   return (
     <div
