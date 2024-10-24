@@ -83,16 +83,11 @@ const Lands = () => {
         <Container className={styles.lands__container}>
           <Row className={styles.lands__row}>
             <Col md={12} className={styles.lands__col}>
-              <h1 className={styles.lands__title}>
-                Участки с нами— ваш уютный уголок у моря
-              </h1>
+              <h1 className={styles.lands__title}>Проект мечты в Крыму</h1>
             </Col>
             <Col md={12} className={styles.lands__col}>
               <p className={styles.lands__subtitle}>
-                Участок в Крыму — идеальный выбор для строительства загородного
-                дома у моря. Удобное расположение, развитая инфраструктура и
-                спокойная атмосфера создают отличные условия для комфортного
-                проживания и отдыха.
+                Воплотите своё идеальное жилище на участке.
               </p>
             </Col>
           </Row>
