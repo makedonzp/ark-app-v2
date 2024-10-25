@@ -199,7 +199,7 @@ const LandDetails = () => {
                   className={styles.landDetails__button}
                   tabIndex={0}
                 >
-                  Забронировать
+                  Получить консультацию
                 </button>
               </li>
             </ul>
