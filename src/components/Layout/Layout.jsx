@@ -1,3 +1,4 @@
+// Layout.js
 import React, { useContext, useEffect } from "react";
 import { Routes, Route, useLocation } from "react-router-dom";
 import styles from "./Layout.module.css";
@@ -20,6 +21,7 @@ import HotForm from "../HotForm/HotForm";
 import ValueFormRequest from "../ValueFormRequest/ValueFormRequest";
 import { DataContext } from "../DataContext/DataContext";
 import { trackPageView } from "../metrika/metrics"; // Импортируйте функцию отправки метрики
+import ScrollToTop from "../ScrollToTop/ScrollToTop"; // Импортируйте компонент ScrollToTop
 
 export default function Layout() {
   const data = useContext(DataContext);
@@ -37,6 +39,7 @@ export default function Layout() {
       aria-label="Основное приложение"
       tabIndex={0}
     >
+      <ScrollToTop /> {/* Добавьте компонент ScrollToTop здесь */}
       <Header />
       <Routes>
         <Route path="/" exact element={<Main />} />
