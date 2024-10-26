@@ -1,6 +1,5 @@
-// Layout.js
-import React, { useContext, useEffect } from "react";
-import { Routes, Route, useLocation } from "react-router-dom";
+import React, { useContext, useEffect, useState } from "react";
+import { Routes, Route, useLocation, useNavigate } from "react-router-dom";
 import styles from "./Layout.module.css";
 import Header from "../Header/Header";
 import Main from "../Main/Main";
@@ -26,11 +25,29 @@ import ScrollToTop from "../ScrollToTop/ScrollToTop"; // Импортируйт�
 export default function Layout() {
   const data = useContext(DataContext);
   const location = useLocation(); // Получаем текущий путь
+  const navigate = useNavigate(); // Получаем функцию для навигации
+  const [isFormSubmitted, setIsFormSubmitted] = useState(false);
 
   useEffect(() => {
     // Отправляем данные о просмотре страницы при каждом изменении маршрута
     trackPageView(location.pathname, document.title);
   }, [location]);
+
+  useEffect(() => {
+    // Проверка наличия флага в localStorage
+    const formSubmitted = localStorage.getItem("formSubmitted");
+    if (formSubmitted === "true") {
+      setIsFormSubmitted(true);
+    } else if (location.pathname === "/we-will-connect") {
+      // Если флаг отсутствует и пользователь находится на странице /we-will-connect, перенаправляем на главную
+      navigate("/");
+    }
+
+    // Удаление флага при возвращении на главную страницу
+    if (location.pathname === "/") {
+      localStorage.removeItem("formSubmitted");
+    }
+  }, [location, navigate]);
 
   return (
     <div
@@ -71,7 +88,10 @@ export default function Layout() {
         <Route path="/contacts" element={<Contacts />} />
         <Route path="/about" element={<About />} />
         <Route path="/hot-form" element={<HotForm />} />
-        <Route path="/we-will-connect" element={<ValueFormRequest />} />
+        <Route
+          path="/we-will-connect"
+          element={isFormSubmitted ? <ValueFormRequest /> : <Main />}
+        />
       </Routes>
       <Footer />
     </div>

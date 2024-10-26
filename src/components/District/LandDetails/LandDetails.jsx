@@ -114,7 +114,7 @@ const LandDetails = () => {
         <Row>
           <Col md={12}>
             <h1 className={styles.landDetails__title}>
-              Тип участка {landImages.title}
+              Тип участка {landImages.title}.
             </h1>
             <h1 className={styles.landDetails__title}>
               Площадь: {parseFloat(landData.area).toString()} соток

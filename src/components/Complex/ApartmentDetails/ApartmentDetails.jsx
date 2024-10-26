@@ -110,7 +110,7 @@ const ApartmentDetails = () => {
           <Col md={12}>
             <h1 className={styles.apartmentDetails__title}>
               Тип квартиры: {""}
-              {section.title}.
+              {section.title}
             </h1>
             <h1 className={styles.apartmentDetails__title}>
               Площадь: {""}

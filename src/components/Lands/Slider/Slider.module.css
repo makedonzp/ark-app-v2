@@ -9,7 +9,6 @@
 .sliderWrapper {
   overflow: hidden;
   width: 100%;
-  border-radius: 6px;
 }
 
 .sliderContainer {
@@ -20,22 +19,26 @@
 
 .sliderSlide {
   min-width: 100%;
-  height: 300px;
+  height: 259px;
   background-size: cover;
   background-position: center;
+  background-repeat: no-repeat;
   display: flex;
   justify-content: flex-end;
   flex-direction: column;
   align-items: center;
   gap: 14px;
   background-color: #dfeeeeb3;
+  border-radius: 15px;
 }
 
 .sliderTitle {
   color: #ffffff;
   font-family: "Montserrat-Medium", sans-serif;
-  text-shadow: #000000 0px 0px 20px;
+  text-shadow: #000000 0px 0px 10px;
   font-size: clamp(1.25rem, 1.179rem + 0.36vw, 1.5rem);
+  font-weight: 700;
+  text-transform: uppercase;
 }
 
 .sliderButton_more {

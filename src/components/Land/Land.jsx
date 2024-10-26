@@ -94,7 +94,7 @@ const Land = () => {
             <p className={styles.land__details_desc}>{cityData.name}</p>
           </Col>
           <Col className={styles.land__col + " " + styles.border_right}>
-            <p className={styles.land__details}>Всего категорий</p>
+            <p className={styles.land__details}>Районов в работе</p>
             <p className={styles.land__details_desc}>
               {districtData.lands ? districtData.lands.length : 0}
             </p>

@@ -2,13 +2,37 @@
   font-size: 24px;
   text-align: center;
 }
-
+.of {
+  color: #252627;
+  font-weight: normal;
+}
+.card__price {
+  display: flex;
+  justify-content: center;
+  gap: 15px;
+  font-size: clamp(1.5rem, 1.4rem + 1.07vw, 2.25rem);
+  color: #e21a18;
+  width: 100%;
+  font-family: "Montserrat-Regular", "sans-serif";
+  font-weight: 600;
+}
+.filter__name {
+  font-size: 24px;
+  width: clamp(18.438rem, 0.67rem + 89.84vw, 91.625rem);
+}
+.price__more_wrapper {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+}
 .card_section {
   background-color: #e2effa;
   padding: 28px;
   display: flex;
   flex-direction: column;
-  align-items: flex-start;
+  align-items: center;
   gap: clamp(0rem, -0.357rem + 1.79vw, 1.25rem);
   border-radius: 16px;
   border: #cee0e8 solid 1px;
@@ -45,9 +69,4 @@
   display: flex;
   justify-content: center;
   align-items: center;
-}
-
-.card__price {
-  font-size: clamp(1rem, 0.857rem + 0.71vw, 1.5rem);
-  font-family: "Montserrat-Regular", "sans-serif";
 }

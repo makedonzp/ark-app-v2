@@ -100,7 +100,7 @@ const Complex = ({ type }) => {
             <p className={styles.complex__details_desc}>{cityData.name}</p>
           </Col>
           <Col className={styles.complex__col + " " + styles.border_right}>
-            <p className={styles.complex__details}>Всего объектов</p>
+            <p className={styles.complex__details}>ЖК в Городе</p>
             <p className={styles.complex__details_desc}>
               {cityData[type].length}
             </p>

@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import styles from "./Form.module.css";
 import form_img from "../../../assets/photorealistic-house-with-wooden-architecture-timber-structure.webp";
 import { Col, Container, Row } from "react-bootstrap";
@@ -228,6 +228,15 @@ export default function Form({ formRef, sectionPath }) {
       }
     }
   };
+
+  useEffect(() => {
+    // Удаление флага через 3 секунды после перехода на /we-will-connect
+    const timeout = setTimeout(() => {
+      localStorage.removeItem("formSubmitted");
+    }, 3000);
+
+    return () => clearTimeout(timeout);
+  }, [navigate]);
 
   return (
     <Container fluid className={styles.form_fluid}>
