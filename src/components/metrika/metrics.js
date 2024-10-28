@@ -7,7 +7,7 @@ if (typeof window !== "undefined") {
 
 export function trackPageView(url, title) {
   if (typeof ym === "function") {
-    ym(98721913, "hit", url, {
+    ym(98748437, "hit", url, {
       title: title,
       referer: document.referrer,
       params: {
