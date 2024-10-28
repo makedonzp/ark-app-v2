@@ -19,7 +19,6 @@ import LandDetails from "../District/LandDetails/LandDetails";
 import HotForm from "../HotForm/HotForm";
 import ValueFormRequest from "../ValueFormRequest/ValueFormRequest";
 import { DataContext } from "../DataContext/DataContext";
-import { trackPageView } from "../metrika/metrics"; // Импортируйте функцию отправки метрики
 import ScrollToTop from "../ScrollToTop/ScrollToTop"; // Импортируйте компонент ScrollToTop
 
 export default function Layout() {
@@ -27,11 +26,6 @@ export default function Layout() {
   const location = useLocation(); // Получаем текущий путь
   const navigate = useNavigate(); // Получаем функцию для навигации
   const [isFormSubmitted, setIsFormSubmitted] = useState(false);
-
-  useEffect(() => {
-    // Отправляем данные о просмотре страницы при каждом изменении маршрута
-    trackPageView(location.pathname, document.title);
-  }, [location]);
 
   useEffect(() => {
     // Проверка наличия флага в localStorage

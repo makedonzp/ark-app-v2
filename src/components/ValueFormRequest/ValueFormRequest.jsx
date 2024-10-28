@@ -22,7 +22,7 @@ export default function ValueFormRequest() {
         setTimeout(() => {
           localStorage.removeItem("formSubmitted");
           // console.log("Removed formSubmitted key from localStorage");
-        }, 10000);
+        }, 3000);
       }
     };
 
