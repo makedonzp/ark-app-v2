@@ -6,6 +6,7 @@ import { Link, useNavigate } from "react-router-dom";
 import tg_icon from "../../../assets/telegram_icon.webp";
 import whats_icon from "../../../assets/whatsapp_icon.webp";
 import call_icon from "../../../assets/footer_call_icon.webp";
+import { trackEvent } from "../../metrika/tracking"; // Импортируйте вашу функцию для отслеживания событий
 
 export default function Form({ formRef, sectionPath }) {
   const [formData, setFormData] = useState({
@@ -217,6 +218,9 @@ export default function Form({ formRef, sectionPath }) {
           localStorage.setItem("formSubmitted", "true");
           console.log("Set formSubmitted key in localStorage");
           navigate("/we-will-connect");
+
+          // Отслеживание события отправки формы
+          trackEvent("Form Submission", "Submit", { formData });
         } else {
           const errorData = await response.json();
           console.error("Server error:", errorData);

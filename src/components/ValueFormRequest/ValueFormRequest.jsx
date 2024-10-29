@@ -4,36 +4,35 @@ import styles from "./ValueFormRequest.module.css";
 import { Col, Container, Row } from "react-bootstrap";
 import { Link } from "react-router-dom";
 import video from "../../assets/finish_page_bg.mp4";
+import { trackEvent } from "../metrika/tracking"; // Исправлен путь
 
 export default function ValueFormRequest() {
   const navigate = useNavigate();
 
   useEffect(() => {
     const checkFormSubmitted = () => {
-      // Проверяем, была ли форма отправлена
       const isFormSubmitted = localStorage.getItem("formSubmitted");
 
       if (!isFormSubmitted) {
-        // Если формы не было, перенаправляем на главную страницу
-        // console.log("Form not submitted, redirecting to home");
+        console.log("Form not submitted, redirecting to home");
         navigate("/");
       } else {
-        // Удаляем флаг через 10 секунд
         setTimeout(() => {
           localStorage.removeItem("formSubmitted");
-          // console.log("Removed formSubmitted key from localStorage");
+          console.log("Removed formSubmitted key from localStorage");
         }, 3000);
       }
     };
 
-    // Проверяем наличие ключа после 10 секунд
     setTimeout(checkFormSubmitted, 10000);
 
-    // Проверяем наличие ключа сразу после загрузки страницы
     const isFormSubmitted = localStorage.getItem("formSubmitted");
     if (!isFormSubmitted) {
-      // console.log("Form not submitted, redirecting to home");
+      console.log("Form not submitted, redirecting to home");
       navigate("/");
+    } else {
+      console.log("Tracking event for form submission");
+      trackEvent("Form Submission", "Page Load", { isFormSubmitted });
     }
   }, [navigate]);
 

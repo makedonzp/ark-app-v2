@@ -1,5 +1,6 @@
 import React, { useContext, useEffect, useState } from "react";
-import { Routes, Route, useLocation, useNavigate } from "react-router-dom";
+import { Route, Routes, useLocation, useNavigate } from "react-router-dom";
+import { trackPageView } from "../metrika/tracking"; // Исправлен путь
 import styles from "./Layout.module.css";
 import Header from "../Header/Header";
 import Main from "../Main/Main";
@@ -19,27 +20,34 @@ import LandDetails from "../District/LandDetails/LandDetails";
 import HotForm from "../HotForm/HotForm";
 import ValueFormRequest from "../ValueFormRequest/ValueFormRequest";
 import { DataContext } from "../DataContext/DataContext";
-import ScrollToTop from "../ScrollToTop/ScrollToTop"; // Импортируйте компонент ScrollToTop
+import ScrollToTop from "../ScrollToTop/ScrollToTop";
 
 export default function Layout() {
   const data = useContext(DataContext);
-  const location = useLocation(); // Получаем текущий путь
-  const navigate = useNavigate(); // Получаем функцию для навигации
+  const location = useLocation();
+  const navigate = useNavigate();
   const [isFormSubmitted, setIsFormSubmitted] = useState(false);
 
   useEffect(() => {
-    // Проверка наличия флага в localStorage
     const formSubmitted = localStorage.getItem("formSubmitted");
+    console.log("Checking form submission status in Layout:", formSubmitted);
+
     if (formSubmitted === "true") {
       setIsFormSubmitted(true);
     } else if (location.pathname === "/we-will-connect") {
-      // Если флаг отсутствует и пользователь находится на странице /we-will-connect, перенаправляем на главную
+      console.log("Form not submitted, redirecting to home");
       navigate("/");
     }
 
-    // Удаление флага при возвращении на главную страницу
     if (location.pathname === "/") {
       localStorage.removeItem("formSubmitted");
+    }
+
+    if (location.pathname === "/we-will-connect" && formSubmitted === "true") {
+      console.log("Tracking page view for:", location.pathname);
+      trackPageView(location.pathname, document.title);
+    } else {
+      console.log("Not tracking page view for:", location.pathname);
     }
   }, [location, navigate]);
 
@@ -50,7 +58,7 @@ export default function Layout() {
       aria-label="Основное приложение"
       tabIndex={0}
     >
-      <ScrollToTop /> {/* Добавьте компонент ScrollToTop здесь */}
+      <ScrollToTop />
       <Header />
       <Routes>
         <Route path="/" exact element={<Main />} />

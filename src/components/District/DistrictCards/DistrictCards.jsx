@@ -12,70 +12,70 @@ export default function DistrictCards({ lands, citySlug, districtSlug }) {
   }
 
   // Добавляем логирование для проверки данных в lands
-  console.log("Данные в lands:", lands);
+  // console.log("Данные в lands:", lands);
 
   // Функция для сортировки участков
   const sortLands = (lands, sortBy) => {
-    console.log("Сортировка по:", sortBy);
+    // console.log("Сортировка по:", sortBy);
 
     if (sortBy === "all") {
-      console.log("Все участки:", lands);
+      // console.log("Все участки:", lands);
       return lands;
     } else if (sortBy === "СНТ") {
       const sntLands = lands.filter((land) => {
-        console.log(
-          "Проверка участка:",
-          land.land_type,
-          land.land_type.toLowerCase() === "snt"
-        );
+        // console.log(
+        //   "Проверка участка:",
+        //   land.land_type,
+        //   land.land_type.toLowerCase() === "snt"
+        // );
         return land.land_type.toLowerCase() === "snt";
       });
-      console.log("СНТ участки:", sntLands);
+      // console.log("СНТ участки:", sntLands);
       return sntLands;
     } else if (sortBy === "ИЖС") {
       const ijsLands = lands.filter((land) => {
-        console.log(
-          "Проверка участка:",
-          land.land_type,
-          land.land_type.toLowerCase() === "ijs"
-        );
+        // console.log(
+        //   "Проверка участка:",
+        //   land.land_type,
+        //   land.land_type.toLowerCase() === "ijs"
+        // );
         return land.land_type.toLowerCase() === "ijs";
       });
-      console.log("ИЖС участки:", ijsLands);
+      // console.log("ИЖС участки:", ijsLands);
       return ijsLands;
     } else if (sortBy === "area") {
       const sortedByArea = [...lands].sort(
         (a, b) => parseFloat(a.area) - parseFloat(b.area)
       );
-      console.log("Участки, отсортированные по площади:", sortedByArea);
+      // console.log("Участки, отсортированные по площади:", sortedByArea);
       return sortedByArea;
     } else if (sortBy === "price_asc") {
       const sortedByPriceAsc = [...lands].sort(
         (a, b) => parseFloat(a.price) - parseFloat(b.price)
       );
-      console.log(
-        "Участки, отсортированные по цене (от дешевого к дорогому):",
-        sortedByPriceAsc
-      );
+      // console.log(
+      //   "Участки, отсортированные по цене (от дешевого к дорогому):",
+      //   sortedByPriceAsc
+      // );
       return sortedByPriceAsc;
     } else if (sortBy === "price_desc") {
       const sortedByPriceDesc = [...lands].sort(
         (a, b) => parseFloat(b.price) - parseFloat(a.price)
       );
-      console.log(
-        "Участки, отсортированные по цене (от дорогого к дешевому):",
-        sortedByPriceDesc
-      );
+      // console.log(
+      //   "Участки, отсортированные по цене (от дорогого к дешевому):",
+      //   sortedByPriceDesc
+      // );
       return sortedByPriceDesc;
     }
 
-    console.log("Неизвестный тип сортировки:", sortBy);
+    // console.log("Неизвестный тип сортировки:", sortBy);
     return lands;
   };
 
   // Сортируем участки перед рендерингом
   const sortedLands = sortLands(lands, sortBy);
-  console.log("Отсортированные участки:", sortedLands);
+  // console.log("Отсортированные участки:", sortedLands);
 
   return (
     <>
@@ -89,7 +89,7 @@ export default function DistrictCards({ lands, citySlug, districtSlug }) {
               as="select"
               value={sortBy}
               onChange={(e) => {
-                console.log("Изменение сортировки на:", e.target.value);
+                // console.log("Изменение сортировки на:", e.target.value);
                 setSortBy(e.target.value);
               }}
             >
@@ -105,7 +105,7 @@ export default function DistrictCards({ lands, citySlug, districtSlug }) {
       </Row>
 
       {sortedLands.map((land, index) => {
-        console.log("Рендеринг карточки для участка:", land);
+        // console.log("Рендеринг карточки для участка:", land);
         const title = land.land_type_display + ":" || "Нет данных";
         const price = parseInt(land.price).toLocaleString();
         const area =
