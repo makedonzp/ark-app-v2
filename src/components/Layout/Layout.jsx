@@ -30,12 +30,12 @@ export default function Layout({ isMetrikaReady }) {
 
   useEffect(() => {
     const formSubmitted = localStorage.getItem("formSubmitted");
-    // console.log("Checking form submission status in Layout:", formSubmitted);
+    console.log("Checking form submission status in Layout:", formSubmitted);
 
     if (formSubmitted === "true") {
       setIsFormSubmitted(true);
     } else if (location.pathname === "/we-will-connect") {
-      // console.log("Form not submitted, redirecting to home");
+      console.log("Form not submitted, redirecting to home");
       navigate("/");
     }
 
@@ -46,13 +46,13 @@ export default function Layout({ isMetrikaReady }) {
 
   useEffect(() => {
     if (isMetrikaReady) {
-      // console.log("Tracking page view for:", location.pathname);
+      console.log("Tracking page view for:", location.pathname);
       trackPageView(location.pathname, document.title);
     } else {
-      // console.log(
-      //   "Yandex.Metrika is not ready, not tracking page view for:",
-      //   location.pathname
-      // );
+      console.log(
+        "Yandex.Metrika is not ready, not tracking page view for:",
+        location.pathname
+      );
     }
   }, [location, isMetrikaReady]);
 
