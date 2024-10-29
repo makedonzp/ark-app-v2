@@ -46,7 +46,7 @@ export default function Layout({ isMetrikaReady }) {
   useEffect(() => {
     if (isMetrikaReady) {
       console.log("Tracking page view for:", location.pathname);
-      window.ym(98750284, "hit", location.pathname, {
+      window.ym(98761584, "hit", location.pathname, {
         title: document.title,
         referer: document.referrer,
         params: {

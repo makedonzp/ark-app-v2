@@ -31,12 +31,12 @@ export default function ValueFormRequest() {
       navigate("/");
     } else {
       console.log("Tracking event for form submission");
-      window.ym(98750284, "reachGoal", "Form Submission", { isFormSubmitted });
+      window.ym(98761584, "reachGoal", "Form Submission", { isFormSubmitted });
     }
   }, [navigate]);
 
   const handleButtonClick = () => {
-    window.ym(98750284, "reachGoal", "reachGoal");
+    window.ym(98761584, "reachGoal", "reachGoal");
   };
 
   return (

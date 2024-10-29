@@ -206,7 +206,7 @@ export default function Form({ formRef, sectionPath }) {
           navigate("/we-will-connect");
 
           // Отслеживание события отправки формы
-          window.ym(98750284, "reachGoal", "Form Submission", { formData });
+          window.ym(98761584, "reachGoal", "Form Submission", { formData });
         } else {
           const errorData = await response.json();
           alert("Ошибка при отправке формы: " + errorData.message);
