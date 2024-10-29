@@ -36,7 +36,7 @@
   gap: clamp(0rem, -0.357rem + 1.79vw, 1.25rem);
   border-radius: 16px;
   border: #cee0e8 solid 1px;
-  height: clamp(18rem, 15.679rem + 13.61vw, 30.125rem);
+  min-height: clamp(18rem, 15.679rem + 13.61vw, 30.125rem);
   justify-content: space-around;
 }
 

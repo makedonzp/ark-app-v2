@@ -1,39 +1,43 @@
 import React, { useEffect } from "react";
-import { useNavigate } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 import styles from "./ValueFormRequest.module.css";
 import { Col, Container, Row } from "react-bootstrap";
 import { Link } from "react-router-dom";
 import video from "../../assets/finish_page_bg.mp4";
 
 export default function ValueFormRequest() {
+  const location = useLocation();
   const navigate = useNavigate();
 
   useEffect(() => {
-    const checkFormSubmitted = () => {
-      const isFormSubmitted = localStorage.getItem("formSubmitted");
+    const checkFormToken = () => {
+      const tokenFromStorage = localStorage.getItem("formToken");
+      const tokenFromState = location.state?.token;
 
-      if (!isFormSubmitted) {
-        console.log("Form not submitted, redirecting to home");
+      if (!tokenFromState || tokenFromState !== tokenFromStorage) {
+        console.log("Invalid token, redirecting to home");
         navigate("/");
       } else {
         setTimeout(() => {
-          localStorage.removeItem("formSubmitted");
-          console.log("Removed formSubmitted key from localStorage");
-        }, 3000);
+          localStorage.removeItem("formToken");
+          console.log("Removed formToken key from localStorage");
+        }, 2000);
       }
     };
 
-    setTimeout(checkFormSubmitted, 10000);
+    setTimeout(checkFormToken, 10000);
 
-    const isFormSubmitted = localStorage.getItem("formSubmitted");
-    if (!isFormSubmitted) {
-      console.log("Form not submitted, redirecting to home");
+    const tokenFromStorage = localStorage.getItem("formToken");
+    const tokenFromState = location.state?.token;
+
+    if (!tokenFromState || tokenFromState !== tokenFromStorage) {
+      console.log("Invalid token, redirecting to home");
       navigate("/");
     } else {
       console.log("Tracking event for form submission");
-      window.ym(98761584, "reachGoal", "Form Submission", { isFormSubmitted });
+      window.ym(98761584, "reachGoal", "Form Submission", { tokenFromState });
     }
-  }, [navigate]);
+  }, [location, navigate]);
 
   const handleButtonClick = () => {
     window.ym(98761584, "reachGoal", "reachGoal");
@@ -51,6 +55,7 @@ export default function ValueFormRequest() {
         autoPlay
         loop
         muted
+        playsInline // Добавляем атрибут playsInline
         className={styles.video_bg}
         aria-label="Фоновое видео"
       ></video>

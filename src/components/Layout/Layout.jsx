@@ -28,10 +28,10 @@ export default function Layout({ isMetrikaReady }) {
   const [isFormSubmitted, setIsFormSubmitted] = useState(false);
 
   useEffect(() => {
-    const formSubmitted = localStorage.getItem("formSubmitted");
-    console.log("Проверка статуса отправки формы в Layout:", formSubmitted);
+    const formToken = localStorage.getItem("formToken");
+    console.log("Проверка статуса отправки формы в Layout:", formToken);
 
-    if (formSubmitted === "true") {
+    if (formToken) {
       setIsFormSubmitted(true);
     } else if (location.pathname === "/we-will-connect") {
       console.log("Форма не отправлена, перенаправление на главную");
@@ -39,7 +39,7 @@ export default function Layout({ isMetrikaReady }) {
     }
 
     if (location.pathname === "/") {
-      localStorage.removeItem("formSubmitted");
+      localStorage.removeItem("formToken");
     }
   }, [location, navigate]);
 

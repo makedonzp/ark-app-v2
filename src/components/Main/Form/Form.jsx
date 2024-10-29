@@ -14,10 +14,10 @@ export default function Form({ formRef, sectionPath }) {
     phone: "",
     middleName: "",
     consent: false,
-    honeypot: "", // Скрытое поле honeypot
-    sectionPath: sectionPath || "", // Добавляем путь раздела
-    submissionDate: "", // Добавляем поле для даты заполнения заявки
-    referrer: "", // Добавляем поле для отслеживания с какой страницы была отправлена форма
+    honeypot: "",
+    sectionPath: sectionPath || "",
+    submissionDate: "",
+    referrer: "",
   });
 
   const [placeholders, setPlaceholders] = useState({
@@ -41,7 +41,6 @@ export default function Form({ formRef, sectionPath }) {
     let updatedValue = type === "checkbox" ? checked : value;
 
     if (name === "phone") {
-      // Проверка и форматирование номера телефона
       if (!/^\+7/.test(updatedValue) && updatedValue.length > 0) {
         updatedValue = `+7${updatedValue}`;
       }
@@ -52,7 +51,6 @@ export default function Form({ formRef, sectionPath }) {
       [name]: updatedValue,
     });
 
-    // Очистка ошибок при изменении поля
     setErrors({
       ...errors,
       [name]: "",
@@ -202,10 +200,12 @@ export default function Form({ formRef, sectionPath }) {
         });
 
         if (response.ok) {
-          localStorage.setItem("formSubmitted", "true");
-          navigate("/we-will-connect");
+          const token =
+            Math.random().toString(36).substring(2, 15) +
+            Math.random().toString(36).substring(2, 15);
+          localStorage.setItem("formToken", token);
+          navigate("/we-will-connect", { state: { token } });
 
-          // Отслеживание события отправки формы
           window.ym(98761584, "reachGoal", "Form Submission", { formData });
         } else {
           const errorData = await response.json();
@@ -218,9 +218,8 @@ export default function Form({ formRef, sectionPath }) {
   };
 
   useEffect(() => {
-    // Удаление флага через 3 секунды после перехода на /we-will-connect
     const timeout = setTimeout(() => {
-      localStorage.removeItem("formSubmitted");
+      localStorage.removeItem("formToken");
     }, 3000);
 
     return () => clearTimeout(timeout);
