@@ -6,7 +6,6 @@ import { Link, useNavigate } from "react-router-dom";
 import tg_icon from "../../../assets/telegram_icon.webp";
 import whats_icon from "../../../assets/whatsapp_icon.webp";
 import call_icon from "../../../assets/footer_call_icon.webp";
-import { trackEvent } from "../../1/metrika/tracking"; // Импортируйте вашу функцию для отслеживания событий
 
 export default function Form({ formRef, sectionPath }) {
   const [formData, setFormData] = useState({
@@ -116,10 +115,7 @@ export default function Form({ formRef, sectionPath }) {
     e.preventDefault();
     let isValid = true;
 
-    // console.log("Form data before validation:", formData);
-
     if (formData.honeypot) {
-      // console.log("Form submitted by a bot");
       return;
     }
 
@@ -186,9 +182,6 @@ export default function Form({ formRef, sectionPath }) {
       isValid = false;
     }
 
-    // console.log("Form data after validation:", formData);
-    // console.log("Validation result:", isValid);
-
     if (isValid) {
       const submissionDate = new Date().toISOString();
       const referrer = window.location.href;
@@ -199,8 +192,6 @@ export default function Form({ formRef, sectionPath }) {
         referrer,
       };
 
-      // console.log("Form data to be sent:", updatedFormData);
-
       try {
         const response = await fetch("https://dom-ark.com/api/submit-form/", {
           method: "POST",
@@ -210,24 +201,17 @@ export default function Form({ formRef, sectionPath }) {
           body: JSON.stringify(updatedFormData),
         });
 
-        // console.log("Response status:", response.status);
-        // console.log("Response headers:", response.headers);
-
         if (response.ok) {
-          // console.log("Navigating to /we-will-connect");
           localStorage.setItem("formSubmitted", "true");
-          // console.log("Set formSubmitted key in localStorage");
           navigate("/we-will-connect");
 
           // Отслеживание события отправки формы
-          trackEvent("Form Submission", "Submit", { formData });
+          window.ym(98750284, "reachGoal", "Form Submission", { formData });
         } else {
           const errorData = await response.json();
-          // console.error("Server error:", errorData);
           alert("Ошибка при отправке формы: " + errorData.message);
         }
       } catch (error) {
-        // console.error("Ошибка при отправке формы:", error);
         alert("Ошибка при отправке формы");
       }
     }

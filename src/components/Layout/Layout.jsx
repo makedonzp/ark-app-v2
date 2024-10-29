@@ -1,6 +1,5 @@
 import React, { useContext, useEffect, useState } from "react";
 import { Route, Routes, useLocation, useNavigate } from "react-router-dom";
-import { trackPageView } from "../1/metrika/tracking"; // Исправлен путь
 import styles from "./Layout.module.css";
 import Header from "../Header/Header";
 import Main from "../Main/Main";
@@ -47,7 +46,14 @@ export default function Layout({ isMetrikaReady }) {
   useEffect(() => {
     if (isMetrikaReady) {
       console.log("Tracking page view for:", location.pathname);
-      trackPageView(location.pathname, document.title);
+      window.ym(98750284, "hit", location.pathname, {
+        title: document.title,
+        referer: document.referrer,
+        params: {
+          param1: "value1",
+          param2: "value2",
+        },
+      });
     } else {
       console.log(
         "Yandex.Metrika is not ready, not tracking page view for:",
