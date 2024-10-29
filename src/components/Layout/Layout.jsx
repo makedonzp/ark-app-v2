@@ -1,5 +1,5 @@
-import React, { useContext, useEffect, useState } from "react";
-import { Route, Routes, useLocation, useNavigate } from "react-router-dom";
+import React, { useEffect } from "react";
+import { Route, Routes, useLocation } from "react-router-dom";
 import styles from "./Layout.module.css";
 import Header from "../Header/Header";
 import Main from "../Main/Main";
@@ -18,49 +18,22 @@ import About from "../About/About";
 import LandDetails from "../District/LandDetails/LandDetails";
 import HotForm from "../HotForm/HotForm";
 import ValueFormRequest from "../ValueFormRequest/ValueFormRequest";
-import { DataContext } from "../DataContext/DataContext";
 import ScrollToTop from "../ScrollToTop/ScrollToTop";
 
-export default function Layout({ isMetrikaReady }) {
-  const data = useContext(DataContext);
+export default function Layout() {
   const location = useLocation();
-  const navigate = useNavigate();
-  const [isFormSubmitted, setIsFormSubmitted] = useState(false);
 
   useEffect(() => {
-    const formSubmitted = localStorage.getItem("formSubmitted");
-    console.log("Checking form submission status in Layout:", formSubmitted);
-
-    if (formSubmitted === "true") {
-      setIsFormSubmitted(true);
-    } else if (location.pathname === "/we-will-connect") {
-      console.log("Form not submitted, redirecting to home");
-      navigate("/");
-    }
-
-    if (location.pathname === "/") {
-      localStorage.removeItem("formSubmitted");
-    }
-  }, [location, navigate]);
-
-  useEffect(() => {
-    if (isMetrikaReady) {
-      console.log("Tracking page view for:", location.pathname);
-      window.ym(98761584, "hit", location.pathname, {
-        title: document.title,
-        referer: document.referrer,
-        params: {
-          param1: "value1",
-          param2: "value2",
-        },
-      });
-    } else {
-      console.log(
-        "Yandex.Metrika is not ready, not tracking page view for:",
-        location.pathname
-      );
-    }
-  }, [location, isMetrikaReady]);
+    // Отправка события просмотра страницы в Яндекс.Метрику
+    window.ym(98761584, "hit", location.pathname, {
+      title: document.title,
+      referer: document.referrer,
+      params: {
+        param1: "value1",
+        param2: "value2",
+      },
+    });
+  }, [location]);
 
   return (
     <div
@@ -73,38 +46,26 @@ export default function Layout({ isMetrikaReady }) {
       <Header />
       <Routes>
         <Route path="/" exact element={<Main />} />
-        <Route path="/new" exact element={<New data={data.new} />} />
-        <Route path="/plots" element={<Lands data={data.plots} />} />
-        <Route
-          path="/plots/:citySlug"
-          element={<District data={data.plots} />}
-        />
-        <Route
-          path="/plots/:citySlug/:districtSlug"
-          element={<Land data={data.plots} />}
-        />
+        <Route path="/new" exact element={<New />} />
+        <Route path="/plots" element={<Lands />} />
+        <Route path="/plots/:citySlug" element={<District />} />
+        <Route path="/plots/:citySlug/:districtSlug" element={<Land />} />
         <Route
           path="/plots/:citySlug/:districtSlug/:landSlug"
-          element={<LandDetails data={data.plots} />}
+          element={<LandDetails />}
         />
         <Route path="/services" element={<Services />} />
         <Route path="/confeditial" element={<Confeditial />} />
-        <Route path="/new/:citySlug" element={<City data={data.new} />} />
-        <Route
-          path="/new/:citySlug/:complexSlug"
-          element={<Complex data={data.new} type="complexes" />}
-        />
+        <Route path="/new/:citySlug" element={<City />} />
+        <Route path="/new/:citySlug/:complexSlug" element={<Complex />} />
         <Route
           path="/new/:citySlug/:complexSlug/:apartmentSlug"
-          element={<ApartmentDetails data={data.new} />}
+          element={<ApartmentDetails />}
         />
         <Route path="/contacts" element={<Contacts />} />
         <Route path="/about" element={<About />} />
         <Route path="/hot-form" element={<HotForm />} />
-        <Route
-          path="/we-will-connect"
-          element={isFormSubmitted ? <ValueFormRequest /> : <Main />}
-        />
+        <Route path="/we-will-connect" element={<ValueFormRequest />} />
       </Routes>
       <Footer />
     </div>
