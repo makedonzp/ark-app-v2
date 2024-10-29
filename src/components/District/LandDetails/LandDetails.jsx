@@ -91,7 +91,7 @@ const LandDetails = () => {
   const landData = districtData.lands?.find((item) => item.path === landSlug);
 
   if (!landData) {
-    console.log("Участок не найден:", landSlug);
+    // console.log("Участок не найден:", landSlug);
     return <div>Участок не найден</div>;
   }
 

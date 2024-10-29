@@ -14,12 +14,12 @@ export default function ValueFormRequest() {
       const isFormSubmitted = localStorage.getItem("formSubmitted");
 
       if (!isFormSubmitted) {
-        console.log("Form not submitted, redirecting to home");
+        // console.log("Form not submitted, redirecting to home");
         navigate("/");
       } else {
         setTimeout(() => {
           localStorage.removeItem("formSubmitted");
-          console.log("Removed formSubmitted key from localStorage");
+          // console.log("Removed formSubmitted key from localStorage");
         }, 3000);
       }
     };
@@ -28,10 +28,10 @@ export default function ValueFormRequest() {
 
     const isFormSubmitted = localStorage.getItem("formSubmitted");
     if (!isFormSubmitted) {
-      console.log("Form not submitted, redirecting to home");
+      // console.log("Form not submitted, redirecting to home");
       navigate("/");
     } else {
-      console.log("Tracking event for form submission");
+      // console.log("Tracking event for form submission");
       trackEvent("Form Submission", "Page Load", { isFormSubmitted });
     }
   }, [navigate]);

@@ -3,23 +3,23 @@ import { initYandexMetrika } from "../metrika/tracking"; // Исправлен �
 
 const YandexMetrikaLoader = () => {
   useEffect(() => {
-    console.log("Loading Yandex.Metrika script...");
+    // console.log("Loading Yandex.Metrika script...");
     const script = document.createElement("script");
     script.src = "https://mc.yandex.ru/metrika/tag.js";
     script.async = true;
     document.body.appendChild(script);
 
     script.onload = () => {
-      console.log("Yandex.Metrika script loaded.");
+      // console.log("Yandex.Metrika script loaded.");
 
       // Добавляем небольшую задержку перед инициализацией
       setTimeout(() => {
-        console.log("Checking if Yandex.Metrika is ready...");
+        // console.log("Checking if Yandex.Metrika is ready...");
         if (
           typeof window.Ya !== "undefined" &&
           typeof window.Ya.Metrika2 === "function"
         ) {
-          console.log("Yandex.Metrika is ready.");
+          // console.log("Yandex.Metrika is ready.");
           initYandexMetrika(98750284);
         } else {
           console.warn("Yandex.Metrika is not loaded after script load.");
@@ -32,7 +32,7 @@ const YandexMetrikaLoader = () => {
     };
 
     return () => {
-      console.log("Removing Yandex.Metrika script...");
+      // console.log("Removing Yandex.Metrika script...");
       document.body.removeChild(script);
     };
   }, []);

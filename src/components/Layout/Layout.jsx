@@ -22,7 +22,7 @@ import ValueFormRequest from "../ValueFormRequest/ValueFormRequest";
 import { DataContext } from "../DataContext/DataContext";
 import ScrollToTop from "../ScrollToTop/ScrollToTop";
 
-export default function Layout() {
+export default function Layout({ isMetrikaReady }) {
   const data = useContext(DataContext);
   const location = useLocation();
   const navigate = useNavigate();
@@ -30,30 +30,31 @@ export default function Layout() {
 
   useEffect(() => {
     const formSubmitted = localStorage.getItem("formSubmitted");
-    console.log("Checking form submission status in Layout:", formSubmitted);
+    // console.log("Checking form submission status in Layout:", formSubmitted);
 
     if (formSubmitted === "true") {
       setIsFormSubmitted(true);
     } else if (location.pathname === "/we-will-connect") {
-      console.log("Form not submitted, redirecting to home");
+      // console.log("Form not submitted, redirecting to home");
       navigate("/");
     }
 
     if (location.pathname === "/") {
       localStorage.removeItem("formSubmitted");
     }
+  }, [location, navigate]);
 
-    // Отслеживание просмотра страницы для всех путей
-    console.log("Tracking page view for:", location.pathname);
-    trackPageView(location.pathname, document.title);
-
-    if (location.pathname === "/we-will-connect" && formSubmitted === "true") {
-      console.log("Tracking page view for:", location.pathname);
+  useEffect(() => {
+    if (isMetrikaReady) {
+      // console.log("Tracking page view for:", location.pathname);
       trackPageView(location.pathname, document.title);
     } else {
-      console.log("Not tracking page view for:", location.pathname);
+      // console.log(
+      //   "Yandex.Metrika is not ready, not tracking page view for:",
+      //   location.pathname
+      // );
     }
-  }, [location, navigate]);
+  }, [location, isMetrikaReady]);
 
   return (
     <div
