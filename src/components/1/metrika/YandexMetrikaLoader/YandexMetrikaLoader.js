@@ -1,5 +1,5 @@
 import { useEffect } from "react";
-import { initYandexMetrika } from "../metrika/tracking"; // Исправлен путь
+import { initYandexMetrika } from "../tracking"; // Исправлен путь
 
 const YandexMetrikaLoader = ({ setIsMetrikaReady }) => {
   useEffect(() => {

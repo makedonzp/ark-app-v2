@@ -1,6 +1,6 @@
 import React, { useContext, useEffect, useState } from "react";
 import { Route, Routes, useLocation, useNavigate } from "react-router-dom";
-import { trackPageView } from "../metrika/tracking"; // Исправлен путь
+import { trackPageView } from "../1/metrika/tracking"; // Исправлен путь
 import styles from "./Layout.module.css";
 import Header from "../Header/Header";
 import Main from "../Main/Main";

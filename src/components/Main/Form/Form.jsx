@@ -6,7 +6,7 @@ import { Link, useNavigate } from "react-router-dom";
 import tg_icon from "../../../assets/telegram_icon.webp";
 import whats_icon from "../../../assets/whatsapp_icon.webp";
 import call_icon from "../../../assets/footer_call_icon.webp";
-import { trackEvent } from "../../metrika/tracking"; // Импортируйте вашу функцию для отслеживания событий
+import { trackEvent } from "../../1/metrika/tracking"; // Импортируйте вашу функцию для отслеживания событий
 
 export default function Form({ formRef, sectionPath }) {
   const [formData, setFormData] = useState({

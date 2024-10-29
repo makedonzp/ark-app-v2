@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import Layout from "./components/Layout/Layout";
 import { DataProvider } from "./components/DataContext/DataContext";
-import YandexMetrikaLoader from "./components/YandexMetrikaLoader/YandexMetrikaLoader";
+import YandexMetrikaLoader from "./components/1/metrika/YandexMetrikaLoader/YandexMetrikaLoader";
 
 export default function App() {
   const [isMetrikaReady, setIsMetrikaReady] = useState(false);

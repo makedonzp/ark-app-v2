@@ -4,7 +4,6 @@ import styles from "./ValueFormRequest.module.css";
 import { Col, Container, Row } from "react-bootstrap";
 import { Link } from "react-router-dom";
 import video from "../../assets/finish_page_bg.mp4";
-import { trackEvent } from "../metrika/tracking"; // Исправлен путь
 
 export default function ValueFormRequest() {
   const navigate = useNavigate();
@@ -32,7 +31,7 @@ export default function ValueFormRequest() {
       navigate("/");
     } else {
       console.log("Tracking event for form submission");
-      trackEvent("Form Submission", "Page Load", { isFormSubmitted });
+      window.ym(98750284, "reachGoal", "Form Submission", { isFormSubmitted });
     }
   }, [navigate]);
 
