@@ -35,6 +35,10 @@ export default function ValueFormRequest() {
     }
   }, [navigate]);
 
+  const handleButtonClick = () => {
+    window.ym(98750284, "reachGoal", "reachGoal");
+  };
+
   return (
     <Container
       fluid
@@ -71,7 +75,12 @@ export default function ValueFormRequest() {
             </Link>
           </Col>
           <Col className={styles.button}>
-            <Link to="/" className={styles.main__link} tabIndex={0}>
+            <Link
+              to="/"
+              className={styles.main__link}
+              tabIndex={0}
+              onClick={handleButtonClick}
+            >
               Вернуться на главную
             </Link>
           </Col>
