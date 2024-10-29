@@ -43,6 +43,10 @@ export default function Layout() {
       localStorage.removeItem("formSubmitted");
     }
 
+    // Отслеживание просмотра страницы для всех путей
+    console.log("Tracking page view for:", location.pathname);
+    trackPageView(location.pathname, document.title);
+
     if (location.pathname === "/we-will-connect" && formSubmitted === "true") {
       console.log("Tracking page view for:", location.pathname);
       trackPageView(location.pathname, document.title);
