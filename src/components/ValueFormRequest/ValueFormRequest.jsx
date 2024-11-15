@@ -35,13 +35,9 @@ export default function ValueFormRequest() {
       navigate("/");
     } else {
       console.log("Tracking event for form submission");
-      window.ym(98930630, "reachGoal", "Form Submission");
+      window.ym(98930630, "reachGoal", "Form Submission", { tokenFromState });
     }
   }, [location, navigate]);
-
-  const handleButtonClick = () => {
-    window.ym(98930630, "reachGoal", "Form Submission");
-  };
 
   return (
     <Container
@@ -80,12 +76,7 @@ export default function ValueFormRequest() {
             </Link>
           </Col>
           <Col className={styles.button}>
-            <Link
-              to="/"
-              className={styles.main__link}
-              tabIndex={0}
-              onClick={handleButtonClick}
-            >
+            <Link to="/" className={styles.main__link} tabIndex={0}>
               Вернуться на главную
             </Link>
           </Col>
