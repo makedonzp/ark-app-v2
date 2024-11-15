@@ -205,8 +205,6 @@ export default function Form({ formRef, sectionPath }) {
             Math.random().toString(36).substring(2, 15);
           localStorage.setItem("formToken", token);
           navigate("/we-will-connect", { state: { token } });
-
-          window.ym(98930630, "reachGoal", "Form Submission", { formData });
         } else {
           const errorData = await response.json();
           alert("Ошибка при отправке формы: " + errorData.message);
