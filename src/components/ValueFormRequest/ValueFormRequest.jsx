@@ -35,7 +35,7 @@ export default function ValueFormRequest() {
       navigate("/");
     } else {
       console.log("Tracking event for form submission");
-      window.ym(98942367, "reachGoal", "Form Submission", { tokenFromState });
+      window.ym(98948525, "reachGoal", "Form Submission", { tokenFromState });
     }
   }, [location, navigate]);
 

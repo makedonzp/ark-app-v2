@@ -49,7 +49,7 @@ export default function Layout({ isMetrikaReady }) {
         "Отправка события просмотра страницы для:",
         location.pathname
       );
-      window.ym(98942367, "hit", location.pathname, {
+      window.ym(98948525, "hit", location.pathname, {
         title: document.title,
         referer: document.referrer,
         params: {
