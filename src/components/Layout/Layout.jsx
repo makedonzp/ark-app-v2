@@ -21,11 +21,12 @@ import ValueFormRequest from "../ValueFormRequest/ValueFormRequest";
 import { DataContext } from "../DataContext/DataContext";
 import ScrollToTop from "../ScrollToTop/ScrollToTop";
 
-export default function Layout({ isMetrikaReady }) {
+export default function Layout() {
   const data = useContext(DataContext);
   const location = useLocation();
   const navigate = useNavigate();
   const [isFormSubmitted, setIsFormSubmitted] = useState(false);
+  const [isMetrikaReady, setIsMetrikaReady] = useState(false);
 
   useEffect(() => {
     const formToken = localStorage.getItem("formToken");
@@ -42,6 +43,19 @@ export default function Layout({ isMetrikaReady }) {
       localStorage.removeItem("formToken");
     }
   }, [location, navigate]);
+
+  useEffect(() => {
+    // Проверка готовности Яндекс.Метрики
+    const checkMetrikaReady = setInterval(() => {
+      if (window.ym && window.ym.apply) {
+        console.log("Яндекс.Метрика готова");
+        setIsMetrikaReady(true);
+        clearInterval(checkMetrikaReady);
+      }
+    }, 100);
+
+    return () => clearInterval(checkMetrikaReady);
+  }, []);
 
   useEffect(() => {
     if (isMetrikaReady) {
