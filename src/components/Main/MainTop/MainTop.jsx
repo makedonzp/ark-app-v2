@@ -17,7 +17,7 @@ export default function MainTop({ scrollToForm }) {
       <Row className={styles.main__row}>
         <Col className={styles.main__col}>
           <h1 className={styles.main__title}>
-            <span>АРК</span> — Ваш проводник в крымской недвижимости
+            <span>АРК</span> — Ваш проводник в море Крымской недвижимости
           </h1>
         </Col>
         {/* <Col className={styles.main__col_agency}>
